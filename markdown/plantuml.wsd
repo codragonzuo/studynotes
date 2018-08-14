@@ -1,0 +1,414 @@
+@startuml  mychart
+start
+:dosomtething;
+if (cond?) then (val1)
+    :dosomtething;
+else (val2)
+    :dosomtething;
+endif
+:画;
+:dosomtething;
+end
+@enduml
+
+
+
+@startuml   secondchart
+Bob->Alice : hello
+@enduml
+
+
+
+
+@startuml
+
+User -> (Start)
+User --> (Use the application) : A small label
+
+:Main Admin: ---> (Use the application) : This is\nyet another\nlabel
+
+@enduml
+
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User <|-- Admin
+(Start) <|-- (Use)
+
+@enduml
+
+
+@startuml
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+User -> (Start)
+User --> (Use)
+
+Admin ---> (Use)
+
+note right of Admin : This is an example.
+
+note right of (Use)
+  A note can also
+  be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)
+@enduml
+
+
+
+
+@startuml
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+User -> (Start)
+User --> (Use)
+MySql --> (Use)
+@enduml
+
+
+
+@startuml
+skinparam handwritten true
+
+skinparam usecase {
+	BackgroundColor DarkSeaGreen
+	BorderColor DarkSlateGray
+
+	BackgroundColor<< Main >> YellowGreen
+	BorderColor<< Main >> YellowGreen
+	
+	ArrowColor Olive
+	ActorBorderColor black
+	ActorFontName Courier
+
+	ActorBackgroundColor<< Human >> Gold
+}
+
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+
+User -> (Start)
+User --> (Use)
+
+MySql --> (Use)
+
+@enduml
+
+
+
+
+
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+ 
+  (checkout) .> (payment) : include
+  (xxx) -> (payment)
+  (yyy) --> (payment) 
+  (help) .> (checkout) : extends
+  (checkout) -- clerk
+
+  (Start) <|-- (Use)  
+  (Start) <-- (Use)  
+
+   
+}
+
+ Alice --> Bob: synchronous call
+ Alice -->> Bob: asynchronous call
+ Alice --|> Bob: asynchronous call
+@enduml
+
+
+@startuml
+
+package "Some Group" {
+  HTTP - [First Component]
+  [Another Component]
+}
+ 
+node "Other Groups" {
+  FTP - [Second Component]
+  [First Component] --> FTP
+} 
+
+cloud {
+  [Example 1]
+}
+
+
+database "MySql" {
+  folder "This is my folder" {
+	[Folder 3]
+  }
+  frame "Foo" {
+	[Frame 4]
+  }
+}
+
+
+[Another Component] --> [Example 1]
+[Example 1] --> [Folder 3]
+[Folder 3] --> [Frame 4]
+
+@enduml
+
+
+
+
+
+@startuml
+
+skinparam interface {
+  backgroundColor RosyBrown
+  borderColor orange
+}
+
+skinparam component {
+  FontSize 13
+  BackgroundColor<<Apache>> Red
+  BorderColor<<Apache>> #FF6655
+  FontName Courier
+  BorderColor black
+  BackgroundColor gold
+  ArrowFontName Impact
+  ArrowColor #FF6655
+  ArrowFontColor #777777
+}
+
+() "Data Access" as DA
+
+DA - [First Component] 
+[First Component] ..> () HTTP : use
+HTTP - [Web Server] << Apache >>
+
+@enduml
+
+
+
+
+@startuml
+[AA] <<static lib>>
+[BB] <<shared lib>>
+[CC] <<static lib>>
+
+node node1
+node node2 <<shared node>>
+database Production
+
+skinparam component {
+	backgroundColor<<static lib>> DarkKhaki
+	backgroundColor<<shared lib>> Green
+}
+
+skinparam node {
+	borderColor Green
+	backgroundColor Yellow
+	backgroundColor<<shared node>> Magenta
+}
+skinparam databaseBackgroundColor Aqua
+
+@enduml
+
+
+Example 1
+
+
+@startuml
+
+sprite $bProcess jar:archimate/business-process
+sprite $aService jar:archimate/application-service
+sprite $aComponent jar:archimate/application-component
+
+archimate #Business "Handle claim"  as HC <<business-process>>
+archimate #Business "Capture Information"  as CI <<business-process>>
+archimate #Business "Notify\nAdditional Stakeholders" as NAS <<business-process>>
+archimate #Business "Validate" as V <<business-process>>
+archimate #Business "Investigate" as I <<business-process>>
+archimate #Business "Pay" as P <<business-process>>
+
+HC *-down- CI
+HC *-down- NAS
+HC *-down- V
+HC *-down- I
+HC *-down- P
+
+CI -right->> NAS
+NAS -right->> V
+V -right->> I
+I -right->> P
+
+archimate #APPLICATION "Scanning" as scanning <<application-service>>
+archimate #APPLICATION "Customer admnistration" as customerAdministration <<application-service>>
+archimate #APPLICATION "Claims admnistration" as claimsAdministration <<application-service>>
+archimate #APPLICATION Printing  <<application-service>>
+archimate #APPLICATION Payment  <<application-service>>
+
+scanning -up-> CI
+customerAdministration  -up-> CI
+claimsAdministration -up-> NAS
+claimsAdministration -up-> V
+claimsAdministration -up-> I
+Payment -up-> P
+
+Printing -up-> V
+Printing -up-> P
+
+archimate #APPLICATION "Document\nManagement\nSystem" as DMS <<application-component>>
+archimate #APPLICATION "General\nCRM\nSystem" as CRM <<application-component>>
+archimate #APPLICATION "Home & Away\nPolicy\nAdministration" as HAPA <<application-component>>
+archimate #APPLICATION "Home & Away\nFinancial\nAdministration" as HFPA <<application-component>>
+
+DMS .up.|> scanning
+DMS .up.|> Printing
+CRM .up.|> customerAdministration
+HAPA .up.|> claimsAdministration
+HFPA .up.|> Payment
+
+legend left
+Example from the "Archisurance case study" (OpenGroup).
+See 
+==
+<$bProcess> :business process
+==
+<$aService> : application service
+==
+<$aComponent> : appplication component
+endlegend
+
+@enduml
+
+
+@startuml
+rectangle "Capture Information"  as CI <<$archimate/business-process>> #yellow
+@enduml
+
+
+@startuml
+!define Junction_Or circle #black
+!define Junction_And circle #whitesmoke
+
+Junction_And JunctionAnd
+Junction_Or JunctionOr
+
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+GO -up-> JunctionOr
+STOP -up-> JunctionOr
+STOP -down-> JunctionAnd
+WAIT -down-> JunctionAnd
+@enduml
+
+
+@startuml
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+@enduml
+
+
+@startuml
+
+artifact artifact1
+artifact artifact2
+artifact artifact3
+artifact artifact4
+artifact artifact5
+artifact artifact6
+artifact artifact7
+artifact artifact8
+artifact artifact9
+artifact artifact10
+artifact1 --> artifact2
+artifact1 --* artifact3
+artifact1 --o artifact4
+artifact1 --+ artifact5
+artifact1 --# artifact6
+artifact1 -->> artifact7
+artifact1 --0 artifact8
+artifact1 --^ artifact9
+artifact1 --(0 artifact10
+
+@enduml
+
+
+@startuml
+
+cloud cloud1
+cloud cloud2
+cloud cloud3
+cloud cloud4
+cloud cloud5
+cloud1 -0- cloud2
+cloud1 -0)- cloud3
+cloud1 -(0- cloud4
+cloud1 -(0)- cloud5
+
+@enduml
+
+Packages
+
+@startuml
+artifact Foo1 {
+  folder Foo2
+}
+
+folder Foo3 {
+  artifact Foo4
+}
+
+frame Foo5 {
+  database Foo6
+}
+
+@enduml
+
+@startuml
+node Foo1 {
+ cloud Foo2 
+}
+
+cloud Foo3 {
+  frame Foo4
+}
+
+database Foo5  {
+  storage Foo6
+}
+
+storage Foo7 {
+  storage Foo8
+}
+@enduml
+
+Round corner
+
+@startuml
+skinparam rectangle {
+	roundCorner<<Concept>> 25
+}
+
+rectangle "Concept Model" <<Concept>> {
+	rectangle "Example 1" <<Concept>> as ex1
+	rectangle "Another rectangle"
+}
+@enduml
