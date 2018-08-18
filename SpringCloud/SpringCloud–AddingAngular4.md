@@ -1,4 +1,4 @@
-##Spring Cloud – Adding Angular 4
+## Spring Cloud – Adding Angular 4
 Last modified: April 4, 2018
 
 by Tim Schimandle CloudSpring+
@@ -6,7 +6,7 @@ I just announced the new Spring 5 modules in REST With Spring:
 
 
 
-###1. Overview
+### 1. Overview
 
 In our last Spring Cloud article, we added Zipkin support into our application. In this article, we’re going to be adding a front-end application to our stack.
 
@@ -16,11 +16,11 @@ We will be writing this app using Angular and Bootstrap. The style of Angular 4 
 
 In this article, we’re going to be building an Angular 4 app and connecting it to our cloud services. We will demonstrate how to integrate login between a SPA and Spring Security. We’ll also show how to access our application’s data using Angular’s support for HTTP communication.
 
-###2. Gateway Changes
+### 2. Gateway Changes
 
 With front end in place, we’re going to switch to form based login and secure parts of UI to privileged users. This requires making changes to our gateway security configuration.
 
-###2.1. Update HttpSecurity
+### 2.1. Update HttpSecurity
 
 First, let’s update configure(HttpSecurity http) method in our gateway SecurityConfig.java class:
 ```java
@@ -45,7 +45,7 @@ First, we add a default success URL to point to /home/index.html as this will be
 
 Next, we removed the logout success URL, as the default redirect back to the login page will work fine.
 
-###2.2. Add a Principal Endpoint
+### 2.2. Add a Principal Endpoint
 
 Next, let’s add an endpoint to return the authenticated user. This will be used in our Angular app to log in and identify the roles our user has. This will help us control what actions they can do on our site.
 
@@ -62,7 +62,7 @@ public class AuthenticationController {
 ```
 The controller returns the currently logged in user object to the caller. This gives us all the information we need to control our Angular app.
 
-###2.3. Add a Landing Page
+### 2.3. Add a Landing Page
 
 Let’s add a very simple landing page so that users see something when they go to the root of our application.
 
@@ -81,11 +81,11 @@ In src/main/resources/static, let’s add an index.html file with a link to the 
 </body>
 </html>
 ```
-###3. Angular CLI and the Starter Project
+### 3. Angular CLI and the Starter Project
 
 Before starting a new Angular project make sure to install the latest versions of Node.js and npm.
 
-####3.1. Install the Angular CLI
+#### 3.1. Install the Angular CLI
 
 To begin, we will need to use npm to download and install the Angular command line interface. Open a terminal and run:
 
@@ -94,7 +94,7 @@ npm install -g @angular/cli
 ```
 This will download and install the CLI globally.
 
-###3.2. Install a new Project
+### 3.2. Install a new Project
 
 While still in the terminal, navigate to the gateway project and go into the gateway/src/main folder. Create a directory called “angular” and navigate to it. From here run:
 
@@ -105,7 +105,7 @@ Be patient; the CLI’s setting up a brand new project and downloading all the J
 
 The ng command’s the shortcut for the Angular CLI, the new parameter instructs that CLI to create a new project, and the ui command gives our project a name.
 
-###3.3. Run the Project
+### 3.3. Run the Project
 
 Once the new command’s complete. Navigate to the ui folder that was created and run:
 
@@ -117,7 +117,7 @@ Once the project builds navigate to http://localhost:4200. We should see this in
 
 Congratulations! We just built an Angular app!
 
-###3.4. Install Bootstrap
+### 3.4. Install Bootstrap
 
 Let’s use npm to install bootstrap. From the ui directory run this command:
 
@@ -136,7 +136,7 @@ In the ui directory, open the .angular-cli.json file. This is the file that conf
 ```
 This will instruct Angular to include Bootstrap in the compiled CSS file that’s built with the project.
 
-###3.5. Set the Build Output Directory
+### 3.5. Set the Build Output Directory
 
 Next, we need to tell Angular where to put the build files so that our spring boot app can serve them. Spring Boot can serve files from two locations in the resources folder:
 ```
@@ -152,7 +152,7 @@ Open the .angular-cli.json file again and find the apps > outDir property. Updat
 ```
 If the Angular project’s located in src/main/angular/ui, then it will build to the src/main/resources/public folder. If the app in another folder this string will need to be modified to set the location correctly.
 
-###3.6. Automate the Build with Maven
+### 3.6. Automate the Build with Maven
 
 Lastly, we will set up an automated build to run when we compile our code. This ant task will run the Angular CLI build task whenever “mvn compile” is run. Add this step to the gateway’s POM.xml to ensure that each time we compile we get the latest ui changes:
 ```xml
@@ -187,7 +187,7 @@ We should note that this set up does require that the Angular CLI be available o
 
 Now let’s start building our Angular application!
 
-##4. Angular
+## 4. Angular
 
 In this section of the tutorial, we build an authentication mechanism in our page. We use basic authentication and follow a simple flow to make it work.
 
@@ -199,7 +199,7 @@ Lastly, we will store the credentials and the principal on the client to use in 
 
 Let’s see how this’s done!
 
-###4.1. Template
+### 4.1. Template
 
 In the gateway project, navigate to src/main/angular/ui/src/app and open the app.component.html file. This’s the first template that Angular loads and will be where our users will land after logging in.
 
@@ -240,7 +240,7 @@ Statements like (ngSubmit)=”onLogin(f)” simply indicate that when the form i
 
 Next, let’s code up the Typescript file that will support this template.
 
-###4.2. Typescript
+### 4.2. Typescript
 
 From the same directory open the app.component.ts file. In this file we will add all the typescript properties and methods required to make our template function:
 ```java
@@ -295,7 +295,7 @@ There’s some magic going on here though. The httpService property that’s dec
 
 Next, we need to define the HttpService class.
 
-###4.3. HttpService
+### 4.3. HttpService
 
 In the same directory create a file named “http.service.ts”. In this file add this code to support the login and logout methods:
 ```java
@@ -333,7 +333,7 @@ Now we need to do one more thing to get the HttpService registered in the depend
 ```
 providers: [HttpService],
 ```
-###4.4. Add Principal
+### 4.4. Add Principal
 
 Next, let’s add our Principal DTO object in our Typescript code. In the same directory add a file called “principal.ts” and add this code:
 ```java
@@ -367,7 +367,7 @@ We added the Principal class and an Authority class. These are two DTO classes, 
 
 Next, let’s configure a redirect rule to redirect unknown requests to the root of our application.
 
-###4.5. 404 Handling
+### 4.5. 404 Handling
 
 Let’s navigate back into the Java code for the gateway service. In the where GatewayApplication class resides add a new class called ErrorPageConfig:
 ```java
@@ -386,7 +386,7 @@ This class will identify any 404 response and redirect the user to “/home/inde
 
 Now we’re ready to fire this app up and see what we built!
 
-###4.6. Build and View
+### 4.6. Build and View
 
 Now run “mvn compile” from the gateway folder. This will compile our java source and build the Angular app to the public folder. Let’s start the other cloud applications: config, discovery, and zipkin. Then run the gateway project. When the service starts, navigate to http://localhost:8080 to see our app. We should see something like this:
 
@@ -402,7 +402,7 @@ It looks like our jumbotron is indicating we’re logged in as a user! Now log o
 
 Looks good! Now we’re logged in as an admin.
 
-##5. Conclusion
+## 5. Conclusion
 
 In this article, we have seen how easy it’s to integrate a single page app into our cloud system. We took a modern framework and integrated a working security configuration into our application.
 
