@@ -4,12 +4,14 @@
 ##### 1、安装Nginx
 
 命令:sudo apt-get install nginx
+
 ![](django_uwsgi01.png)
 
 
 ##### 2、安装uwsgi，从pip仓库安装
 
 命令：pip3 install uwsgi
+
 ![](django_uwsgi02.png)
  
 
@@ -20,6 +22,7 @@
 1）在windows上安装一个好压的软件，然后把文件压缩成xxx.tar.gz格式，然后在linux上就可以直接tar -zxvf xx.tar.gz就可以了
 
 2）在云服务器上安装zip命令，sudo apt-get install zip:
+
 ![](django_uwsgi03.png)
 
 
@@ -36,12 +39,14 @@ zip -r xxxx.zip   yyy 把yyy以及yyy下面的所有文件都压缩成xxxx.zip�
 ##### 4、配置Nginx与uwsgi
 
 在与manager同级目录下创建uwsgi.ini 文件，文件内容如下：
+
 ![](django_uwsgi04.png)
 
 
 socket与http要注意，如果是要用Nginx运行django的话，就用socket，如果用uwsgi运行django的话，这里就要换成http。
 
 Nginx配置如下，在nginx.conf中的http加入server，如下
+
 ![](django_uwsgi05.png)
 
 
