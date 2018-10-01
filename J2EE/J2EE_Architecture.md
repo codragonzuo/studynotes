@@ -1,5 +1,21 @@
 
 
+### J2EE
+https://tutorialseye.com/j2ee-tutorial
+
+Java Enterprise Edition is a standard for developing applications based on enterprise softwares. Java Platform, Enterprise Edition or Java EE is an enterprise computing platform on Java from Oracle.
+
+![](https://tutorialseye.com/wp-content/uploads/Java-Enterprise-Edition-Tutorial.png)
+
+#### J2EE Checklists
+
+https://tutorialseye.com/j2ee-checklists.html
+
+#### J2EE Design Patterns
+https://tutorialseye.com/j2ee-design-patterns.html
+
+![](https://tutorialseye.com/wp-content/uploads/figure06_02.gif)
+
 ### Architecture
 http://springframeworkinterviewanswers.blogspot.com/2013/07/java-j2ee-spring-enterprise-java.html
 
