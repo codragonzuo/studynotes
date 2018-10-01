@@ -1,4 +1,11 @@
 
+
+### Architecture
+http://springframeworkinterviewanswers.blogspot.com/2013/07/java-j2ee-spring-enterprise-java.html
+
+![](http://2.bp.blogspot.com/-gfSvSCrcKk0/Tnw6Gv0MehI/AAAAAAAAAEg/oSW-eNAtSb0/s1600/j2ee_components.JPG)
+
+
 ### MVC pattern
 MVC相比于三层架构或者四层架构，突出特点是前端控制的灵活性。如果MVC的两部分View和Controller剥离出来，实际是前端控制器模式的设计模式。
 MVC缺点很明显，将前端以外逻辑都放到Model里，随着业务增多，Model将越来越难维护。
