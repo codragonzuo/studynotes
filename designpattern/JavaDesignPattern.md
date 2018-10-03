@@ -159,6 +159,9 @@ Decorator Design Pattern – Important Points
 ### Mediator Pattern
 
 Mediator design pattern is used to collaborate a set of colleagues. Those colleagues do not communicate with each other directly, but through the mediator.
+
+from https://www.programcreek.com/2012/08/java-design-pattern-template-method/
+
  ![](https://www.programcreek.com/wp-content/uploads/2013/02/mediator-design-pattern.png)
 
 ```java
