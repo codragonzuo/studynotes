@@ -69,6 +69,9 @@ Builder --> Service1 : 2.Injects denpendencies
 
 
 ###  Decorator Class Diagram
+Decorator pattern introduces some boilerplate code to an existing class hierarchy. The pattern introduces a shared interface between the target class and the decorator. The decorator must have a reference to an instance of this interface.
+
+
 ```puml
 @startuml  
 skinparam handwritten true
