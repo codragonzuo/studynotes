@@ -245,3 +245,4 @@ public class MediatorTest {
 ```
 
 ---
+![](https://www.tutorialspoint.com/design_pattern/images/mediator_pattern_uml_diagram.jpg)
