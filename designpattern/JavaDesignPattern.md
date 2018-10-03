@@ -155,3 +155,90 @@ Decorator Design Pattern – Important Points
  - The disadvantage of decorator design pattern is that it uses a lot of similar kind of objects (decorators).
  - Decorator pattern is used a lot in Java IO classes, such as FileReader, BufferedReader etc.
 
+
+### Mediator Pattern
+
+Mediator design pattern is used to collaborate a set of colleagues. Those colleagues do not communicate with each other directly, but through the mediator.
+ ![](https://www.programcreek.com/wp-content/uploads/2013/02/mediator-design-pattern.png)
+
+```java
+package designpatterns.mediator;
+ 
+interface IMediator {
+	public void fight();
+	public void talk();
+	public void registerA(ColleagueA a);
+	public void registerB(ColleagueB a);
+}
+ 
+//concrete mediator
+class ConcreteMediator implements IMediator{
+ 
+	ColleagueA talk;
+	ColleagueB fight;
+ 
+	public void registerA(ColleagueA a){
+		talk = a;
+	}
+ 
+	public void registerB(ColleagueB b){
+		fight = b;
+	}
+ 
+	public void fight(){
+		System.out.println("Mediator is fighting");
+		//let the fight colleague do some stuff
+	}
+ 
+	public void talk(){
+		System.out.println("Mediator is talking");
+		//let the talk colleague do some stuff
+	}
+}
+ 
+abstract class Colleague {
+	IMediator mediator;
+	public abstract void doSomething();
+}
+ 
+//concrete colleague
+class ColleagueA extends Colleague {
+ 
+	public ColleagueA(IMediator mediator) {
+		this.mediator = mediator;
+	}
+ 
+	@Override
+	public void doSomething() {
+		this.mediator.talk();
+		this.mediator.registerA(this);
+	}
+}
+ 
+//concrete colleague
+class ColleagueB extends Colleague {
+	public ColleagueB(IMediator mediator) {
+		this.mediator = mediator;
+		this.mediator.registerB(this);
+	}
+ 
+	@Override
+	public void doSomething() {
+		this.mediator.fight();
+	}
+}
+ 
+public class MediatorTest {
+	public static void main(String[] args) {
+		IMediator mediator = new ConcreteMediator();
+ 
+		ColleagueA talkColleague = new ColleagueA(mediator);
+		ColleagueB fightColleague = new ColleagueB(mediator);
+ 
+		talkColleague.doSomething();
+		fightColleague.doSomething();
+	}
+}
+```
+
+---
