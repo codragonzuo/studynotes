@@ -24,3 +24,21 @@ You might think that this couples the Store & View. The way to decouple it is th
 
 Unidirectional dataflow
 
+### Should You Build a Hybrid Mobile App?
+![](https://content-static.upwork.com/blog/uploads/sites/3/2015/10/26071816/Native-v.-hybrid-v.-web.png)
+
+A hybrid app is essentially a web app, but it’s given a lightweight native app “container” that allows it to leverage certain native platform features and device hardware (e.g., a device’s camera, calendar, push notifications, and pinch and spread functionality) that a web application cannot access. Like applications on the web, hybrid apps are built with commonly used front-end development technologies and languages like JavaScript, HTML5, and CSS, giving them a cross-platform functionality.
+
+Hybrid apps are available via app stores, can access hardware on your phone, and are installed on your device, just like a native app. But how do they stack up against native and web apps, and what are their benefits?
+
+### Service Oriented Architecture (SOA)
+
+![](https://techaffinity.com/blog/wp-content/uploads/2015/08/soaInner1.jpg)
+
+
+http://dentrodelasala.com/interesting-service-oriented-architecture/service-oriented-architecture-on-architecture-pertaining-to-stunning-service-oriented-architecture-on-regarding-soa-17/
+
+![](http://dentrodelasala.com/wp-content/uploads/2018/06/service-oriented-architecture-on-architecture-with-figure-2-4-before-soa-vs-after-soa-the-diagram-shown-in-figure-2-4.jpg)
+
+
+
