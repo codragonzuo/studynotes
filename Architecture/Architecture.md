@@ -42,3 +42,9 @@ http://dentrodelasala.com/interesting-service-oriented-architecture/service-orie
 
 
 
+### 十种常见的软件架构模式
+
+https://zhuanlan.zhihu.com/p/42534548
+
+![](https://pic3.zhimg.com/v2-6d12adfd9a719390e10da1de55865699_r.jpg)
+
