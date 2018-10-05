@@ -264,3 +264,76 @@ The intercepting filter design pattern is used when we want to do some pre-proce
 
 ![](https://www.tutorialspoint.com/design_pattern/images/interceptingfilter_pattern_uml_diagram.jpg)
 
+---
+- Custom Filter Strategy
+https://www.baeldung.com/intercepting-filter-pattern-in-java
+![](https://www.baeldung.com/wp-content/uploads/2016/11/intercepting_filter-custom_strategy-768x376.png)
+The custom filter strategy is used in every use case that requires an ordered processing of requests, in the meaning of one filter is based on the results of a previous filter in an execution chain.
+
+These chains will be created by implementing the FilterChain interface and registering various Filter classes with it.
+
+When using multiple filter chains with different concerns, you can join them together in a filter manager:
+
+- Base Filter Strategy
+This strategy plays nicely together with the custom strategy from the previous section or with the Standard Filter Strategy that we’ll introduce in the next section.
+
+The abstract base class can be used to apply custom behavior that belongs to a filter chain. We’ll use it in our example to reduce boilerplate code related to filter configuration and debug logging:
+
+```JAVA
+public abstract class BaseFilter implements Filter {
+    private Logger log = LoggerFactory.getLogger(BaseFilter.class);
+ 
+    protected FilterConfig filterConfig;
+ 
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        log.info("Initialize filter: {}", getClass().getSimpleName());
+        this.filterConfig = filterConfig;
+    }
+ 
+    @Override
+    public void destroy() {
+        log.info("Destroy filter: {}", getClass().getSimpleName());
+    }
+}
+//Let’s extend this base class to create a request logging filter, which will be integrated into the next section:
+
+public class LoggingFilter extends BaseFilter {
+    private static final Logger log = LoggerFactory.getLogger(LoggingFilter.class);
+ 
+    @Override
+    public void doFilter(
+      ServletRequest request, 
+      ServletResponse response,
+      FilterChain chain) {
+        chain.doFilter(request, response);
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+         
+        String username = Optional
+          .ofNullable(httpServletRequest.getAttribute("username"))
+          .map(Object::toString)
+          .orElse("guest");
+         
+        log.info(
+          "Request from '{}@{}': {}?{}", 
+          username, 
+          request.getRemoteAddr(),
+          httpServletRequest.getRequestURI(), 
+          request.getParameterMap());
+    }
+}
+```
+
+- Standard Filter Strategy
+A more flexible way of applying filters is to implement the Standard Filter Strategy. This can be done by declaring filters in a deployment descriptor or, since Servlet specification 3.0, by annotation.
+
+The standard filter strategy allows to plug-in new filters into a default chain without having an explicitly defined filter manager
+
+![](https://www.baeldung.com/wp-content/uploads/2016/11/intercepting_filter-standard_strategy.png)
+
+- Template Filter Strategy
+The Template Filter Strategy is pretty much the same as the base filter strategy, except that it uses template methods declared in the base class that must be overridden in implementations
+
+![](https://www.baeldung.com/wp-content/uploads/2016/11/intercepting_filter-template_strategy.png)
+
+
