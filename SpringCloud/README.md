@@ -75,3 +75,8 @@ https://github.com/Baeldung/spring-security-registration
 
 #### spring jpa
 Accessing H2 web console at /h2-console
+
+
+
+---
+![](http://www.mobabel.net/wp-content/uploads/2018/09/01/Java_Architecture_Mindmap-2.png)
