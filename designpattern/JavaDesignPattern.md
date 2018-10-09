@@ -3,13 +3,26 @@
 ### Class Diagram Annotation
 ```puml
 @startuml
-Person  <|-- Police : Extension(Inherence)
-Human    *-- Leg    : Composition 
-Library  o-- Book   : Aggregation(has)
-Customer <-- Order  :Association (reference)
+Person  <|-- Police : Generation(Extension, Inherence)
+IBrush  <|.. PenBrush : Realization(Extension, Interface)
 @enduml
 ```
 
+```puml
+@startuml
+class Customer
+class Order
+Customer "1" <-- "n" Order  : Association (reference)
+Water  <..  Animal  : Dependency
+@enduml
+```
+
+```puml
+@startuml
+Human    *-- "2" Leg    : Composition（contain）
+Library  o-- "n" Book   : Aggregation(has)
+@enduml
+```
 
 ```puml
 @startuml
@@ -17,6 +30,8 @@ Class07 .. Class08 :link
 Class09 -- Class10 :link
 @enduml
 ```
+
+![](https://images0.cnblogs.com/blog2015/564533/201508/131025376607218.png)
 
 
 ### Facade Pattern
