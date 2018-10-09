@@ -2,6 +2,22 @@
 ## Spring Cloud Netflix
 ### Eureka Config Center
 ### Hystrix Circuit Breaker & Degrade
+https://github.com/Netflix/Hystrix/wiki
+使用 Hystrix 实现自动降级与依赖隔离
+cascading failure连锁失效
+使用Hystrix实现自动降级与依赖隔离 
+https://www.jianshu.com/p/138f92aa83dc
+Hystrix其实一套command pattern（命令模式，行为模式的一种）的封装，要明白Hystrix的工作原理首先要明白command pattern ，关于command pattern 可以参考
+http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.html
+
+命令模式的本质是对命令进行封装，将发出命令的责任和执行命令的责任分割开。
+
+1.每一个命令都是一个操作：请求的一方发出请求，要求执行一个操作；接收的一方收到请求，并执行操作。
+2.命令模式允许请求的一方和接收的一方独立开来，使得请求的一方不必知道接收请求的一方的接口，更不必知道请求是怎么被接收，以及操作是否被执行、何时被执行，以及是怎么被执行的。
+3.命令模式使请求本身成为一个对象，这个对象和其他对象一样可以被存储和传递。
+4.命令模式的关键在于引入了抽象命令接口，且发送者针对抽象命令接口编程，只有实现了抽象命令接口的具体命令才能与接收者相关联。
+
+
 ### Zuul MS Gateway
 ### Netflix Archaius
 ## SpringCloud Config
@@ -18,8 +34,6 @@
 ## Spring Cloud Starters
 ## Spring Cloud CLI
 
- Hystrix Interface Degrade
- Spring Boot Integrate Spring Cloud
 
 
 ```dot
@@ -133,11 +147,12 @@ Spring Cloud Pipelines provides an opinionated deployment pipeline with steps to
 
 ### Spring Cloud Function
 Spring Cloud Function promotes the implementation of business logic via functions. It supports a uniform programming model across serverless providers, as well as the ability to run standalone (locally or in a PaaS).
+
 ---
 
 
 
-
+## wd
 frontend ---gateway----eureka /service register -- service A  - service B
                                                 \
                                                  \ service C
@@ -149,7 +164,7 @@ https://github.com/Baeldung/spring-security-registration
 
 
 
-#### spring jpa
+spring jpa
 Accessing H2 web console at /h2-console
 
 
