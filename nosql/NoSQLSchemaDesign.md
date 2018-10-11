@@ -1,5 +1,40 @@
 
 
+## Example of Aggregation Model
+```puml
+@startuml
+
+!define SEQUENCE (S , #AAAAAA ) Database Sequence
+!define TABLE (T , #FFAAAA ) Database Table
+
+class OrderItem  << TABLE >>
+class Product  << TABLE >>
+class Payment  << TABLE >>
+class Order  << TABLE >>
+{
+}
+class customer  << TABLE >>
+{
+    +name
+}
+class address  << TABLE >>
+{
+  street
+  city
+  state
+  postcode
+}
+customer  -- "*" Order
+Payment  "*" --*  Order
+OrderItem "*" --*  Order
+OrderItem "*" --  Product
+customer  *--   "*" address : address
+address  --*  Order  : shipping address
+Payment  *-- address : billing address
+@enduml
+```
+
+
 ### 6 Rules of Thumb for MongoDB Schema Design
 https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1
 https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-2
