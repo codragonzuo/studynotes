@@ -34,7 +34,7 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 ## Spring Cloud Starters
 ## Spring Cloud CLI
 
-
+ 
 
 ```dot
 digraph R {
@@ -144,6 +144,10 @@ Spring Cloud OpenFeign provides integrations for Spring Boot apps through autoco
 
 ### Spring Cloud Pipelines
 Spring Cloud Pipelines provides an opinionated deployment pipeline with steps to ensure that your application can be deployed in zero downtime fashion and easilly rolled back of something goes wrong.
+
+https://github.com/spring-cloud/spring-cloud-pipelines
+https://spring.io/projects/spring-cloud-pipelines
+https://cloud.spring.io/spring-cloud-pipelines/multi/multi_spring-cloud-pipelines.html
 
 ### Spring Cloud Function
 Spring Cloud Function promotes the implementation of business logic via functions. It supports a uniform programming model across serverless providers, as well as the ability to run standalone (locally or in a PaaS).
