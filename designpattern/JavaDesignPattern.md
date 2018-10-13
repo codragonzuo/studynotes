@@ -57,6 +57,8 @@ Class03 --> Class04
 ```
 
 
+
+
 ### Dependency Injection
 Dependency Injection (DI) is a software design pattern that implements inversion of control for resolving dependencies.
 
@@ -170,6 +172,28 @@ Decorator Design Pattern – Important Points
  - The disadvantage of decorator design pattern is that it uses a lot of similar kind of objects (decorators).
  - Decorator pattern is used a lot in Java IO classes, such as FileReader, BufferedReader etc.
 
+### Adapter Pattern
+https://www.journaldev.com/1487/adapter-design-pattern-java
+Adapter design pattern is one of the structural design pattern and its used so that two unrelated interfaces can work together. The object that joins these unrelated interface is called an Adapter.
+ - Two Way Adapter Pattern
+While implementing Adapter pattern, there are two approaches – class adapter and object adapter – however both these approaches produce same result.
+
+**Class Adapter** – This form uses java inheritance and extends the source interface, in our case Socket class.
+**Object Adapter** – This form uses Java Composition and adapter contains the source object.
+
+```puml
+@startuml
+class Socket
+Interface SocketAdapter
+class SocketClassAdapterImp
+class SocketObjectAdapterImp
+Socket <|-- SocketClassAdapterImp
+SocketAdapter <|-- SocketClassAdapterImp
+Socket <-- SocketObjectAdapterImp
+SocketAdapter <|-- SocketObjectAdapterImp
+@enduml
+```
+![](https://cdn.journaldev.com/wp-content/uploads/2013/07/adapter-pattern-java-class-diagram.png)
 
 ### Mediator Pattern
 
