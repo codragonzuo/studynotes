@@ -28,6 +28,8 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 ## SpringCloud Sleuth
 ## SpringCloud Data Flow
 ## SpringCloud Stream
+Spring Cloud Stream 本质精简概括，就是让员使用消息中间件变得简单。
+Spring Cloud Stream 是一个为微服务应用构建消息驱动能力的框架。它基于Spring Boot创建独立的，可用于生产的Spring 应用程序。通过使用Spring Integration来连接消息代理中间件以实现消息事件驱动。Spring Cloud Stream 为消息中间件产品提供了个性化的自动化配置实现，引用了**发布-订阅、消费组、分区**的三个核心概念。目前仅支持RabbitMQ、Kafka。
 ## SpringCloud Task
 ## SpringCloud Zookeeper
 ## Spring Cloud Connector
