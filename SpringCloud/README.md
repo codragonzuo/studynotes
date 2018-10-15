@@ -31,6 +31,17 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 Spring Cloud Stream 本质精简概括，就是让员使用消息中间件变得简单。
 Spring Cloud Stream 是一个为微服务应用构建消息驱动能力的框架。它基于Spring Boot创建独立的，可用于生产的Spring 应用程序。通过使用Spring Integration来连接消息代理中间件以实现消息事件驱动。Spring Cloud Stream 为消息中间件产品提供了个性化的自动化配置实现，引用了**发布-订阅、消费组、分区**的三个核心概念。目前仅支持RabbitMQ、Kafka。
 ## SpringCloud Task
+
+Spring Cloud Task 主要解决短命微服务的任务管理，任务调度的工作，比如说某些定时任务晚上就跑一次，或者某项数据分析临时就跑几次。
+https://www.baeldung.com/spring-cloud-task
+https://www.jianshu.com/p/39573f2a5ec1
+■ Spring Cloud Task的生命周期
+在任务生命周期中，我们可以在TaskExecutionListener接口中注册侦听器。我们需要一个实现接口的类，它有三个方法 - 在Task的各个事件中触发onTaskEnd，onTaksFailed和onTaskStartup。
+■ 与Spring Batch集成
+可以将Spring Batch Job作为Task执行，并使用Spring Cloud Task记录Job执行的事件。
+■ 从Stream启动任务
+Launching a Task from Stream
+
 ## SpringCloud Zookeeper
 ## Spring Cloud Connector
 ## Spring Cloud Starters
@@ -143,6 +154,7 @@ Spring Cloud Gateway is an intelligent and programmable router based on Project 
 
 ### Spring Cloud OpenFeign
 Spring Cloud OpenFeign provides integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms.
+
 
 ### Spring Cloud Pipelines
 Spring Cloud Pipelines provides an opinionated deployment pipeline with steps to ensure that your application can be deployed in zero downtime fashion and easilly rolled back of something goes wrong.
