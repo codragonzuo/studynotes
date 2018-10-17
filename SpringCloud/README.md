@@ -49,7 +49,7 @@ A Token Relay is where an OAuth2 consumer acts as a Client and forwards the inco
 ![](
 https://i2.wp.com/blogs.perficient.com/files/2018/02/1.png?ssl=1)
 
-
+![](https://github.com/spring-cloud/spring-cloud-security/blob/master/docs/src/main/asciidoc/spring-cloud-security.adoc)
 
 
 ## SpringCloud Sleuth
