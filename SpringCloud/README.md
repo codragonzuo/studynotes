@@ -46,8 +46,8 @@ A Token Relay is where an OAuth2 consumer acts as a Client and forwards the inco
 
 ■- Resource Server Token Relay
 
-
-
+![](
+https://i2.wp.com/blogs.perficient.com/files/2018/02/1.png?ssl=1)
 
 
 
