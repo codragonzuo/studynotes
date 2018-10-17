@@ -25,6 +25,13 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 ## SpringCloud Cluster
 ## SpringCloud Consul
 ## SpringCloud Security
+Spring Cloud Security features
+■Relay SSO tokens from a front end to a back end service in a Zuul proxy
+■Relay tokens between resource servers
+■An interceptor to make a Feign client behave like OAuth2RestTemplate (fetching tokens etc.)
+■Configure downstream authentication in a Zuul proxy
+
+
 ## SpringCloud Sleuth
 ## SpringCloud Data Flow
 ## SpringCloud Stream
