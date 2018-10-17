@@ -26,10 +26,30 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 ## SpringCloud Consul
 ## SpringCloud Security
 Spring Cloud Security features
+
 ■Relay SSO tokens from a front end to a back end service in a Zuul proxy
+
 ■Relay tokens between resource servers
+
 ■An interceptor to make a Feign client behave like OAuth2RestTemplate (fetching tokens etc.)
+
 ■Configure downstream authentication in a Zuul proxy
+
+Single Sign On(All of the OAuth2 SSO and resource server features moved to Spring Boot in version 1.3. )
+Token Relay
+
+A Token Relay is where an OAuth2 consumer acts as a Client and forwards the incoming token to outgoing resource requests. The consumer can be a pure Client (like an SSO application) or a Resource Server.
+
+■- Client Token Relay
+
+■- Client Token Relay in Zuul Proxy
+
+■- Resource Server Token Relay
+
+
+
+
+
 
 
 ## SpringCloud Sleuth
