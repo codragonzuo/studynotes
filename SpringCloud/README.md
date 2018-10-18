@@ -37,6 +37,9 @@ https://blog.csdn.net/u013815546/article/details/68944039
 
 https://www.baeldung.com/spring-rest-with-zuul-proxy
 
+https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
+
+https://dzone.com/articles/microservices-part-5-spring-cloud-zuul-proxy-as-ap
 
 ### Netflix Archaius
 ## SpringCloud Config
