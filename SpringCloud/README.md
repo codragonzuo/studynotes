@@ -19,6 +19,11 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 
 
 ### Zuul MS Gateway
+
+Zuul is the front door for all requests from devices and web sites to the backend of the Netflix streaming application. As an edge service application, Zuul is built to enable dynamic routing, monitoring, resiliency and security. It also has the ability to route requests to multiple Amazon Auto Scaling Groups as appropriate.
+
+![](https://microservices.io/i/apigateway.jpg)
+
 ### Netflix Archaius
 ## SpringCloud Config
 ## SpringCloud Bus
@@ -49,7 +54,7 @@ A Token Relay is where an OAuth2 consumer acts as a Client and forwards the inco
 ![](
 https://i2.wp.com/blogs.perficient.com/files/2018/02/1.png?ssl=1)
 
-![](https://github.com/spring-cloud/spring-cloud-security/blob/master/docs/src/main/asciidoc/spring-cloud-security.adoc)
+https://github.com/spring-cloud/spring-cloud-security/blob/master/docs/src/main/asciidoc/spring-cloud-security.adoc
 
 
 ## SpringCloud Sleuth
