@@ -35,6 +35,9 @@ Zuul is the front door for all requests from devices and web sites to the backen
 SpringCloud----Zuul动态路由
 https://blog.csdn.net/u013815546/article/details/68944039
 
+https://www.baeldung.com/spring-rest-with-zuul-proxy
+
+
 ### Netflix Archaius
 ## SpringCloud Config
 ## SpringCloud Bus
