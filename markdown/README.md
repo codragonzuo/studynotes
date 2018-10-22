@@ -52,3 +52,23 @@ digraph R {
 ```
 
 
+### C4-PlantUML
+https://github.com/RicardoNiepel/C4-PlantUML
+
+XXX.puml
+
+@startuml LAYOUT_AS_SKETCH Sample
+!includeurl file:///E:/Document/C4_Container.puml
+
+
+LAYOUT_AS_SKETCH
+
+Person(admin, "Administrator")
+package "Sample System" <<boundary>> as c1 {
+    Container(web_app, "Web Application", "C#, ASP.NET Core 2.1 MVC", "Allows users to compare multiple Twitter timelines")
+}
+System(twitter, "Twitter")
+
+Rel(admin, web_app, "Uses", "HTTPS")
+Rel(web_app, twitter, "Gets tweets from", "HTTPS")
+@enduml
