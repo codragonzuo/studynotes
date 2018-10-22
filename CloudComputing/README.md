@@ -21,4 +21,11 @@
 - 安全
 网络安全已经成为所有企业或个人创业者必须面对的问题，企业的IT团队或个人很难应对那些来自网络的恶意攻击，而使用云服务则可以借助更专业的安全团队来有效降低安全风险。
 
+In 2009, the U.S. National Institute of Standards and Technology (NIST) published a draft definition of cloud computing. The NIST definition, created for government agencies buying cloud services, simplified cloud computing into three types of services:
+
+1. IaaS (Infrastructure as a Service), where vendors offer on-demand compute, network, and storage;
+
+2. PaaS (Platform as a Service), where vendors provide application development frameworks and deployment tools; and
+
+3. SaaS (Software as a Service) where vendors deliver entire applications.
 
