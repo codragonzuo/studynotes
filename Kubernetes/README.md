@@ -17,3 +17,6 @@ Kubernetes提供了一套简单的用于发送请求的API，对底层基础设�
 
 ![](http://dockone.io/uploads/article/20180424/56c3f5be08699ea34146959ea12ea591.gif)
 
+### 江湖路远，Kubernetes 版图扩张全记录
+
+![](https://www.kubernetes.org.cn/img/2018/01/20180120095026.jpg)
