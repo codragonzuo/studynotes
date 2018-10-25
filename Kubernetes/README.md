@@ -24,3 +24,14 @@ Kubernetes提供了一套简单的用于发送请求的API，对底层基础设�
 ### 
 
 <div style="width: 640px;" class="wp-video"><video class="wp-video-shortcode" id="video-227-1" width="640" height="360" preload="metadata" controls="controls"><source type="video/mp4" src="https://dn-linuxcn.qbox.me/The%20Illustrated%20Children%27s%20Guide%20to%20Kubernetes-4ht22ReBjno.mp4?_=1" /><a href="https://dn-linuxcn.qbox.me/The%20Illustrated%20Children%27s%20Guide%20to%20Kubernetes-4ht22ReBjno.mp4">https://dn-linuxcn.qbox.me/The%20Illustrated%20Children%27s%20Guide%20to%20Kubernetes-4ht22ReBjno.mp4</a></video></div>
+
+
+What is Kubernetes? Container orchestration explained
+
+https://www.infoworld.com/article/3268073/kubernetes/what-is-kubernetes-container-orchestration-explained.html
+
+Containers and Orchestration Explained
+https://www.mongodb.com/containers-and-orchestration-explained
+
+
+
