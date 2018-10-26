@@ -53,3 +53,29 @@ Operator本质是通过在Kubenertes中部署对应的Third-Party Resource (TPR)
 
 ![](https://img-blog.csdn.net/20170719092402185?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuMjM0MjgwNTMz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
+
+## Spring Cloud or Kubernetes?
+Kubernetes 在网易云中的落地优化实践
+
+https://www.kubernetes.org.cn/4489.html
+
+Spring Cloud 和 Kubernetes 都是一个利器。它们面向的用户和解决思路是不一样的。Spring Cloud 更多的是面向开发者们，尤其是 Java 开发者，他们是从代码级别去考虑微服务是怎么去设计的。开发者们需要去处理，比如注册、环境配置怎么拿到？对于他们来说，除了做业务开发，他还要关心一些业务之外的东西。
+
+Kubernetes 更多是面向 DevOps，它是希望通过提供一个平台，一个通用性的方案把微服务中间需要处理的细节放在平台上解决。不用去关注服务发现和 DNS 这些东西，就比如说在 Spring Cloud 里面的服务发现。你需要代码去拿这些信息。
+
+但是在 Kubernetes 里，你只需要去创建一个服务，然后访问这个 Kubernetes 服务，你不用去关心后台策略是怎么做、服务是怎么发现、请求是怎么传到后面的 Pod。所以它是从不同的层面去解决这个问题的。因为 Spring Cloud 和 Kubernetes，不是一个完全对应的产品。作为微服务的一些基础要点，它们是有自己不同的解决方案。这里是做了一个相对的比较。你会发现无论是 Spring Cloud，还是 Kubernetes，其实都有他自己的方式去解决问题。
+
+比较来看，如果做微服务，并不是说我只选 Kubernetes，或是 Spring Cloud，而是把它们结合起来用，更能发挥他们各自的优势。再比如服务发现、负载均衡、高可用、调度、部署这部分，我们是用 Kubernetes。比如故障隔离，我们用 Hystrix 去做进程内隔离，但是做进程间隔离，是通过 Kubernetes 的资源配额去做。比如像配置问题，Docker 能解决应用和运行环境等问题。
+
+
+![](https://www.kubernetes.org.cn/img/2018/08/20180822221145.jpg)
+
+![](https://www.kubernetes.org.cn/img/2018/08/20180822221215.jpg)
+
+![](https://www.kubernetes.org.cn/img/2018/08/20180822221223.jpg)
+
+Kubernetes 加 Docker，我们可以比较好的解决部分问题。有一些问题 Kubernetes 自己可以解决，但用起来不是很方便。还有一些只能用第三方工具，或者自己的方式来解决。比如说像监控，我们就是用第三方工具。比如说 ELK 是用 Grafana 去做监控。分步式追踪，我们做了一个 APM 分布步式追踪。
+
+
+
+
