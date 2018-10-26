@@ -52,3 +52,4 @@ Operator基于Third Party Resources扩展了新的应用资源，并通过控制
 Operator本质是通过在Kubenertes中部署对应的Third-Party Resource (TPR)插件，然后通过部署Third-Party Resource的方式来部署对应的应用。Third-Party Resource会调用Kubenertes部署API部署相应的Kubenertes资源，并对资源状态进行管理。
 
 ![](https://img-blog.csdn.net/20170719092402185?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuMjM0MjgwNTMz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
