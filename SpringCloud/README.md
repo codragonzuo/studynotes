@@ -1,4 +1,7 @@
 # SpringCloud
+
+技术选型必须客观，多维度，全方位的分析。文档丰富程度，社区活跃度，技术栈生态，开发效率，运行效率，成功案例等，都是选型的重要因素。
+
 ## Spring Cloud Netflix
 ### Eureka Config Center
 ### Hystrix Circuit Breaker & Degrade
