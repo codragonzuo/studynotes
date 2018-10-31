@@ -1,6 +1,6 @@
 
 - Countdown Latches 倒计时锁
-- Cyclic Barriers
+- Cyclic Barriers 循环屏障
 - Exchangers
 - Semaphones
 - Phasers
