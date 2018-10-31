@@ -75,3 +75,40 @@ $HADOOP_HOME/bin/hadoop  jar $HADOOP_HOME/hadoop-streaming.jar \
     -file myPythonScript.py \
     -file myDictionary.txt
 ```
+
+## Hadoop HA
+
+HA：High Available，高可用
+　　在Hadoop 2.0之前,在HDFS 集群中NameNode 存在单点故障 (SPOF：A Single Point of Failure)。 对于只有一个 NameNode 的集群，如果 NameNode 机器出现故障(比如宕机或是软件、硬件 升级)，那么整个集群将无法使用，直到 NameNode 重新启动.
+
+HDFS 的 HA 功能通过配置 Active/Standby 两个 NameNodes 实现在集群中对 NameNode 的 热备来解决上述问题。如果出现故障，如机器崩溃或机器需要升级维护，这时可通过此种方 式将 NameNode 很快的切换到另外一台机器。
+
+　　在一个典型的 HDFS(HA) 集群中，使用两台单独的机器配置为 NameNodes 。在任何时间点， 确保 NameNodes 中只有一个处于 Active 状态，其他的处在 Standby 状态。其中 ActiveNameNode 负责集群中的所有客户端操作，StandbyNameNode 仅仅充当备机，保证一 旦 ActiveNameNode 出现问题能够快速切换。
+
+　　为了能够实时同步 Active 和 Standby 两个 NameNode 的元数据信息（实际上 editlog），**需提 供一个共享存储系统，可以是 NFS、QJM（Quorum Journal Manager）或者 Zookeeper，Active Namenode 将数据写入共享存储系统，而 Standby 监听该系统，一旦发现有新数据写入，则 读取这些数据，并加载到自己内存中，以保证自己内存状态与 Active NameNode 保持基本一 致，如此这般，在紧急情况下 standby 便可快速切为 active namenode**。为了实现快速切换， Standby 节点获取集群的最新文件块信息也是很有必要的。为了实现这一目标，DataNode 需 要配置 NameNodes 的位置，并同时给他们发送文件块信息以及心跳检测。
+
+![](https://images2018.cnblogs.com/blog/1228818/201803/1228818-20180323190333589-394758470.png)
+
+Zookeeper 作为一个分布式的服务框架，主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储， Zookeeper 作用主要是用来维护和监控存储的数据的状态变化，通过监控这些数据状态的变化，从而达到基于数据的集群管理。 
+1 Zookeeper基本框架 
+Zookeeper集群主要角色有Leader，Learner（Follower，Observer(当服务器增加到一定程度，由于投票的压力增大从而使得吞吐量降低，所以增加了Observer。）以及client： 
+
+Leader：领导者，负责投票的发起和决议，以及更新系统状态 
+
+Follower：接受客户端的请求并返回结果给客户端，并参与投票 
+
+Observer：接受客户端的请求，将写的请求转发给leader，不参与投票。Observer目的是扩展系统，提高读的速度。 
+
+Client:客户端，想Zookeeper发起请求。 
+
+Zookeeper的基本框架图如下： 
+![](https://zookeeper.apache.org/doc/current/images/zkservice.jpg)
+
+Zookeeper主要提供高效的管理集群的四点功能
+- 统一命名服务
+- 配置管理
+- 集群管理
+- 共享锁和队列管理
+
+
+
