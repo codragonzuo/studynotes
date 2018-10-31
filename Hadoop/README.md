@@ -110,5 +110,19 @@ Zookeeper主要提供高效的管理集群的四点功能
 - 集群管理
 - 共享锁和队列管理
 
+###What Is ZooKeeper?
+ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. ZooKeeper is simple, distributed, reliable, and fast.
+
+maintaining configuration information: It maintains cluster configuration info which is shared across all the nodes in the cluster.
+
+naming: Zookeeper can be used as naming service, so that one node in the cluster can find another node in the large cluster ex: 1000 node cluster
+
+providing distributed synchronization:  We can also use zookeeper for solving distributed synchronization problems in the cluster by using locks, Queues etc.
+
+providing group services:  Zookeeper also helps in group service with the selection of a master in the cluster(Leader election process).
+
+ZooKeeper can work in replicated mode as well as standalone mode.
+
+
 
 
