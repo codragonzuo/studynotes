@@ -18,6 +18,23 @@ tuning	英['tju:nɪŋ]   美['tju:nɪŋ]
 - skip_name_resolve
 
 
+[MySQL 5.7 Performance Tuning Immediately After Installation](https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/)
+
+https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/
+
+![](https://www.percona.com/blog/wp-content/uploads/2016/10/Screen-Shot-2016-10-03-at-12.49.22-PM.png)
+
+![](https://www.percona.com/blog/wp-content/uploads/2016/10/Screen-Shot-2016-10-03-at-12.48.13-PM.png)
+
+![](https://www.percona.com/blog/wp-content/uploads/2016/10/Screen-Shot-2016-10-03-at-12.43.52-PM.png)
+
+
+
+### 浅入浅出 MySQL 和 InnoDB
+
+https://draveness.me/mysql-innodb
+
+---
 
 InnoDB is a storage engine for the database management system MySQL. MySQL 5.5, December 2010, and later use it by default replacing MyISAM.[1] It provides the standard ACID-compliant transaction features, along with foreign key support (Declarative Referential Integrity). It is included as standard in most binaries distributed by MySQL AB, the exception being some OEM versions.
 
