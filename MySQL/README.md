@@ -53,3 +53,19 @@ Mysql数据库中,最常用的两种引擎是innordb和myisam。InnoDB是Mysql�
 - 外键MyISAM不支持外键,InnoDB支持外键。
 - 锁 MyISAM只支持表级锁,InnoDB支持行级锁和表级锁,默认是行级锁,行锁大幅度提高了多用户并发操作的性能。
 - innodb比较适合于插入和更新操作比较多的情况,而myisam则适合用于频繁查询的情
+
+---
+
+MySQL 8.0 Sysbench Benchmark: IO Bound Read Only (Point Selects)
+
+https://www.mysql.com/why-mysql/benchmarks/
+
+![](https://www.mysql.com/common/images/benchmarks/mysql_80_benchmarks_readonly.png)
+
+---
+### Calculating InnoDB Buffer Pool Size for Your MySQL Server
+
+https://dzone.com/articles/calculating-innodb-buffer-pool-size-for-your-mysql?fromrel=true
+
+![](https://scalegrid.io/blog/wp-content/uploads/2018/01/chart.png)
+
