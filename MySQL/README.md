@@ -40,7 +40,7 @@ https://draveness.me/mysql-innodb
 
 ![](https://covers.oreillystatic.com/images/0636920022343/lrg.jpg)
 
-![Onlie PDF Download](http://file.allitebooks.com/20150428/High%20Performance%20MySQL,%203rd%20Edition.pdf)
+[Onlie PDF Download](http://file.allitebooks.com/20150428/High%20Performance%20MySQL,%203rd%20Edition.pdf)
 
 
 
@@ -68,4 +68,16 @@ https://www.mysql.com/why-mysql/benchmarks/
 https://dzone.com/articles/calculating-innodb-buffer-pool-size-for-your-mysql?fromrel=true
 
 ![](https://scalegrid.io/blog/wp-content/uploads/2018/01/chart.png)
+
+---
+### Chunk Change: InnoDB Buffer Pool Resizing
+
+https://dzone.com/articles/chunk-change-innodb-buffer-pool-resizing?fromrel=true
+
+The buffer pool can hold several instances, and each instance is divided into chunks. There is some information that we need to take into account: the number of instances can go from 1 to 64, and the total amount of chunks should not exceed 1000.
+
+So, for a server with 3GB RAM, a buffer pool of 2GB with 8 instances, and chunks at default value (128MB), we are going to get 2 chunks per instance:
+
+
+![](https://www.percona.com/blog/wp-content/uploads/2018/04/bp8instances.png)
 
