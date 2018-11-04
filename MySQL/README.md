@@ -36,6 +36,15 @@ https://draveness.me/mysql-innodb
 
 ---
 
+### High Performance MySQL, 3rd Edition
+
+![](https://covers.oreillystatic.com/images/0636920022343/lrg.jpg)
+
+![Onlie PDF Download](http://file.allitebooks.com/20150428/High%20Performance%20MySQL,%203rd%20Edition.pdf)
+
+
+
+
 InnoDB is a storage engine for the database management system MySQL. MySQL 5.5, December 2010, and later use it by default replacing MyISAM.[1] It provides the standard ACID-compliant transaction features, along with foreign key support (Declarative Referential Integrity). It is included as standard in most binaries distributed by MySQL AB, the exception being some OEM versions.
 
 ## MyISAM和InnoDB的对比 
