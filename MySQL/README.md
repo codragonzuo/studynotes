@@ -87,3 +87,10 @@ So, for a server with 3GB RAM, a buffer pool of 2GB with 8 instances, and chunks
 
 ![](https://www.percona.com/blog/wp-content/uploads/2018/04/bp8instances.png)
 
+### MySQL InnoDB performance improvement: InnoDB buffer pool instances
+
+https://www.saotn.org/mysql-innodb-performance-improvement/
+
+
+### XtraDB / InnoDB internals
+![https://www.percona.com/blog/wp-content/uploads/2010/04/InnoDB_int2-e1272319507276.png]
