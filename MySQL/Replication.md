@@ -65,4 +65,12 @@ MySQL Group Replication正是基于这些技术和概念，实现了一种多主
 
 Mysql版本5.7.17推出Mysql group replication（组复制），相对以前传统的复制模式（异步复制模式async replication 及半同步复制模式semi-sync replication），一个主，对应一个或多个从，在主数据库上执行的事务通过binlog复制的方式传送给slave，slave通过 IO thread线程接收将事务先写入relay log，然后重放事务，即在slave上重新执行一次事务，从而达到主从事务一致的效果，
 
+![](https://mysqlhighavailability.com/wp-content/uploads/2014/09/1-300x289.png)
+
+![](https://mysqlhighavailability.com/wp-content/uploads/2014/09/2-300x236.png)
+
+![](https://mysqlhighavailability.com/wp-content/uploads/2014/09/3-300x236.png)
+
+![](https://mysqlhighavailability.com/wp-content/uploads/2014/09/4-300x236.png)
+
 ## 
