@@ -17,6 +17,16 @@ https://www.cimblo.com/how-to-handle-spring-data-pageable-in-feign-client/
 
 ## 
 
+
+
 Microservices security with OAuth2
 
 ![](https://piotrminkowski.files.wordpress.com/2017/12/oauth2-1.png)
+
+
+
+<p style='color:red'>This is some red text.</p>
+
+<font color="red">This is some text!</font>
+
+These are <b style='color:red'>red words</b>.
