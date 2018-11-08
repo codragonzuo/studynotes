@@ -8,7 +8,35 @@ REST Representational State Transfer (RESTful) web services. they are second gen
 
 ![](https://i.stack.imgur.com/wHlyQ.png)
 
-![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/13f639dc3947d169dde46446d97bce45ff4a2b05/1-Figure1-1.png)
+There are two major types of web services:
+
+SOAP Web Services: SOAP (Simple Object Access Protocol) is an XML-based protocol for accessing web services. Its interface is described in a machine-processable format called WSDL (Web Service Definition Language) document. A web service is described by using a standard, formal XML notion that provides all necessary details like message format, transport protocols, and location to interact with the web service.
+
+REST Web Services: REST (Representational State Transfer) is a style of software architecture. The data format is described by using JSON schema notation, and it requires the use of the HTTP transport protocol.
+
+## Top 10 API Testing Tools
+
+- SoapUI
+- Katalon Studio
+- Postman
+
+![](https://cdn-images-1.medium.com/max/1400/1*4NyXCVGY7MIvzVAfbx0Z0w.png)
 
 
+Katalon Studio
+
+Katalon Studio is a free test automation tool for API, Web and Mobile applications. It is emerging as a leading tool for API/Web services testing and positioning itself as a comprehensive end-to-end automation solution for both developers and testers.
+
+Katalon Studio supports both SOAP and REST requests with various types of commands and parameterization functionalities. Moreover, the capability of combining UI and API/Web services for multiple environments (Windows, Mac OS, and Linux) has been considered a unique advantage of Katalon Studio among the top API tools.
+
+Feature highlights:
+- Support both SOAP and Rest
+- All-in-one shop for API, WebUI and Mobile testing and the combined capabilities among those.
+- Support data-driven approach.
+- Can be used for automated and exploratory testing
+- Support CI/CD integration.
+- Support AssertJ, one of the most potent assertion library, to create fluent assertion with BDD style
+- Suitable for both non-techies and pros via Manual and Groovy Scripting modes.
+Website: https://www.katalon.com
+Pricing: Free
 
