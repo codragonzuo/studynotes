@@ -41,8 +41,10 @@ Website: https://www.katalon.com
 Pricing: Free
 
 ## What Defines a Good API?
-• Developer-friendly: The developers working with your API should not suffer when dealing with your system.
-• Extensibility: Your system should be able to handle the addition of new features without breaking your clients.
-• Up-to-date documentation: Good documentation is key to your API being picked up by new developers.
-• Proper error handling: Because things will go wrong and you need to be prepared.
-• Provides multiple SDK/libraries: The more work you simplify for developers, the more they’ll like your system.
+- Developer-friendly: The developers working with your API should not suffer when dealing with your system.
+- Extensibility: Your system should be able to handle the addition of new features without breaking your clients.
+- Up-to-date documentation: Good documentation is key to your API being picked up by new developers.
+- Proper error handling: Because things will go wrong and you need to be prepared.
+- Provides multiple SDK/libraries: The more work you simplify for developers, the more they’ll like your system.
+- Security: A key aspect of any global system.
+- Scalability: The ability to scale up and down is something any good API should have to properly provide its services.
