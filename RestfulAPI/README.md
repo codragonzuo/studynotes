@@ -9,3 +9,6 @@ REST Representational State Transfer (RESTful) web services. they are second gen
 ![](https://i.stack.imgur.com/wHlyQ.png)
 
 ![](https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/13f639dc3947d169dde46446d97bce45ff4a2b05/1-Figure1-1.png)
+
+
+
