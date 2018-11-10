@@ -17,5 +17,16 @@
   
   ■ Event-driven—React to events
   
-  
+- Front-end tech
+
+- Back-end tech
+
+A new initiative called Reactive Streams, which we’ll talk more about in chapter 9, aims at providing a standard interface for working with ** asynchronous stream processing on the JVM **.  
+
+ Microsoft’s Reactive Extensions (Rx; https://rx.codeplex.com/) is a library for composing asynchronous and event-based programs, available on the .NET platform and other platforms such as JavaScript. 
+ 
+ Node.js (http://nodejs.org) is a popular platform for building asynchronous, event-driven applications in JavaScript. 
+ 
+ On the JVM, a number of libraries enable these capabilities, such as Apache MINA (https://mina.apache.org) and Netty (http://netty.io). 
+ 
  
