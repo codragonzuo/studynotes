@@ -29,4 +29,7 @@ A new initiative called Reactive Streams, which we’ll talk more about in chapt
  
  On the JVM, a number of libraries enable these capabilities, such as Apache MINA (https://mina.apache.org) and Netty (http://netty.io). 
  
- 
+### Threaded Model or Evented Model
+In the threaded model, large numbers of threads take care of handling the incoming requests. In an evented model, a small number of request-processing threads communicate with each other through message passing. Reactive web application servers adopt the evented model.
+
+![](https://img-blog.csdn.net/20180310175020585)
