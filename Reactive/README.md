@@ -61,3 +61,37 @@ In addition to utilizing a lot of memory, the threaded approach results in ineff
  The new many-core architecture that CPU vendors have moved toward doesn’t make locks look any better. If a CPU offers over 1,000 real threads of execution, but the application relies on locks to synchronize access to a few regions in memory, one
 can only imagine how much performance loss this mechanism will entail. There is a clear need for a programming model that better suits the multithread and multicore paradigm.
 
+## RxJava
+
+RxJava is a Reactive Extensions implementation for Java environment.
+
+The library utilizes a combination of functional and reactive techniques that can represent an elegant approach to event-driven programming – with values that change over time and where the consumer reacts to the data as it comes in.
+
+- Functional Reactive Concepts
+On one side, functional programming is the process of building software by composing pure functions, avoiding shared state, mutable data, and side-effects.
+
+On the other side, reactive programming is an asynchronous programming paradigm concerned with data streams and the propagation of change.
+
+Together, functional reactive programming forms a combination of functional and reactive techniques that can represent an elegant approach to event-driven programming – with values that change over time and where the consumer reacts to the data as it comes in.
+
+This technology brings together different implementations of its core principles, some authors came up with a document that defines the common vocabulary for describing the new type of applications.
+
+### Observables
+There are two key types to understand when working with Rx:
+
+Observable represents any object that can get data from a data source and whose state may be of interest in a way that other objects may register an interest
+
+An observer is any object that wishes to be notified when the state of another object changes
+
+An observer subscribes to an Observable sequence. The sequence sends items to the observer one at a time.
+
+The observer handles each one before processing the next one. If many events come in asynchronously, they must be stored in a queue or dropped.
+
+In Rx, an observer will never be called with an item out of order or called before the callback has returned for the previous item.
+
+
+![](http://reactivex.io/assets/operators/legend.png)
+
+In ReactiveX an observer subscribes to an Observable. Then that observer reacts to whatever item or sequence of items the Observable emits. This pattern facilitates concurrent operations because it does not need to block while waiting for the Observable to emit objects, but instead it creates a sentry in the form of an observer that stands ready to react appropriately at whatever future time the Observable does so.
+
+---
