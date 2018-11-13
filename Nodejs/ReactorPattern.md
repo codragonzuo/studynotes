@@ -26,3 +26,23 @@ The event loop almost always operates asynchronously with the message originator
  ---
  ![](https://camo.githubusercontent.com/c52b058fddead54a1557e71a1a97852b3bdd1c76/68747470733a2f2f7363722e7361642e737570696e666f2e636f6d2f61727469636c65732f7265736f75726365732f3136343836322f323230342f312e706e67)
  ---
+
+
+## 
+
+https://medium.com/@vishalkalaskar/we-must-have-come-across-the-terms-callbacks-non-blocking-i-o-and-event-looping-while-927a5e2150c0
+
+[Event Loop in NodeJS: How It Works!](https://medium.com/@vishalkalaskar/we-must-have-come-across-the-terms-callbacks-non-blocking-i-o-and-event-looping-while-927a5e2150c0)
+
+---
+## Programming inception (or understanding Node.js event loop)
+
+https://tiagodev.wordpress.com/2014/07/19/programming-inception-or-understanding-node-js-event-loop-2/
+
+[understanding Node.js event loop](https://tiagodev.wordpress.com/2014/07/19/programming-inception-or-understanding-node-js-event-loop-2/)
+
+![](https://cdn-images-1.medium.com/max/800/1*X0m82lpBhRONFvRGCRu84w.jpeg)
+
+
+
+![](https://tiagodev.files.wordpress.com/2014/07/node_loop.png)
