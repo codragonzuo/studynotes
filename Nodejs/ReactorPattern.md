@@ -1,4 +1,4 @@
-
+# Reactor Pattern
 
  In a reactor pattern based application for each offered service, a separate request handler is introduced that processes these types of requests. Incoming requests are registered and queued for processing.
  
@@ -6,7 +6,16 @@
  
  Summing up, the benefit of the reactor pattern is to avoid the creation of a thread for each request that needs to be handled.
  
- ![](https://camo.githubusercontent.com/8765d358da0dcfff20ab1765c160147ece065580/687474703a2f2f626572622e6769746875622e696f2f6469706c6f6d612d7468657369732f6f726967696e616c2f7265736f75726365732f65762d7365727665722e737667)
+ ## Event Loop
+In computer science, the event loop, message dispatcher, message loop, message pump, or run loop is a programming construct that waits for and dispatches events or messages in a program.
+
+It works by making a request to some internal or external "event provider" (that generally blocks the request until an event has arrived), and then it calls the relevant event handler ("dispatches the event").
+
+The event-loop may be used in conjunction with a reactor, if the event provider follows the file interface, which can be selected or 'polled' (the Unix system call, not actual polling).
+
+The event loop almost always operates asynchronously with the message originator.
+
+![](https://camo.githubusercontent.com/8765d358da0dcfff20ab1765c160147ece065580/687474703a2f2f626572622e6769746875622e696f2f6469706c6f6d612d7468657369732f6f726967696e616c2f7265736f75726365732f65762d7365727665722e737667)
  
  ---
  ![](https://camo.githubusercontent.com/c28263fd7266502977baa3f5712a72970977ccb1/687474703a2f2f6d69636861656c6b7574792e6769746875622e696f2f76657274782d6764672f696d672f6576656e746c6f6f702e706e67)
