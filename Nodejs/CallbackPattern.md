@@ -117,7 +117,7 @@ domain.run(	function(	)
 });
 ```
 
-'''shell
+```shell
 [~/examples/example-14]$	node	index.js
 true
 Domain	error	Error	happened
