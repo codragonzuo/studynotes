@@ -99,5 +99,45 @@ Conclusion
 Node.JS is not an optimal platform to do complex request processing where different requests might contain different amount of data, especially if we want to guarantee some kind of Service Level Agreement (SLA) that the service must be fast enough. A lot of care must be taken so that a single asynchronous callback can’t do processing for too long and it might be viable to explore other languages which are not completely single threaded.
 
 
+---
 
+```js
+var	Domain	=	require(	'domain'	),				domain;
+domain	=	Domain.create(	);
+domain.on(	'error',	function(	error	)	{
+				console.log(	'Domain	error',	error.message	);
+});
+domain.run(	function(	)	{
+				//	Run	code	inside	domain
+				console.log(	process.domain	===	domain	);
+				throw	new	Error(	'Error	happened'	);	
+});
+```
 
+'''shell
+[~/examples/example-14]$	node	index.js
+true
+Domain	error	Error	happened
+```
+
+---
+
+```
+process.nextTick(	function(	)	{
+				domain.run(	function(	)	{
+								throw	new	Error(	'Error	happened'	);
+				});
+				console.log(	"I	won't	execute"	);
+});	
+process.nextTick(	function(	)	{
+				console.log(	'Next	tick	happend!'	);
+});
+console.log(	'I	happened	before	everything	else'	);
+```
+
+```shell
+[~/examples/example-15]$	node	index.js
+I	happened	before	everything	else
+Domain	error	Error	happened
+Next	tick	happend!
+```
