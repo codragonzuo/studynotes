@@ -102,12 +102,15 @@ Node.JS is not an optimal platform to do complex request processing where differ
 ---
 
 ```js
-var	Domain	=	require(	'domain'	),				domain;
+var	Domain	=	require(	'domain'	),
+domain;
 domain	=	Domain.create(	);
-domain.on(	'error',	function(	error	)	{
+domain.on(	'error',	function(	error	)	
+{
 				console.log(	'Domain	error',	error.message	);
 });
-domain.run(	function(	)	{
+domain.run(	function(	)
+{
 				//	Run	code	inside	domain
 				console.log(	process.domain	===	domain	);
 				throw	new	Error(	'Error	happened'	);	
@@ -123,13 +126,16 @@ Domain	error	Error	happened
 ---
 
 ```
-process.nextTick(	function(	)	{
-				domain.run(	function(	)	{
+process.nextTick(	function(	)	
+{
+				domain.run(	function(	)	
+				{
 								throw	new	Error(	'Error	happened'	);
 				});
 				console.log(	"I	won't	execute"	);
 });	
-process.nextTick(	function(	)	{
+process.nextTick(	function(	)	
+{
 				console.log(	'Next	tick	happend!'	);
 });
 console.log(	'I	happened	before	everything	else'	);
