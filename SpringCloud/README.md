@@ -44,7 +44,14 @@ To avoid this kind of problem, we can use a software pattern called Circuit Brea
 ![](https://amandeepbatra.files.wordpress.com/2014/12/servicea.jpg)
 
 ![](https://amandeepbatra.files.wordpress.com/2014/12/hystrix.png)
+
 Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+
+Multiple callers for a unresponsive API can lead to cascading failures across multiple systems. If any of the dependent service is unavailable then Service A should not put load on other 2 services as those might be shared by other services which may get impacted.
+
+Solution: 
+
+We need a kind of circuit breaker which depending upon the health of the dependent services breaks the circuit and returns 5xx response to the client much ahead in the flow avoiding load on other dependent healthy services. Since the other dependent healthy services might be used by other services so circuit breaker ensures those are not impacted.
 
 hystrix
 
