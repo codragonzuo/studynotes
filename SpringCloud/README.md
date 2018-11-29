@@ -32,6 +32,17 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 执行操作指令时，Hystrix首先会检查缓存内是否有对应指令的结果，如果有的话，将缓存的结果直接以Observable对象的形式返回。如果没有对应的缓存，Hystrix会检查Circuit Breaker的状态。如果Circuit Breaker的状态为开启状态，Hystrix将不会执行对应指令，而是直接进入失败处理状态（图中8 Fallback）。如果Circuit Breaker的状态为关闭状态，Hystrix会继续进行线程池、任务队列、信号量的检查（图中5），确认是否有足够的资源执行操作指令。如果资源满，Hystrix同样将不会执行对应指令并且直接进入失败处理状态。
 如果资源充足，Hystrix将会执行操作指令。
 
+
+![](http://3.bp.blogspot.com/-H0AuaJK7brA/V83D39xM7JI/AAAAAAAADS0/WsrmNVb4TbkCMcC1SBvFlU2i0r74s8KPwCK4B/s1600/circuitbreaker.png)
+
+When working with microservice remote calls, execution in different software is one of the most important and common aspects of an environment. These systems will probably be on different machines distributed over a network. But what happens when a call to one of these systems fails or doesn't respond appropriately? The system may fail as a whole, and the problem can cascade to other systems that depend on that request. 
+
+To avoid this kind of problem, we can use a software pattern called Circuit Breaker. The idea is simple — exactly how a circuit breaker works in a house. You design a remote call for a circuit breaker object, which monitors failures. When these failures reach a certain limit, the circuit breaker trips, and when that happens, your system can disarm the service and provide a warning that the circuit breaker has been tripped.
+
+![](https://1.bp.blogspot.com/-cAAcEW4Sl64/WaGAopefU5I/AAAAAAAAF0k/JOhrVw_4ptAVtbJG8tAraXtohRj4cTSnwCLcBGAs/s640/Microservices%2BCommunication_%2BHystrix%2BThe%2BCircuit%2BBreaker.jpg)
+
+![](https://amandeepbatra.files.wordpress.com/2014/12/servicea.jpg)
+
 ### Zuul MS Gateway
 
 Zuul is the front door for all requests from devices and web sites to the backend of the Netflix streaming application. As an edge service application, Zuul is built to enable dynamic routing, monitoring, resiliency and security. It also has the ability to route requests to multiple Amazon Auto Scaling Groups as appropriate.
