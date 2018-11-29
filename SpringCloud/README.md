@@ -29,6 +29,9 @@ http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/command.h
 4.命令模式的关键在于引入了抽象命令接口，且发送者针对抽象命令接口编程，只有实现了抽象命令接口的具体命令才能与接收者相关联。
 
 
+执行操作指令时，Hystrix首先会检查缓存内是否有对应指令的结果，如果有的话，将缓存的结果直接以Observable对象的形式返回。如果没有对应的缓存，Hystrix会检查Circuit Breaker的状态。如果Circuit Breaker的状态为开启状态，Hystrix将不会执行对应指令，而是直接进入失败处理状态（图中8 Fallback）。如果Circuit Breaker的状态为关闭状态，Hystrix会继续进行线程池、任务队列、信号量的检查（图中5），确认是否有足够的资源执行操作指令。如果资源满，Hystrix同样将不会执行对应指令并且直接进入失败处理状态。
+如果资源充足，Hystrix将会执行操作指令。
+
 ### Zuul MS Gateway
 
 Zuul is the front door for all requests from devices and web sites to the backend of the Netflix streaming application. As an edge service application, Zuul is built to enable dynamic routing, monitoring, resiliency and security. It also has the ability to route requests to multiple Amazon Auto Scaling Groups as appropriate.
