@@ -43,6 +43,20 @@ To avoid this kind of problem, we can use a software pattern called Circuit Brea
 
 ![](https://amandeepbatra.files.wordpress.com/2014/12/servicea.jpg)
 
+![](https://amandeepbatra.files.wordpress.com/2014/12/hystrix.png)
+Hystrix is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
+
+hystrix
+
+Each dependency (service) contains a thread pool to execute that service.
+
+In Hystrix this layer is implemented by HystricxCommand object, so each call to an external service is wrapped to be executed within a different thread.
+
+- Each thread has a timeout so a call may not be infinity waiting for a response.
+- Perform fallbacks wherever feasible to protect users from failure.
+- Measure success, failures (exceptions thrown by client), timeouts, and thread rejections and allows monitorizations.
+- Implements a circuit-breaker pattern which automatically or manually to stop all requests to an external service for a period of time if error percentage passes a threshold.
+
 ### Zuul MS Gateway
 
 Zuul is the front door for all requests from devices and web sites to the backend of the Netflix streaming application. As an edge service application, Zuul is built to enable dynamic routing, monitoring, resiliency and security. It also has the ability to route requests to multiple Amazon Auto Scaling Groups as appropriate.
