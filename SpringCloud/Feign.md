@@ -115,3 +115,18 @@ Discovery Server – http://localhost:8761/
 Account Service – http://localhost:8082/
 
 Customer Service – http://localhost:8083/
+
+
+## Why We Use Feign Client
+In my previous tutorial, When EmployeeDashBoard service communicated with EmployeeService, we programmatically constructed the URL of the dependent microservice, then called the service using RestTemplate, so we need to be aware of the RestTemplate API to communicate with other microservices, which is certainly not part of our business logic.
+
+The question is, why should a developer have to know the details of a REST API? Microservice developers only concentrate on business logic, so Spring addresses this issues and comes with Feign Client, which works on the declarative principle. We have to create an interface/contract, then Spring creates the original implementation on the fly, so a REST-based service call is abstracted from developers. Not only that — if you want to customize the call, like encoding your request or decoding the response in a Custom Object, you can do it with Feign in a declarative way. Feign, as a client, is an important tool for microservice developers to communicate with other microservices via Rest API.
+
+![](https://1.bp.blogspot.com/-cLPct-Cfx3w/WYNgnPfYYJI/AAAAAAAAFqE/3mqTXBrAaOEA9JmkYx9uRgph0prtprSDgCLcBGAs/s1600/Microservices%2BCommunication_%2BFeign%2Bas%2BRest%2BClient.jpg)
+
+
+What do we have here? At first there´s an edge service, which is the central entry point to our services. We use Zuul from the Spring Cloud Netflix Stack here. It acts as a proxy, that provides us with dynamic routes to our services (there are also many more features).
+
+Dynamic routing is a really cool feature! But what does it mean? Speaking on a higher level, we don´t have to tell our proxy manually about all service routes. It´s the other way round – all our services register their specific routes for themselves. As all the Spring Cloud components do heavily rely on each other, Zuul uses Eureka in this scenario – another Spring Cloud Netflix tool. Eureka acts as a central service registry, where all our services register to. Zuul then obtains all the registered instances from Eureka, which we implemented in the service registry project. Having all the example applications fired up locally, you´re able to see all the registered routes if you point your Browser to the Zuul at http://localhost:8080/routes.
+
+![](https://blog.codecentric.de/files/2017/05/multiple-apps-spring-boot-cloud-netflix.png)
