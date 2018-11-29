@@ -48,3 +48,7 @@ https://zhuanlan.zhihu.com/p/42534548
 
 ![](https://pic3.zhimg.com/v2-6d12adfd9a719390e10da1de55865699_r.jpg)
 
+
+
+- architectural diagram for distributed application using microservices on the AWS cloud--
+![](https://static.oschina.net/uploads/space/2016/1012/184620_U88V_2903254.png)
