@@ -1,3 +1,4 @@
+```tex
 \documentclass[11pt,a4paper]{article}
 \usepackage[UTF8]{ctex}
 \usepackage[landscape]{geometry}
@@ -19,3 +20,41 @@
 	身份证
 \end{textblock*}
 \end{document}
+```
+
+
+There is an alternative, starred, form of the {textblock} environment. In the textblock*
+argument to the {textblock*} environment, the block width, and the block po-
+sition (but not the speciﬁcation of the block reference point) are given as absolute
+dimensions, rather than as numbers in units of the horizontal and vertical modules.
+Thus
+```
+\begin{textblock*}{hhsizei}[hhoi,hvoi](hhposi,hvposi)
+text...
+\end{textblock*}
+```
+produces a textblock of the given size, where this time hhsizei, hhposi and hvposi
+are absolute dimensions, but hhoi and hvoi are still pure-number oﬀsets (that is,
+fractions of the width and height of the textblock), as above.
+
+Each {textblock} environment takes up zero space on the page (which means,
+by the way, that it cannot detect that it’s overprinting or being overprinted), so
+you can (and typically will) use several of the environments in a row to scatter
+text all over the page.
+
+The package is compatible with the calc package, so that you may use calc-style
+expressions when specifying lengths. Thus
+
+```
+\usepackage{calc}
+\textblockorigin{56.9055pt-10mm}{0pt+1cm}
+\begin{textblock*}{10mm+14cm}(0.3cm*5,10\TPVertModule+5mm)
+6text. . .
+\end{textblock*}
+```
+
+Note that you can only use calc-style expressions where you would specify a length
+with units, such as the width and location arguments of {textblock*} or the
+arguments to \textblockorigin – you can’t use them when specifying a length
+in units of the horizontal and vertical modules, such as in the width and location
+arguments to the (unstarred) {textblock} environment.
