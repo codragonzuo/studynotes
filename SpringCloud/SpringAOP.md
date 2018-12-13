@@ -1,17 +1,17 @@
 
 
 
+# SPring AOP
 
 
-
-#一、Spring AOP框架
+## 一、Spring AOP框架
 　　AOP(Aspect Orient Programming)，其实也就是面向切面编程。面向对象编程(OOP)是从静态角度考虑程序结构。面向切面编程(AOP)是从动态角度考虑程序运行过程。
 
 　　根据个人的理解，AOP执行图大致如下：
 
 ![](https://images0.cnblogs.com/blog/121024/201310/03205813-b0fcbc75034b4f04bd889369d82b32de.png)
 
-#二、Spring AOP相关概念
+## 二、Spring AOP相关概念
 　　1. 切面(Aspect)：业务流程运行的某个特定步骤，也就是应用运行过程中的关注点，关注点可以横切多个对象，也称为横切关注点。如示例中的AspectService。
 
 　　2. 连接点(Joinpoint)：是切面类和业务类的连接点。
@@ -32,7 +32,7 @@
 
 　　5. 目标(Target)：被代理的对象。
 
-#三、Spring AOP示例【以日志管理为例】
+## 三、Spring AOP示例【以日志管理为例】
 　　1. 切面定义
 
 ```java
@@ -98,7 +98,7 @@ public class AspectService {
 
 ###　　　　2.1 UserService【用户服务】
 
-```
+```java
 package com.swyma.spring.service;
 
 import org.springframework.stereotype.Service;
@@ -141,7 +141,7 @@ public class RegisterService extends BasicService {
 ```
 #　　3. 测试类
 
-```
+```java
 package com.swyma.spring.test;
 
 import org.junit.Test;
