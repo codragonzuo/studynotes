@@ -73,3 +73,6 @@ Web服务器：Apache、Nginx、IIS
 
 项目管理（PM）：Jira、Asana、Taiga、Trello、Basecamp、Pivotal Tracker
 
+
+![](https://cdn2.hubspot.net/hubfs/208250/Blog_Images/CA%20%281%29%20%281%29.png)
+
