@@ -24,3 +24,13 @@ performance issues before new functionality progresses through the delivery pipe
 • Execute and scale those load tests as needed—without the exorbitant costs and efforts traditionally
 required to establish, configure, and maintain a performance test lab
 
+# What is Performance Testing
+
+## Types of Performance Testing
+- Load Testing
+- Stress Testing
+- Endurance Testing
+- Spike Testing
+
+## Appache Bench
+## Appache Jmeter
