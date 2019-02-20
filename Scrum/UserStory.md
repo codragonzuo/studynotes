@@ -6,6 +6,7 @@ User Story可以遵循以下模板：As a <User Type> I want to <achieve goal> S
 翻译成中文就是：作为一个<某种类型的用户>，我要<达成某些目的>，我这么做的原因是<开发的价值>。
 
  
+## INVEST
 User Story应遵循INVEST规则
 
 - Independent 独立性，避免与其他Story的依赖性。
@@ -15,6 +16,8 @@ User Story应遵循INVEST规则
 - Sized Right 合理的尺寸， Stories应该尽量小，并且使得团队尽量在1个sprint(2 weeks)中完成。
 - Testable 可测试性， User Story应该是可以测试的，最好有界面可以测试和自动化测试。每个任务都应有Junit Test.
 
+## 3C
+Ron Jeffries给出了关于用户故事的另外一组特性2，这就是著名的 3C：Card（卡片）, Conversation（对话）和 Confirmation（确认）。
 
 一些经验：
 
@@ -210,3 +213,21 @@ User Story是一种描述用户需求、业务价值的最佳实践，
 - 技术规格: 不适合，这些通常是用来完成一个User Story的支撑任务
 - 缺陷: 未必适合，通常可能是技术过失 
 - 非功能性需求: 适合
+
+
+### 行为驱动开发
+非功能性需求也可以通过实例来说明，比如抽象的表述是投资者提交申购申请后，立即收到短信确认，这个“立即”是什么意思呢？具体的表述可以如下：
+
+假设王五提交了申购申请；
+当系统接收到申请后；
+那么王五在1分钟内收到申购申请确认短信。
+
+这个过程也是行为驱动开发（Behavior Driven Development, BDD）。如果验收条件全部写成“Given…When…Then”的 Gherkin 语言格式，还可以通过像 Cucumber 这样的自动化测试框架实现验收测试自动化。
+
+延伸开来，这一原则适用于任何事情。做一件事情，以终为始，在一开始明确要做成什么样子，行成闭环，才能指导行动并确保结果正确。
+
+### 例化需求：用户故事拆分的更好线索
+https://blog.csdn.net/GitChat/article/details/78086515
+
+
+
