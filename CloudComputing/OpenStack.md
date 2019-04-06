@@ -26,3 +26,8 @@ https://www.cnblogs.com/kevingrace/p/5707003.html
 ## Openstack Landscpace 
 ![](https://www.openstack.org/software/images/map/openstack-map-v20180601.svg)
 
+
+## OpenStack component
+
+https://www.openstack.org/software/project-navigator/openstack-components/#openstack-services
+
