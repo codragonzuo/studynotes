@@ -103,3 +103,20 @@ Links between nodes in your topology indicate how tuples should be passed around
 Each node in a Storm topology executes in parallel. In your topology, you can specify how much parallelism you want for each node, and then Storm will spawn that number of threads across the cluster to do the execution.
 
 A topology runs forever, or until you kill it. Storm will automatically reassign any failed tasks. Additionally, Storm guarantees that there will be no data loss, even if machines go down and messages are dropped.
+
+#### Stream Groupings（消息分组策略）
+
+定义一个 Topology 的其中一步是定义每个Bolt 接收什么样的流作为输入。Stream Grouping 就是用来定义一个Stream 应该如何分配给Bolts 上面的多个Tasks。Storm 里面有6 种类型的Stream Grouping。
+
+● Shuffle Grouping：随机分组，随机派发Stream 里面的tuple，保证每个Bolt 接收到的tuple 数目相同。
+
+● Fields Grouping：按字段分组，比如按userid 来分组，具有同样userid 的tuple 会被分到相同的Bolts，而不同的userid 则会被分配到不同的Bolts。
+
+● All Grouping：广播发送，对于每一个tuple，所有的Bolts 都会收到。
+
+● Global Grouping: 全局分组，这个tuple 被分配到Storm 中一个Bolt 的其中一个Task。再具体一点就是分配给id 值最低的那个Task。
+
+● Non Grouping：不分组，这个分组的意思是Stream 不关心到底谁会收到它的tuple。目前这种分组和Shuffle Grouping 是一样的效果，有一点不同的是Storm 会把这个Bolt 放到此Bolt 的订阅者同一个线程里面去执行。
+
+● Direct Grouping：直接分组，这是一种比较特别的分组方法，用这种分组意味着消息的发送者指定由消息接收者的哪个Task 处理这个消息。只有被声明为Direct Stream 的消息流可以声明这种分组方法。而且这种消息tuple 必须使用emitDirect 方法来发送。消息处理者可以通过TopologyContext 来获取处理它的消息的taskid（OutputCollector.emit 方法也会返回taskid）。
+
