@@ -13,6 +13,8 @@ Storm integrates with the queueing and database technologies you already use.
 A Storm topology consumes streams of data and processes those streams in arbitrarily complex ways, repartitioning the streams between each stage of the computation however needed. 
 Read more in the tutorial.
 
+![](http://storm.apache.org/images/storm-flow.png)
+
 Apache Storm是一个分布式实时大数据处理系统。Storm设计用于在容错和水平可扩展方法中处理大量数据。它是一个流数据框架，具有最高的摄取率。
 
 
