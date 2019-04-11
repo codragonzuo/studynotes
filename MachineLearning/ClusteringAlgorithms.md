@@ -54,3 +54,27 @@ Clustering Algorithms :
 
 K-means clustering algorithm – It is the simplest unsupervised learning algorithm that solves clustering problem.K-means algorithm partition n observations into k clusters where each observation belongs to the cluster with the nearest mean serving as a prototype of the cluster .
 
+
+ 在Spark2.0版本中（不是基于RDD API的MLlib），共有四种聚类方法： 
+
+（1）K-means 
+
+（2）Latent Dirichlet allocation (LDA) 
+
+（3）Bisecting k-means（二分k均值算法） 
+
+（4）Gaussian Mixture Model (GMM)。 
+
+基于RDD API的MLLib中，共有六种聚类方法： 
+
+（1）K-means 
+
+（2）Gaussian mixture 
+
+（3）Power iteration clustering (PIC) 
+
+（4）Latent Dirichlet allocation (LDA)** 
+
+（5）Bisecting k-means 
+
+（6）Streaming k-means 
