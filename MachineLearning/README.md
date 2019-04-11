@@ -2,3 +2,6 @@
 
 
 ## Desicion Tree
+## Clustering
+## Regression
+
