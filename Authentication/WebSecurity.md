@@ -33,5 +33,16 @@ You might see a response header that looks like this:
 content-security-policy: default-src * data: blob:;script-src *.facebook.com *.fbcdn.net *.facebook.net *.google-analytics.com *.virtualearth.net *.google.com 127.0.0.1:* *.spotilocal.com:* 'unsafe-inline' 'unsafe-eval' *.atlassolutions.com blob: data: 'self';style-src data: blob: 'unsafe-inline' *;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net *.spotilocal.com:* wss://*.facebook.com:* https://fb.scanandcleanlocal.com:* *.atlassolutions.com attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self' chrome-extension://boadgeojelhgndaghljhdicfkmllpafd
 chrome-extension://dliochdbjfkdbacpmhlcpmleaejidimm;
 
+# https
+
+# HTTP Strict-Transport-Security (HSTS)
+This one is pretty straightforward. Let’s use Facebook’s header as an example again:
+
+strict-transport-security: max-age=15552000; preload
+
+max-age specifies how long a browser should remember to force the user to access a website using HTTPS.
+
+preload is not important for our purposes. It is a service hosted by Google and not part of the HSTS specification.
+
 
 
