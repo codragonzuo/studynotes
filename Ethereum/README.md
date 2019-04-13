@@ -1,5 +1,10 @@
 
 
+
+# 主流共识算法
+PoW , PoS , DPoS , PBFT , Paxos , Raft
+
+
 http://8btc.com/topic-ethereum.html
 
 
