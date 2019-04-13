@@ -78,3 +78,6 @@ https://blog.csdn.net/situheyu/article/details/79642028
 9. 个人AI辅助
 
 10. 智慧城市
+
+https://www.huawei.com/cn/industry-insights/outlook/mobile-broadband/insights-reports/5g-unlocks-a-world-of-opportunities
+
