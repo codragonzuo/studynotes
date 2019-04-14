@@ -119,3 +119,34 @@ Partitioning Types
 
 《理解MySQL分区》, 一起来围观吧 https://blog.csdn.net/sayWhat_sayHello/article/details/89005939
 
+
+### Sharding切分
+
+A database shard is a horizontal partition of data in a database or search engine. Each individual partition is referred to as a shard or database shard. Each shard is held on a separate database server instance, to spread load.
+
+functionally (by bounded context); 
+vertically (split tables); 
+horizontally (shared across multiple machines)
+
+### Database Partitioning
+ - functionally (by bounded context); 
+ - vertically (split tables); 
+ - horizontally (shared across multiple machines)
+
+
+ - Single-Level Partitioning : Any data table is addressed by identifying one of the above data distribution methodologies, using one or more columns as the partitioning key. The techniques are:
+   - Hash Partitioning
+   - Range Partitioning
+   - List Partitioning
+   - Hash Partitioning
+ - Composite Partitioning
+The composite partitioning method includes a minimum of two partitioning procedures on the data. Initially, the database table will be divided by using one partition procedure and then the output partition slices are again partitioned further by using another partitioning procedure
+
+   - Composite Range-Range Partitioning
+   - Composite Range-Hash Partitioning
+   - Composite Range-List Partitioning
+   - Composite List-Range Partitioning
+   - Composite List-Hash Partitioning
+   - Composite List-List Partitioning
+   
+
