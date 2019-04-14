@@ -101,12 +101,12 @@ SQL不关心数据库存储的物理存储形式。但是innodb提供了和和�
 
 
 Partitioning Types
- 1 RANGE Partitioning
- 2 LIST Partitioning
- 3 COLUMNS Partitioning
- 4 HASH Partitioning
- 5 KEY Partitioning
- 6 Subpartitioning
- 7 How MySQL Partitioning Handles NULL
+ 1. RANGE Partitioning
+ 2. LIST Partitioning
+ 3. COLUMNS Partitioning
+ 4. HASH Partitioning
+ 5. KEY Partitioning
+ 6. Subpartitioning
+ 7. How MySQL Partitioning Handles NULL
 
 
