@@ -94,3 +94,19 @@ https://www.saotn.org/mysql-innodb-performance-improvement/
 
 ### XtraDB / InnoDB internals
 ![https://www.percona.com/blog/wp-content/uploads/2010/04/InnoDB_int2-e1272319507276.png]
+
+
+### partition
+SQL不关心数据库存储的物理存储形式。但是innodb提供了和和物理文件目录和文件关联的功能，来提高效率。
+
+
+Partitioning Types
+ 1 RANGE Partitioning
+ 2 LIST Partitioning
+ 3 COLUMNS Partitioning
+ 4 HASH Partitioning
+ 5 KEY Partitioning
+ 6 Subpartitioning
+ 7 How MySQL Partitioning Handles NULL
+
+
