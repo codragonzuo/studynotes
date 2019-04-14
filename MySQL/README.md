@@ -95,10 +95,11 @@ https://www.saotn.org/mysql-innodb-performance-improvement/
 ### XtraDB / InnoDB internals
 ![https://www.percona.com/blog/wp-content/uploads/2010/04/InnoDB_int2-e1272319507276.png]
 
-
+## 分库分表分区
 ### partition
 SQL不关心数据库存储的物理存储形式。但是innodb提供了和和物理文件目录和文件关联的功能，来提高效率。
 
+表分区，是指根据一定规则，将数据库中的一张表分解成多个更小的，容易管理的部分。从逻辑上看，只有一张表，但是底层却是由多个物理分区组成。
 
 Partitioning Types
  1. RANGE Partitioning
