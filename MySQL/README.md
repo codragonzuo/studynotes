@@ -128,11 +128,12 @@ functionally (by bounded context);
 vertically (split tables); 
 horizontally (shared across multiple machines)
 
-### Database Partitioning
+### Database Partitioning数据库拆分
  - functionally (by bounded context); 
  - vertically (split tables); 
  - horizontally (shared across multiple machines)
 
+两种方法
 
  - Single-Level Partitioning : Any data table is addressed by identifying one of the above data distribution methodologies, using one or more columns as the partitioning key. The techniques are:
    - Hash Partitioning
@@ -149,4 +150,4 @@ The composite partitioning method includes a minimum of two partitioning procedu
    - Composite List-Hash Partitioning
    - Composite List-List Partitioning
    
-
+《MySQL 分库分表方案》, 一起来围观吧 https://blog.csdn.net/qq_39940205/article/details/80536666
