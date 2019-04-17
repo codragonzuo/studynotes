@@ -5,6 +5,7 @@
 ### OAuth2
 https://tools.ietf.org/html/rfc6749
 
+![](https://images0.cnblogs.com/i/440394/201405/161403404066531.png)
 
 ### SSO
 
