@@ -53,3 +53,7 @@ Java EE 8  main evolutions are:
 
 Overall, Java EE 8 is more a restart that a strong evolution. In particular, specific ingredient of cloud-native applications are out of its scope: distributed tracing, central configuration, health check, circuit breaker, load balancing …
 
+
+## J2EE Enterprise Application Model
+![](https://www.oracle.com/ocom/groups/public/@otn/documents/digitalasset/148900.gif)
+
