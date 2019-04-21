@@ -85,12 +85,12 @@ https://www.programering.com/a/MzMykzMwATY.html
 ![](ProxyPattern01.png)
 
 ---
-![](Refection01.png)
+![](Reflection01.png)
 
-![](Refection02.png)
+![](Reflection02.png)
 
 
-![](Refection03.png)
+![](Reflection03.png)
 
 ![](DynamicProxy01.png)
 
