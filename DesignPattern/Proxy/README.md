@@ -68,3 +68,18 @@ public class JdkProxyDemo {
     }
 }
 ```
+上面使用了JDK的反射package.
+
+Even though the proxy pattern does not only apply to situations when the proxy object and proxy class is created during run-time, this is an especially interesting topic in Java. In this article, I will focus on these proxies.
+
+This is an advanced topic because it requires the use of the reflection class, or bytecode manipulation or compiling Java code generated dynamically. Or all of these. To have a new class not available as a bytecode yet during run-time will need the generation of the bytecode, and a class loader that loads the bytecode. To create the bytecode, you can use cglib or bytebuddy or the built-in Java compiler.
+
+When we think about the proxy classes and the handlers they invoke, we can understand why the separation of responsibilities, in this case, is important. The proxy class is generated during run-time, but the handler invoked by the proxy class can be coded in the normal source code and compiled along the code of the whole program (compile time).
+
+https://dzone.com/articles/java-dynamic-proxy
+
+https://www.programering.com/a/MzMykzMwATY.html
+
+---
+
+
