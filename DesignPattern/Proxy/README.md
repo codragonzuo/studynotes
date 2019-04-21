@@ -103,4 +103,16 @@ https://www.programering.com/a/MzMykzMwATY.html
 
 ![](ClassLoader02.jpg)
 
+### JDK Proxy VS CGLIB Proxy
 
+JDK Proxy: used by default from Spring (is it true?) in wicht I have an interface that define the method of the object that I want to proxify. So the concrete implementation of this interface is wrapped by the proxy. So when I call a method on my object I am calling it on its proxy. The call is recognized by a method interceptor that eventually perform the aspect and then is performed the invoked method.
+
+CGLIB Proxy: in wich, it seems to me that, the proxy extend the implementation of the wrapped object adding to it the extra logic features
+
+![](https://i.stack.imgur.com/ZQkEF.jpg)
+
+
+![](https://i.stack.imgur.com/bglkX.jpg)
+
+
+---
