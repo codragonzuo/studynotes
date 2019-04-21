@@ -82,4 +82,6 @@ https://www.programering.com/a/MzMykzMwATY.html
 
 ---
 
+![](ProxyPattern01.png)
+
 
