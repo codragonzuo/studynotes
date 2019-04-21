@@ -12,3 +12,6 @@ Proxy Pattern provides the control for accessing the original object.
 
 ![](https://www.javatpoint.com/images/designpattern/proxyuml.jpg)
 
+![](https://www.tutorialspoint.com/design_pattern/images/proxy_pattern_uml_diagram.jpg)
+
+
