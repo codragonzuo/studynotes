@@ -84,4 +84,23 @@ https://www.programering.com/a/MzMykzMwATY.html
 
 ![](ProxyPattern01.png)
 
+---
+![](Refection01.png)
+
+![](Refection02.png)
+
+
+![](Refection03.png)
+
+![](DynamicProxy01.png)
+
+![](DynamicProxy02.png)
+
+![](DynamicProxy03.png)
+
+![](ClassLoader01.png)
+
+
+![](ClassLoader02.png)
+
 
