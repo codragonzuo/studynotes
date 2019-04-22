@@ -3,10 +3,12 @@
 
 ![](ClassDiagram01.jpg)
 
-
+---
 ![](ClassDiagram02.png)
+---
+![](ClassDiagram03.png)
 
-
+---
 @startuml
 
 Person  <|-- Police : Generation(Extension, Inherence)
