@@ -14,3 +14,22 @@ Protocol refprotocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExt
 
 ##2、获取适配器类
 Dubbo通过注解@Adaptive作为标记实现了一个适配器类，并且这个类是动态生成的，因此在Dubbo的源码中是看不到代码的，但是我们还是可以看到其实现方式的。Dubbo提供一个动态的适配器类的原因就是可以通过配置文件来动态的使用想要的接口实现类，并且不用改变任何接口的代码，简单来说其也是通过代理来实现的。
+
+```java
+@SPI("dubbo")
+public interface Protocol {
+    
+    int getDefaultPort();
+  
+    @Adaptive
+    <T> Exporter<T> export(Invoker<T> invoker) throws RpcException;
+   
+    @Adaptive
+    <T> Invoker<T> refer(Class<T> type, URL url) throws RpcException;
+ 
+    void destroy();
+ 
+}
+```
+
+在接口Protocol的两个方法export和refer方法中都添加了注解@Adaptive，我们可以认为这两个接口方法会被代理实现。
