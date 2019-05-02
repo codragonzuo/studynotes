@@ -1,5 +1,23 @@
 #Annotation
 
+注解就是源代码的元数据.
+
+Annotation是一种应用于类、方法、参数、变量、构造器及包声明中的特殊修饰符。它是一种由JSR-175标准选择用来描述元数据的一种工具。
+
+Annotation定义了一种标准的描述元数据的方式。在这之前，开发人员通常使用他们自己的方式定义元数据。例如，使用标记interfaces，注释，transient关键字等等。每个程序员按照自己的方式定义元数据，而不像Annotation这种标准的方式。
+
+许多框架将XML和Annotation两种方式结合使用，平衡两者之间的利弊。
+
+Annotations仅仅是元数据，和业务逻辑无关。
+
+@Documented –注解是否将包含在JavaDoc中
+
+@Retention –什么时候使用该注解
+
+@Target? –注解用于什么地方
+
+@Inherited – 是否允许子类继承该注解
+
 In the Java computer programming language, an annotation is a form of syntactic metadata that can be added to Java source code.
 
 Classes, methods, variables, parameters and Java packages may be annotated. 
