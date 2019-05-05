@@ -76,3 +76,6 @@ mysql> CREATE TABLE rcx (
 Query OK, 0 rows affected (0.15 sec)
 ```
 
+问题 
+- 1.NULL值使得分区过滤无效
+- 2.分区列和索引列不匹配
