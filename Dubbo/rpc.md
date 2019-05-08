@@ -27,3 +27,9 @@ RPC（Remote Procedure Call）—远程过程调用，它是一种通过网络�
 8. 客户端存根（client stub）接收到消息，并进行解码（反序列化）；
 9. 服务消费方得到最终结果；
 
+RPC是系统间的一种通信方式，系统间常用的通信方式还有http,webservice，rpc等，一般来讲rpc比http和webservice性能高一些，常见的RPC框架有：Thrift，Finagle，Hessian , dubbo，grpc，json-rpc , CORBA、Java RMI、Web Services、RESTful Web Services等。
+
+主要包含两个大方面： 
+1、A系统与B系统之间的连接传输（如：socket连接） 
+2、序列化与反序列化
+
