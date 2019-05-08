@@ -33,3 +33,24 @@ Dubbo 采用全 Spring 配置方式，透明化接入应用，对应用没有任
 服务提供和实现
 
 http://dubbo.apache.org/zh-cn/docs/user/quick-start.html
+
+## 容错策略Fault Tolerance Strategy
+在集群调用失败时，Dubbo 提供了多种容错方案，缺省为 failover 重试。
+
+![](http://dubbo.apache.org/docs/zh-cn/user/sources/images/cluster.jpg)
+
+cluster
+
+各节点关系：
+
+- 这里的 Invoker 是 Provider 的一个可调用 Service 的抽象，Invoker 封装了 Provider 地址及 Service 接口信息
+
+- Directory 代表多个 Invoker，可以把它看成 List<Invoker> ，但与 List 不同的是，它的值可能是动态变化的，比如注册中心推送变更
+
+- Cluster 将 Directory 中的多个 Invoker 伪装成一个 Invoker，对上层透明，伪装过程包含了容错逻辑，调用失败后，重试另一个
+
+- Router 负责从多个 Invoker 中按路由规则选出子集，比如读写分离，应用隔离等
+
+- LoadBalance 负责从多个 Invoker 中选出具体的一个用于本次调用，选的过程包含了负载均衡算法，调用失败后，需要重选
+
+
