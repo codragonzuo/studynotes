@@ -18,7 +18,7 @@ Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得
 
 统计服务的调用次数和调用时间的日志服务称之为“服务监控中心”。
 
-![](https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=9a3d824f9b504fc2b652b85784b48c74/d01373f082025aaf111c708cfbedab64034f1a4e.jpg)
+![](http://dubbo.apache.org/docs/en-us/user/sources/images/dubbo-architecture.jpg)
 
 
 
