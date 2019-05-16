@@ -55,4 +55,18 @@ https://blog.csdn.net/xlinsist/article/details/57089288
 
 ![](https://images2018.cnblogs.com/blog/137084/201805/137084-20180526104342525-959933190.png)
 
+Tomcat类加载器架构
+
+
 参考资料:深入理解Java虚拟机
+
+## OSGI的类加载器架构
+
+![](https://img-blog.csdn.net/20140528145442187)
+
+实现模块级热拔插
+
+两个类加载器互相死锁问题
+
+
+
