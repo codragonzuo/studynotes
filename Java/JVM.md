@@ -155,3 +155,7 @@ Java内存模型下一些“天然的”先行发生关系，这些先行发生�
 7. 对象终结规则（Finalizer Rule）：一个对象的初始化完成（构造函数执行结束）先行发生于它的finalize()方法的开始。 
 8. 传递性（Transitivity）：如果操作A先行发生于操作B，操作B先行发生于操作C，那就可以得出操作A先行发生于操作C的结论
 
+
+https://blog.csdn.net/liu_dong_liang/article/details/80391040
+
+
