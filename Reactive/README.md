@@ -109,5 +109,13 @@ ractive的编程方式，不一定能提升程序性能，但是它希望做到�
 
 
 
+### React Redux Tutorials: React Redux Data Flow and Redux Lifecycle Methods With Examples
+
+
+https://www.reactreduxtutorials.com/2018/02/redux-tutorial-for-beginners-redux-data-flow-redux-lifecycle.html?m=1
+
+
 
 ![](https://1.bp.blogspot.com/-OTO90Iulza8/Wn6dsdTJyaI/AAAAAAAAAD0/_bgMEAHupMAclxL9UOGeuQOhG9BppBolACLcBGAs/s1600/react-redux-architecture.jpg)
+
+![](https://1.bp.blogspot.com/-CSB8FCTH4Wk/WnVvlcfrhkI/AAAAAAAAADs/iATd4itZFYkRX0ciAH2qsJj_rNndxuwBwCPcBGAYYCw/s1600/redux-lifecycle.jpg)
