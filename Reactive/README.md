@@ -108,3 +108,6 @@ ractive的编程方式，不一定能提升程序性能，但是它希望做到�
 响应式编程是一种通过异步和数据流来构建事务关系的编程模型。这里每个词都很重要，“事务的关系”是响应式编程的核心理念，“数据流”和“异步”是实现这个核心理念的关键。
 
 
+
+
+![](https://1.bp.blogspot.com/-OTO90Iulza8/Wn6dsdTJyaI/AAAAAAAAAD0/_bgMEAHupMAclxL9UOGeuQOhG9BppBolACLcBGAs/s1600/react-redux-architecture.jpg)
