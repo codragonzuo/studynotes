@@ -25,7 +25,7 @@
       damage: 3
 ```
 
-```
+```cpp
 #include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <iostream>
