@@ -9,4 +9,12 @@ On-disk files in a Container are ephemeral, which presents some problems for non
 https://www.kubernetes.org.cn/3462.html
 
 
+## The brief of PV and PVC
+
+https://zhuanlan.zhihu.com/p/45503920
+
+![](https://pic4.zhimg.com/v2-487b1bb79f3888c9febaf155767224dd_1200x500.gif)
+
+
+
 
