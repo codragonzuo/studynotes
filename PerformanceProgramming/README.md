@@ -78,13 +78,36 @@ in a heavy penalty. At the other end of the spectrum are complex functions that 
  - Eliminate Temporaries with op=()
 
 ### Key Points 
- -• A temporary object could penalize performance twice in the form of constructor and destructor 
+
+ - A temporary object could penalize performance twice in the form of constructor and destructor 
 computations. 
- -• Declaring a constructor explicit will prevent the compiler from using it for type conversion 
+ - Declaring a constructor explicit will prevent the compiler from using it for type conversion 
 behind your back. 
- -• A temporary object is often created by the compiler to fix a type mismatch. You can avoid it by 
+ - A temporary object is often created by the compiler to fix a type mismatch. You can avoid it by 
 function overloading. 
- -• Avoid object copy if you can. Pass and return objects by reference. 避免对象拷贝，按引用传递和返回对象。
- -• You can eliminate temporaries by using <op>= operators where <op> may be +, -, *, or /. 
+ - Avoid object copy if you can. Pass and return objects by reference. 避免对象拷贝，按引用传递和返回对象。
+ - You can eliminate temporaries by using <op>= operators where <op> may be +, -, *, or /. 
+
+## 6. Single-Threaded Memory Pooling 
+
+
+
+The design space for special-purpose memory managers is multidimensional. At least two dimensions easily come to mind: size and concurrency. The size dimension has two distinct points: 
+
+- Fixed-size Memory managers that allocate memory blocks of a single fixed size. 
+ - Variable-size Memory managers that allocate memory blocks of any size. Request size is not known in advance. 
+
+Similarly, the concurrent dimension has two points as well: 
+
+- Single-threaded The memory manager is confined to a single thread. The memory is used by a single thread and does not cross thread boundary. This class is not concerned with multiple threads stepping on one another. 
+ - Multithreaded This memory manager is used by multiple threads concurrently. The implementation will have code fragments whose exceution is mutually exclusive. Only one thread can execute in any of these fragments at any point in time. 
+
+### Key Points 
+
+ - Flexibility trades off with speed. As the power and flexibility of memory management increases, execution speed decreases. 
+ - The global memory manager (implemented by new() and delete()) is general purpose and consequently expensive. 
+ - Specialized memory managers can be more than an order of magnitude faster than the global one. 专用内存管理器比全局内存管理器快一个数量级以上。
+ - If you allocate mostly memory blocks of a fixed size, a specialized fixed-size memory manager will provide a significant performance boost. 
+ - A similar boost is available if you allocate mostly memory blocks that are confined to a single thread. A single-threaded memory manager will help by skipping over the concurrency issues that the global new() and delete() must handle. 
 
 
