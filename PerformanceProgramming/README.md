@@ -4,11 +4,11 @@
 
 - software performance
    -  Design efficiency
-     - Algorithms and data structures
-     - Program decomposition
+       - Algorithms and data structures
+       - Program decomposition
    -  Coding efficiency
-     - Language constructs
-     - System architecture
-     - Libraries
-     - Compiler optimizations
+       - Language constructs
+       - System architecture
+       - Libraries
+       - Compiler optimizations
    
