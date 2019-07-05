@@ -62,3 +62,29 @@ in a heavy penalty. At the other end of the spectrum are complex functions that 
  - The cost of a virtual function stems from the inability to inline calls that are dynamically bound at run-time. The only potential efficiency issue is the speed gained from inlining if there is any. Inlining efficiency is not an issue in the case of functions whose cost is not dominated by call and return overhead. 
  - Templates are more performance-friendly than inheritance hierarchies. They push type resolution to compile-time, which we consider to be free. 
 
+## 4. Return Value Optimization(RVO)
+
+### Key Points 
+ - If you must return an object by value, the Return Value Optimization will help performance by eliminating the need for creation and destruction of a local object. 
+ - The application of the RVO is up to the discretion of the compiler implementation. You need to consult your compiler documentation or experiment to find if and when RVO is applied. 
+ - You will have a better shot at RVO by deploying the computational constructor. 
+
+## 5. Temporaries 临时对象
+ 
+ - Object Definition
+ - Type Mismatch
+ - Pass by Value
+ - Return by Value 
+ - Eliminate Temporaries with op=()
+
+### Key Points 
+ -• A temporary object could penalize performance twice in the form of constructor and destructor 
+computations. 
+ -• Declaring a constructor explicit will prevent the compiler from using it for type conversion 
+behind your back. 
+ -• A temporary object is often created by the compiler to fix a type mismatch. You can avoid it by 
+function overloading. 
+ -• Avoid object copy if you can. Pass and return objects by reference. 避免对象拷贝，按引用传递和返回对象。
+ -• You can eliminate temporaries by using <op>= operators where <op> may be +, -, *, or /. 
+
+
