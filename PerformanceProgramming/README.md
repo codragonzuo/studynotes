@@ -12,3 +12,9 @@
        - Libraries
        - Compiler optimizations
    
+Programmers may have different views on C++ performance depending on their respective experiences. 
+But there are a few basic principles that we all agree on: 
+      - • I/O is expensive. 
+      - • Function call overhead is a factor so we should inline short, frequently called functions. 
+      - • Copying objects is expensive. Prefer pass-by-reference over pass-by-value. 
+
