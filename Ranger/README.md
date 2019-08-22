@@ -1,5 +1,28 @@
 
 
+
+
+```JAVA
+//有两种AbstractRangerAdminClient接口的实现类
+public class RangerAdminJersey2RESTClient extends AbstractRangerAdminClient 
+public class RangerAdminRESTClient extends AbstractRangerAdminClient 
+```
+
+```
+//public class RangerBasePlugin {
+//创建RangerAdminClient对象
+//
+public static RangerAdminClient createAdminClient(String rangerServiceName, String applicationId, String propertyPrefix) {
+//createAdminClient实现中，先检查配置文件是否有对应插件指定的AdminClient
+//如果没有，就使用RangerAdminRESTClient
+		if(ret == null) {
+			ret = new RangerAdminRESTClient();
+		}
+
+		ret.init(rangerServiceName, applicationId, propertyPrefix);
+```
+
+
 ```JAVA
 public class RangerAdminClientImpl extends AbstractRangerAdminClient {
     private static final Logger LOG = LoggerFactory.getLogger(RangerAdminClientImpl.class);
