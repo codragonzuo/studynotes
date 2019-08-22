@@ -8,6 +8,18 @@ public class RangerAdminJersey2RESTClient extends AbstractRangerAdminClient
 public class RangerAdminRESTClient extends AbstractRangerAdminClient 
 ```
 
+在ranger-hbase-security.xml定义策略源
+```XML
+
+	<property>
+		<name>ranger.plugin.hbase.policy.source.impl</name>
+		<value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
+		<description>
+			Class to retrieve policies from the source
+		</description>
+	</property>
+```
+
 ```
 //public class RangerBasePlugin {
 //创建RangerAdminClient对象
@@ -21,7 +33,6 @@ public static RangerAdminClient createAdminClient(String rangerServiceName, Stri
 
 		ret.init(rangerServiceName, applicationId, propertyPrefix);
 ```
-
 
 ```JAVA
 public class RangerAdminClientImpl extends AbstractRangerAdminClient {
