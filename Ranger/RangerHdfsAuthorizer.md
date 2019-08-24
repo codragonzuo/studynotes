@@ -94,5 +94,59 @@ public enum FsAction {
   READ_EXECUTE("r-x"),
   READ_WRITE("rw-"),
   ALL("rwx");
+  
+  
+  
+//在start函数里建立文件系统权限和Ranger定义权限的对应关系
+		access2ActionListMapper.put(FsAction.NONE,          new HashSet<String>());
+		access2ActionListMapper.put(FsAction.ALL,           Sets.newHashSet(READ_ACCCESS_TYPE, WRITE_ACCCESS_TYPE, EXECUTE_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.READ,          Sets.newHashSet(READ_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.READ_WRITE,    Sets.newHashSet(READ_ACCCESS_TYPE, WRITE_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.READ_EXECUTE,  Sets.newHashSet(READ_ACCCESS_TYPE, EXECUTE_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.WRITE,         Sets.newHashSet(WRITE_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.WRITE_EXECUTE, Sets.newHashSet(WRITE_ACCCESS_TYPE, EXECUTE_ACCCESS_TYPE));
+		access2ActionListMapper.put(FsAction.EXECUTE,       Sets.newHashSet(EXECUTE_ACCCESS_TYPE));
 ```
 
+- AccessControlEnforcer接口里的方法只有checkPermission
+```JAVA
+  /**
+   * The AccessControlEnforcer allows implementations to override the
+   * default File System permission checking logic enforced on a file system
+   * object
+   */
+  public interface AccessControlEnforcer {
+
+    /**
+     * Checks permission on a file system object. Has to throw an Exception
+     * if the filesystem object is not accessessible by the calling Ugi.
+     * @param fsOwner Filesystem owner (The Namenode user)
+     * @param supergroup super user geoup
+     * @param callerUgi UserGroupInformation of the caller
+     * @param inodeAttrs Array of INode attributes for each path element in the
+     *                   the path
+     * @param inodes Array of INodes for each path element in the path
+     * @param pathByNameArr Array of byte arrays of the LocalName
+     * @param snapshotId the snapshotId of the requested path
+     * @param path Path String
+     * @param ancestorIndex Index of ancestor
+     * @param doCheckOwner perform ownership check
+     * @param ancestorAccess The access required by the ancestor of the path.
+     * @param parentAccess The access required by the parent of the path.
+     * @param access The access required by the path.
+     * @param subAccess If path is a directory, It is the access required of
+     *                  the path and all the sub-directories. If path is not a
+     *                  directory, there should ideally be no effect.
+     * @param ignoreEmptyDir Ignore permission checking for empty directory?
+     * @throws AccessControlException
+     */
+    public abstract void checkPermission(String fsOwner, String supergroup,
+        UserGroupInformation callerUgi, INodeAttributes[] inodeAttrs,
+        INode[] inodes, byte[][] pathByNameArr, int snapshotId, String path,
+        int ancestorIndex, boolean doCheckOwner, FsAction ancestorAccess,
+        FsAction parentAccess, FsAction access, FsAction subAccess,
+        boolean ignoreEmptyDir)
+            throws AccessControlException;
+
+  }
+```
