@@ -150,3 +150,11 @@ public enum FsAction {
 
   }
 ```
+
+authzStatus需要根据ancestorAccess,parentAccess,access,subAccess来综合判断。
+
+- ancestorIndex
+- ancestorAccess
+- parentAccess
+- access
+- subAccess
