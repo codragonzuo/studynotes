@@ -82,7 +82,7 @@ class RangerHdfsAuditHandler extends RangerDefaultAuditHandler
 ···
 import org.apache.hadoop.fs.permission.FsAction;
 
-...
+```JAVA
 
 public enum FsAction {
   // POSIX style
@@ -95,3 +95,4 @@ public enum FsAction {
   READ_WRITE("rw-"),
   ALL("rwx");
 ```
+
