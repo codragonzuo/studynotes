@@ -138,7 +138,7 @@ public class HbaseAuditHandlerImpl extends RangerDefaultAuditHandler implements 
 
 
 getAndDiscardMostRecentEvent实现了什么？
-```
+```JAVA
 public interface HbaseAuditHandler extends RangerAccessResultProcessor {
 
 	List<AuthzAuditEvent> getCapturedEvents();
@@ -172,4 +172,37 @@ public interface HbaseAuditHandler extends RangerAccessResultProcessor {
 			AuthzAuditEvent event = auditHandler.getAndDiscardMostRecentEvent(); // this could be null, of course, depending on audit settings of table.
 			// if authorized then pass captured events as access allowed set else as access denied set.
 			
+```
+
+
+### 日志事件持续时间字段
+
+```JAVA
+/**
+ * This is a non-blocking queue with no limit on capacity.
+ */
+public class AuditSummaryQueue extends AuditQueue implements Runnable;
+public void runLogAudit() {
+...
+    auditSummary.event.setEventDurationMS(timeDiff);
+...
+}
+```
+
+AuditProviderFactory的init函数里，Summary enabled时，会创建AuditSummaryQueue。
+```JAVA
+// Let's see if Summary is enabled, then summarize before sending it
+// downstream
+String propPrefix = BaseAuditHandler.PROP_DEFAULT_PREFIX;
+boolean summaryEnabled = MiscUtil.getBooleanProperty(props,
+		propPrefix + "." + "summary" + "." + "enabled", false);
+AuditSummaryQueue summaryQueue = null;
+if (summaryEnabled) {
+	LOG.info("AuditSummaryQueue is enabled");
+	summaryQueue = new AuditSummaryQueue(consumer);
+	summaryQueue.init(props, propPrefix);
+	consumer = summaryQueue;
+} else {
+	LOG.info("AuditSummaryQueue is disabled");
+}
 ```
