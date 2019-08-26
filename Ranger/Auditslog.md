@@ -108,3 +108,23 @@ public interface AuditHandler {
 ```
 
 
+
+### 事件日志写入
+AuthzAuditEvent保存了事件日志的每个字段，并提供了每个字段，整个日志的JSON序列化和反序列化。
+```JAVA
+public abstract class AuditEventBase {
+
+	protected AuditEventBase() {
+	}
+
+	public abstract void persist(DaoManager daoManager);
+	
+	public abstract String getEventKey();
+	public abstract Date getEventTime ();
+	public abstract void setEventCount(long eventCount);
+	public abstract void setEventDurationMS(long eventDurationMS);
+}
+
+public class AuthzAuditEvent extends AuditEventBase ;
+```
+
