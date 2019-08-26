@@ -49,3 +49,62 @@ class RangerHdfsAuditHandler extends RangerDefaultAuditHandler {
 	}
 ```
 
+在checkPermission里, 创建RangerHdfsAuditHandler对象。
+```JAVA
+class RangerHdfsAuditHandler extends RangerDefaultAuditHandler
+class RangerHdfsAuditHandler extends RangerDefaultAuditHandler
+public class RangerMultiResourceAuditHandler extends RangerDefaultAuditHandler
+public class RangerDefaultAuditHandler implements RangerAccessResultProcessor
+
+auditHandler = doNotGenerateAuditRecord ? null : new RangerHdfsAuditHandler(resourcePath, isTraverseOnlyCheck);
+```JAVA
+
+
+RangerDefaultAuditHandler##logAuthzAudit里，auditProvider.log进行日志记录
+```JAVA
+	public void logAuthzAudit(AuthzAuditEvent auditEvent) {
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("==> RangerDefaultAuditHandler.logAuthzAudit(" + auditEvent + ")");
+		}
+
+		if(auditEvent != null) {
+			populateDefaults(auditEvent);
+
+			AuditHandler auditProvider = RangerBasePlugin.getAuditProvider(auditEvent.getRepositoryName());
+			if (auditProvider == null || !auditProvider.log(auditEvent)) {
+				MiscUtil.logErrorMessageByInterval(LOG, "fail to log audit event " + auditEvent);
+			}
+		}
+
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("<== RangerDefaultAuditHandler.logAuthzAudit(" + auditEvent + ")");
+		}
+	}
+```
+
+AuditHandler接口
+```JAVA
+public interface AuditHandler {
+	boolean log(AuditEventBase event);
+	boolean log(Collection<AuditEventBase> events);	
+
+	boolean logJSON(String event);
+	boolean logJSON(Collection<String> events);	
+
+    void init(Properties prop);
+    void init(Properties prop, String basePropertyName);
+    void start();
+    void stop();
+    void waitToComplete();
+    void waitToComplete(long timeout);
+
+    /**
+     * Name for this provider. Used only during logging. Uniqueness is not guaranteed
+     */
+    String getName();
+
+    void flush();
+}
+```
+
+
