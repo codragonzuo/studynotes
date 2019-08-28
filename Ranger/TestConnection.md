@@ -53,3 +53,5 @@ public class HdfsClient extends BaseClient {
 		return responseData;
 	}
 ```
+
+HdfsConnectionMgr, HdfsResourceMgr 调用HdfsClient来 connect Hdfs 。 获取资源，测试连接。
