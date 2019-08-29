@@ -130,6 +130,7 @@ public abstract class BaseClient {
 
 service/client 目录结构
 
+ranger下有 authorization/hadoop和services/hdfs/client目录。前者被hadoop调用进行权限授权处理，后者在ranger里调用进行资源获取，连接测试。
 
 ```shell
 [XXX]  /mnt/d/Project/ranger-master/hdfs-agent
