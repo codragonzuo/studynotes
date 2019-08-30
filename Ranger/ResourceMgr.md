@@ -1,0 +1,23 @@
+# HdfsResourceMgr
+
+```JAVA
+//HdfsResourceMgr.java
+
+public class HdfsResourceMgr {
+
+    public static Map<String, Object> connectionTest(String serviceName, Map<String, String> configs) throws Exception
+    public static List<String> getHdfsResources(String serviceName, String serviceType, Map<String, String> configs,ResourceLookupContext context) throws Exception {
+}
+```
+
+1. ResourceLookupContext里保存了用户进行资源查找的 resourceName, userInput, resources。
+2. getHdfsResources调用hdfsClient.listFiles(finalBaseDir,	finalWildCardToMatch, pathList); 返回查询结果。
+3. FileSystem##listStatus 返回FileStatus包含了目录下的信息。
+
+```JAVA
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+```
+
