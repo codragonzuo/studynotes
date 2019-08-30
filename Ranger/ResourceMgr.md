@@ -45,3 +45,19 @@ public class HBaseClient extends BaseClient {
 
 ```
 
+# HiveSourceMgr
+
+```JAVA
+//HiveResourceMgr
+public static List<String> getHiveResources(String serviceName, String serviceType, Map<String, String> configs,ResourceLookupContext context) throws Exception  
+
+hiveClient.getDatabaseList(finalDbName, finaldatabaseList);
+hiveClient.getTableList(finalTableName,finaldatabaseList,finaltableList);
+hiveClient.getColumnList(finalColName,finaldatabaseList,finaltableList,finalcolumnList);
+
+import org.apache.hadoop.hive.conf.HiveConf;
+import org.apache.hadoop.hive.metastore.HiveMetaStoreClient;
+import org.apache.hadoop.hive.metastore.api.FieldSchema;
+import org.apache.hadoop.hive.metastore.api.MetaException;
+```
+
