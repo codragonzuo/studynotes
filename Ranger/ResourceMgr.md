@@ -21,3 +21,27 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 ```
 
+# HBaseResourceMgr
+
+HBaseClient调用hbase的接口获取TableList, ColumnFamilyList, ColumnList.
+
+```JAVA
+public class HBaseResourceMgr {
+    public static Map<String, Object> connectionTest(String serviceName, Map<String, String> configs) throws Exception
+    public static List<String> getHBaseResource(String serviceName, String serviceType, Map<String, String> configs,ResourceLookupContext context) throws Exception
+}
+
+///////
+import org.apache.hadoop.hbase.*;
+import org.apache.hadoop.hbase.client.*;
+public class HBaseClient extends BaseClient {
+
+public class HBaseClient extends BaseClient {
+    public List<String> getTableList(final String tableNameMatching, final List<String> existingTableList ) throws HadoopException
+    public List<String> getColumnFamilyList(final String columnFamilyMatching, final List<String> tableList,final List<String> existingColumnFamilies)
+}
+
+
+
+```
+
