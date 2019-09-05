@@ -214,3 +214,27 @@ public class RangerHdfsAuthorizer extends INodeAttributeProvider {
 }
 
 ```
+
+
+# Hive
+```JAVA
+import org.apache.hadoop.hive.ql.security.authorization.plugin.AbstractHiveAuthorizer;
+public abstract class RangerHiveAuthorizerBase extends AbstractHiveAuthorizer {
+public class RangerHiveAuthorizer extends RangerHiveAuthorizerBase {
+	/**
+	 * Check if user has privileges to do this action on these objects
+	 * @param hiveOpType
+	 * @param inputHObjs
+	 * @param outputHObjs
+	 * @param context
+	 * @throws HiveAuthzPluginException
+	 * @throws HiveAccessControlException
+	 */
+	@Override
+	public void checkPrivileges(HiveOperationType         hiveOpType,
+								List<HivePrivilegeObject> inputHObjs,
+							    List<HivePrivilegeObject> outputHObjs,
+							    HiveAuthzContext          context)
+	private RangerAccessResult getDataMaskResult(RangerHiveAccessRequest request) {
+	private RangerAccessResult getRowFilterResult(RangerHiveAccessRequest request) {	
+```
