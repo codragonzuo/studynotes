@@ -17,3 +17,8 @@ public class RangerPolicyEngineImpl implements RangerPolicyEngine {
 	public Collection<RangerAccessResult> evaluatePolicies(Collection<RangerAccessRequest> requests, int policyType, RangerAccessResultProcessor resultProcessor) {
 ```
 
+getResourceACLs查找所有符合资源匹配的的ACL
+
+```
+	public RangerResourceACLs getResourceACLs(RangerAccessRequest request) {
+``
