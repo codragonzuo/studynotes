@@ -206,3 +206,30 @@ if (summaryEnabled) {
 	LOG.info("AuditSummaryQueue is disabled");
 }
 ```
+
+
+
+
+---
+
+
+在evaluatePolicies完成后，调用resultProcessor.processResults(ret);来进行审计日志处理。
+```JAVA
+//RangerDefaultAuditHandler
+	@Override
+	public void processResults(Collection<RangerAccessResult> results) {
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("==> RangerDefaultAuditHandler.processResults(" + results + ")");
+		}
+
+		Collection<AuthzAuditEvent> events = getAuthzEvents(results);
+
+		if (events != null) {
+			logAuthzAudits(events);
+		}
+
+		if(LOG.isDebugEnabled()) {
+			LOG.debug("<== RangerDefaultAuditHandler.processResults(" + results + ")");
+		}
+	}
+```
