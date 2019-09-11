@@ -15,6 +15,44 @@ public class RangerPolicyEngineImpl implements RangerPolicyEngine {
 
 	public RangerAccessResult evaluatePolicies(RangerAccessRequest request, int policyType, RangerAccessResultProcessor resultProcessor) {
 	public Collection<RangerAccessResult> evaluatePolicies(Collection<RangerAccessRequest> requests, int policyType, RangerAccessResultProcessor resultProcessor) {
+	
+	
+
+ private RangerAccessResult evaluatePoliciesNoAudit(RangerAccessRequest request, int policyType, String zoneName, RangerPolicyRepository policyRepository, RangerPolicyRepository tagPolicyRepository) {
+
+
+
+                List<RangerPolicyEvaluator> evaluators = policyRepository.getLikelyMatchPolicyEvaluators(request.getResource(), policyType);
+
+
+
+
+    private RangerAccessResult evaluatePoliciesNoAudit(RangerAccessRequest request, int policyType, String zoneName, RangerPolicyRepository policyRepository, RangerPolicyRepository tagPolicyRepository) {
+
+
+public class RangerDefaultPolicyEvaluator extends RangerAbstractPolicyEvaluator {
+
+
+evaluatePolicies->zoneAwareAccessEvaluationWithNoAudit->evaluatePoliciesNoAudit
+->evaluateTagPolicies ->evaluator.evaluate(tagEvalRequest, tagEvalResult);
+
+public class RangerDefaultPolicyEvaluator extends RangerAbstractPolicyEvaluator {
+RangerDefaultPolicyEvaluator##evaluate(RangerAccessRequest request, RangerAccessResult result)
+
+evaluatePolicyItems(request, matchType, result);
+->RangerPolicyItemEvaluator matchedPolicyItem = getMatchingPolicyItem(request, result);
+->RangerPolicyItemEvaluator::updateAccessResult
+
+
+
+protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<String> roles, String accessType)
+->RangerPolicyItemEvaluator item = this.getDeterminingPolicyItem(user, userGroups, roles, accessType);
+
+
+RangerBasePlugin##isAccessAllowed
+RangerPolicyEngine##isAccessAllowed
+RangerPolicyEngineImpl##isAccessAllowed
+RangerDefaultPolicyEvaluator##isAccessAllowed
 ```
 
 getResourceACLs查找所有符合资源匹配的的ACL
