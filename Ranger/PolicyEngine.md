@@ -6,7 +6,17 @@ RangerPolicyEngine把要对策略进行处理的接口抽象处理， 然后在�
 
 RangerPolicyEngineImpl#isAccessAllowed中会从RangerPolicyRepository中查找该资源的所有Policy，遍历执行RangerDefaultPolicyEvaluator#evaluatePolicyItems，来进行评估是否有权限访问。遍历过程中如果发现了匹配的规则，决定了deny还是allow，遍历就会break。每一次的遍历先从denyEvaluators里查找匹配的deny权限，如果没有找到，就从allowEvaluators里查找匹配的allow权限。
 
+```JAVA
+RangerHdfsAuthorizer##checkPermission
+RangerHdfsAuthorizer##isAccessAllowed
+RangerAccessResult result = plugin.isAccessAllowed(request, auditHandler);
+RangerBasePlugin##isAccessAllowed
+RangerPolicyEngine##isAccessAllowed
+RangerPolicyEngineImpl##isAccessAllowed
+RangerDefaultPolicyEvaluator##isAccessAllowed
 
+
+```
 
 # evaluator处理
 
@@ -48,7 +58,9 @@ evaluatePolicyItems(request, matchType, result);
 protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<String> roles, String accessType)
 ->RangerPolicyItemEvaluator item = this.getDeterminingPolicyItem(user, userGroups, roles, accessType);
 
-
+RangerHdfsAuthorizer##checkPermission
+RangerHdfsAuthorizer##isAccessAllowed
+RangerAccessResult result = plugin.isAccessAllowed(request, auditHandler);
 RangerBasePlugin##isAccessAllowed
 RangerPolicyEngine##isAccessAllowed
 RangerPolicyEngineImpl##isAccessAllowed
