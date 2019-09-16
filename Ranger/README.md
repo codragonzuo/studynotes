@@ -167,3 +167,39 @@ public class RangerAdminClientImpl extends AbstractRangerAdminClient {
 ```
 
 GSON可以将JSON数据转化成JAVA对象。
+
+```JAVA
+##插件启动任务定时获取策略
+policyDownloadTimer = new Timer("policyDownloadTimer", true);
+
+try {
+policyDownloadTimer.schedule(new DownloaderTask(policyDownloadQueue), pollingIntervalMs, pollingIntervalMs);
+if (LOG.isDebugEnabled()) {
+LOG.debug("Scheduled policyDownloadRefresher to download policies every " + pollingIntervalMs + " milliseconds");
+}
+} catch (IllegalStateException exception) {
+LOG.error("Error scheduling policyDownloadTimer:", exception);
+LOG.error("*** Policies will NOT be downloaded every " + pollingIntervalMs + " milliseconds ***");
+policyDownloadTimer = null;
+}
+
+策略拉取
+PolicyRefresher
+public class PolicyRefresher extends Thread {
+loadPolicy
+loadPolicyfromPolicyAdmin();
+ServicePolicies存储在插件端
+private final RangerAdminClient rangerAdmin;
+RangerAdminClient
+svcPolicies = rangerAdmin.getServicePoliciesIfUpdated(lastKnownVersion, lastActivationTimeInMillis);
+在RagnerAdminRESTClient.java中，引用 jersey Restful API框架
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
+import com.sun.jersey.api.client.WebResource;
+
+Restful服务地址
+public static final String REST_URL_POLICY_GET_FOR_SERVICE_IF_UPDATED = "/service/plugins/policies/download/";
+调用Restful服务地址	
+WebResource webResource = createWebResource(RangerRESTUtils.REST_URL_POLICY_GET_FOR_SERVICE_IF_UPDATED + serviceNameUrlParam)
+
+```
