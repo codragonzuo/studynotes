@@ -103,6 +103,25 @@ public void init() {
 }
 ```
 
+## 如何选择自定义RangerAdminClient
+- plugin的XML配置文件里取ranger.plugin.hbase.policy.source.impl策略获取实现类
+- 如果取不到，就使用RangerAdminRESTClient
+
+```
+//public class RangerBasePlugin {
+//创建RangerAdminClient对象
+//
+public static RangerAdminClient createAdminClient(String rangerServiceName, String applicationId, String propertyPrefix) {
+//createAdminClient实现中，先检查配置文件是否有对应插件指定的AdminClient
+//如果没有，就使用RangerAdminRESTClient
+		if(ret == null) {
+			ret = new RangerAdminRESTClient();
+		}
+
+		ret.init(rangerServiceName, applicationId, propertyPrefix);
+```
+
+
 ```JAVA
 //有两种AbstractRangerAdminClient接口的实现类
 public class RangerAdminJersey2RESTClient extends AbstractRangerAdminClient 
@@ -120,21 +139,7 @@ public class RangerAdminRESTClient extends AbstractRangerAdminClient
 		</description>
 	</property>
 ```
-
-```
-//public class RangerBasePlugin {
-//创建RangerAdminClient对象
-//
-public static RangerAdminClient createAdminClient(String rangerServiceName, String applicationId, String propertyPrefix) {
-//createAdminClient实现中，先检查配置文件是否有对应插件指定的AdminClient
-//如果没有，就使用RangerAdminRESTClient
-		if(ret == null) {
-			ret = new RangerAdminRESTClient();
-		}
-
-		ret.init(rangerServiceName, applicationId, propertyPrefix);
-```
-
+### 策略源获取的测试代码实现
 ```JAVA
 public class RangerAdminClientImpl extends AbstractRangerAdminClient {
     private static final Logger LOG = LoggerFactory.getLogger(RangerAdminClientImpl.class);
@@ -168,6 +173,7 @@ public class RangerAdminClientImpl extends AbstractRangerAdminClient {
 
 GSON可以将JSON数据转化成JAVA对象。
 
+## plugin启动定时获取策略的任务
 ```JAVA
 ##插件启动任务定时获取策略
 policyDownloadTimer = new Timer("policyDownloadTimer", true);
@@ -183,6 +189,10 @@ LOG.error("*** Policies will NOT be downloaded every " + pollingIntervalMs + " m
 policyDownloadTimer = null;
 }
 
+
+```
+## 从RestfulAPI获取策略
+```
 策略拉取
 PolicyRefresher
 public class PolicyRefresher extends Thread {
