@@ -117,8 +117,12 @@ boolean conditionEvalResult = conditionEvaluator.isMatched(request);
 
 ## RangerPolicyRepository里根据policyId来生成对应的evaluator，有几个policyId, 就产生对应的evaluator
 
-# PolicyRepository 策略仓库
-
+# PolicyRepository 策略仓库里保存
+```
+    private List<RangerPolicyEvaluator>       policyEvaluators;
+    private List<RangerPolicyEvaluator>       dataMaskPolicyEvaluators;
+    private List<RangerPolicyEvaluator>       rowFilterPolicyEvaluators;
+```
 
 ```JAVA
 public class RangerPolicyEngineImpl implements RangerPolicyEngine {
