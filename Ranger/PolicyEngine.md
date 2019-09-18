@@ -6,6 +6,8 @@ RangerPolicyEngine把要对策略进行处理的接口抽象处理， 然后在�
 
 RangerPolicyEngineImpl#isAccessAllowed中会从RangerPolicyRepository中查找该资源的所有Policy，遍历执行RangerDefaultPolicyEvaluator#evaluatePolicyItems，来进行评估是否有权限访问。遍历过程中如果发现了匹配的规则，决定了deny还是allow，遍历就会break。每一次的遍历先从denyEvaluators里查找匹配的deny权限，如果没有找到，就从allowEvaluators里查找匹配的allow权限。
 
+在同一类型的Evaluators中只需找出一个就可以。
+
 ```JAVA
 RangerHdfsAuthorizer##checkPermission
 RangerHdfsAuthorizer##isAccessAllowed
@@ -14,8 +16,7 @@ RangerBasePlugin##isAccessAllowed
 RangerPolicyEngine##isAccessAllowed
 RangerPolicyEngineImpl##isAccessAllowed
 RangerDefaultPolicyEvaluator##isAccessAllowed
-
-
+RangerDefaultPolicyEvaluator##getDeterminingPolicyItem
 ```
 901行的isAccessAllowed进行估算
 ```JAVA
@@ -25,6 +26,7 @@ public boolean isAccessAllowed(RangerPolicy policy, String user, Set<String> use
 
 RangerDefaultPolicyEvaluator.java里，调用isAccessAllowed进行判断，再调用getDeterminingPolicyItem。
 ```JAVA
+//RangerDefaultPolicyEvaluator
 protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<String> roles, String accessType) {
 
        RangerPolicyItemEvaluator item = this.getDeterminingPolicyItem(user, userGroups, roles, accessType);
@@ -33,10 +35,10 @@ protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<Strin
 getDeterminingPolicyItem里先进行getMatchingPolicyItem    denyEvaluators和denyExceptionEvaluators判断，再进行allowEvaluators和allowExceptionEvaluators。找到匹配的Item。
 
 ```
-	private List<RangerPolicyItemEvaluator> allowEvaluators;
-	private List<RangerPolicyItemEvaluator> denyEvaluators;
-	private List<RangerPolicyItemEvaluator> allowExceptionEvaluators;
-	private List<RangerPolicyItemEvaluator> denyExceptionEvaluators;
+private List<RangerPolicyItemEvaluator> allowEvaluators;
+private List<RangerPolicyItemEvaluator> denyEvaluators;
+private List<RangerPolicyItemEvaluator> allowExceptionEvaluators;
+private List<RangerPolicyItemEvaluator> denyExceptionEvaluators;
 ```
 
 item 调用IsMatch, IsMatch里进行了matchUserGroupAndOwner 和 matchCustomConditions。
@@ -106,24 +108,53 @@ D:\Project\ranger-master\agents-common\src\main\java\org\apache\ranger\plugin\po
 	}
 ```
 
-
-matchCustomConditions调用conditionEvaluator  
+## conditionEvaluator  调用
+RangerDefaultPolicyItemEvaluator里matchCustomConditions调用conditionEvaluator  
 ```JAVA
+//RangerDefaultPolicyItemEvaluator
+//public boolean matchCustomConditions(RangerAccessRequest request)
 boolean conditionEvalResult = conditionEvaluator.isMatched(request);
 ```
 
 # evaluator处理
 
+## 如何生成evaluator
 
-## RangerPolicyRepository里根据policyId来生成对应的evaluator，有几个policyId, 就产生对应的evaluator
+ RangerPolicyRepository里根据policyId来生成对应的evaluator，有几个policyId, 就产生对应的evaluator
+``` 
+// RangerPolicyRepository
+RangerPolicyEvaluator addPolicy(RangerPolicy policy)
+private RangerPolicyEvaluator buildPolicyEvaluator(RangerPolicy policy, RangerServiceDef serviceDef, RangerPolicyEngineOptions options) 
+```
 
-# PolicyRepository 策略仓库里保存
+可能有两种类型，RangerCachedPolicyEvaluator和RangerOptimizedPolicyEvaluator
+``` 
+        if(StringUtils.equalsIgnoreCase(options.evaluatorType, RangerPolicyEvaluator.EVALUATOR_TYPE_CACHED)) {
+            ret = new RangerCachedPolicyEvaluator();
+        } else {
+            ret = new RangerOptimizedPolicyEvaluator();
+        }
+
+        ret.init(policy, serviceDef, options);
+```
+RangerOptimizedPolicyEvaluator的init进行初始化
+
+Init提取需要预处理的信息。
+```
+//RangerOptimizedPolicyEvaluator
+void init(RangerPolicy policy, RangerServiceDef serviceDef, RangerPolicyEngineOptions options)
+```
+
+# PolicyRepository 策略仓库里保存估算器表
 ```
     private List<RangerPolicyEvaluator>       policyEvaluators;
     private List<RangerPolicyEvaluator>       dataMaskPolicyEvaluators;
     private List<RangerPolicyEvaluator>       rowFilterPolicyEvaluators;
 ```
 
+## 估算器调用流程
+
+RangerPolicyEngineImpl进行估算
 ```JAVA
 public class RangerPolicyEngineImpl implements RangerPolicyEngine {
 
@@ -168,16 +199,7 @@ evaluatePolicyItems(request, matchType, result);
 
 
 
-protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<String> roles, String accessType)
-->RangerPolicyItemEvaluator item = this.getDeterminingPolicyItem(user, userGroups, roles, accessType);
 
-RangerHdfsAuthorizer##checkPermission
-RangerHdfsAuthorizer##isAccessAllowed
-RangerAccessResult result = plugin.isAccessAllowed(request, auditHandler);
-RangerBasePlugin##isAccessAllowed
-RangerPolicyEngine##isAccessAllowed
-RangerPolicyEngineImpl##isAccessAllowed
-RangerDefaultPolicyEvaluator##isAccessAllowed
 ```
 
 getResourceACLs查找所有符合资源匹配的的ACL
