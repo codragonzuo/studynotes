@@ -4,7 +4,7 @@
 RangerPolicyEngine把要对策略进行处理的接口抽象处理， 然后在具体插件中进行具体的处理。
 好像没干啥具体的活？？
 
-RangerPolicyEngineImpl#isAccessAllowed中会从RangerPolicyRepository中查找该资源的所有Policy，遍历执行RangerDefaultPolicyEvaluator#evaluatePolicyItems，来进行评估是否有权限访问。遍历过程中如果发现了匹配的规则，决定了deny还是allow，遍历就会break。每一次的遍历先从denyEvaluators里查找匹配的deny权限，如果没有找到，就从allowEvaluators里查找匹配的allow权限。
+RangerPolicyEngineImpl#isAccessAllowed中会从RangerPolicyRepository中查找该资源的所有Policy，遍历执行RangerDefaultPolicyEvaluator#evaluatePolicyItems，来进行评估是否有权限访问。
 
 在同一类型的Evaluators中只需找出一个就可以。
 
@@ -32,7 +32,32 @@ protected boolean isAccessAllowed(String user, Set<String> userGroups, Set<Strin
        RangerPolicyItemEvaluator item = this.getDeterminingPolicyItem(user, userGroups, roles, accessType);
 ```
 
+## getDeterminingPolicyItem找到匹配的Item
 getDeterminingPolicyItem里先进行getMatchingPolicyItem    denyEvaluators和denyExceptionEvaluators判断，再进行allowEvaluators和allowExceptionEvaluators。找到匹配的Item。
+```JAVA
+RangerDefaultPolicyEvaluator##getDeterminingPolicyItem
+	/*
+	 *  1. if a deny matches without hitting any deny-exception, return that
+	 *  2. if an allow matches without hitting any allow-exception, return that
+	 */
+	ret = getMatchingPolicyItem(user, userGroups, roles, accessType, , denyExceptionEvaluators);
+
+	if(ret == null) {
+		ret = getMatchingPolicyItem(user, userGroups, roles, accessType, allowEvaluators, allowExceptionEvaluators);
+	}
+```
+
+## 在item中如何判断匹配
+**同时判断User,Group,Role, AccessType,是AND关系**
+```
+//RangerDefaultPolicyEvaluator
+//1169行
+	private <T extends RangerPolicyItemEvaluator> T getMatchingPolicyItem(String user, Set<String> userGroups, Set<String> roles, String accessType, List<T> evaluators, List<T> exceptionEvaluators) {
+//同时判断User,Group,Role, AccessType,是AND关系
+                if(exceptionEvaluator.matchUserGroup(user, userGroups, roles) && exceptionEvaluator.matchAccessType(accessType)) {
+```
+## 算法
+
 
 ```
 private List<RangerPolicyItemEvaluator> allowEvaluators;
