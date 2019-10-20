@@ -1,5 +1,5 @@
 
-# yum安装本地rpm软件方案详解
+## yum安装本地rpm软件方案详解
 
 概述
 
@@ -20,11 +20,11 @@
 在虚拟机内配置yum只下载RPM包而不安装，这里要使用–downloadonly选项，需要先安装yum-plugin-downloadonly。
 
 
-# yum install yum-plugin-downloadonly
+### yum install yum-plugin-downloadonly
 
 在本地环境下载rpm安装包
 
-# yum install --downloadonly --downloaddir=/tmp RPM_Name
+### yum install --downloadonly --downloaddir=/tmp RPM_Name
 
 /tmp为指定下载的目录，RPM_Name为目标软件。
 
@@ -32,7 +32,7 @@ yum–downloadonly会只下载RPM包不安装，同时会把依赖的包都下�
 
 需要说明的是，为了在目标机构建软件源，createrepo是必不可少的模块，因此需要在虚拟机上下载createrepo相关模块。
 
-# yum install --downloadonly --downloaddir=/tmp createrepo
+### yum install --downloadonly --downloaddir=/tmp createrepo
 
 一般会下载三个包，一个是createrepo，另外两个是依赖包。
 
@@ -46,27 +46,27 @@ yum–downloadonly会只下载RPM包不安装，同时会把依赖的包都下�
 
 在目标机安装createrepo：
 
-# rpm -ivh deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+### rpm -ivh deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
 
-# rpm -ivh python-deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
+### rpm -ivh python-deltarpm-3.5-0.5.20090913git.el6.x86_64.rpm
 
-# rpm -ivh createrepo-0.9.9-24.el6.noarch.rpm
+### rpm -ivh createrepo-0.9.9-24.el6.noarch.rpm
 
 createrepo构建本地软件源
 
 假设安装包在目标机的/home/user/rpms/目录下。
 
-# createrepo /home/user/rpms
+### createrepo /home/user/rpms
 
 修改yum软件源
 
 移除现有的软件源
 
-# mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bk
+### mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bk
 
 开启本地软件源
 
-# vim /etc/yum.repos.d/CentOS-Media.repo
+### vim /etc/yum.repos.d/CentOS-Media.repo
 
 在baseurl增加一行：
 
@@ -80,12 +80,23 @@ createrepo构建本地软件源
 
 使用yum正常安装软件即可。
 
-# yum install demo
+### yum install demo
 
 如果用的是纯净的虚拟机环境，并且和目标机保持一致，那么依赖包就会都安装，yum安装就会很顺利。除非个别包会有依赖冲突，A依赖B，B又依赖A，导致无法安装，此时可以用rpm命令强制安装其中一个，再用yum安装软件即可。
 
-# rpm -ivh demo.rpm --nodeps --force
+### rpm -ivh demo.rpm --nodeps --force
 
-总结
 
-以上就是本文关于yum安装本地rpm软件方案详解的全部内容，希望对大家有所帮助。
+
+
+## yum install 下载后保存rpm包
+
+keepcache=0 更改为1下载RPM包 不会自动删除
+
+vi /etc/yum.conf 
+
+```
+[main]
+cachedir=/var/cache/yum/$basearch/$releasever # 安装包默认下载地址
+keepcache=1 # 不会自动删除
+```
