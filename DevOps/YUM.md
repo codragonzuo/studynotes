@@ -100,3 +100,10 @@ vi /etc/yum.conf
 cachedir=/var/cache/yum/$basearch/$releasever # 安装包默认下载地址
 keepcache=1 # 不会自动删除
 ```
+```
+[root@bogon ~]# sed -n 's#keepcache=0#keepcache=1#gp' /etc/yum.conf 
+keepcache=1 【最好先不要用-i参数直接修改源文件，先输出看修改是否正确，或者先备份yum.conf配置文件】
+[root@bogon ~]# sed -i 's#keepcache=0#keepcache=1#g' /etc/yum.conf  【-i修改源文件配置】
+[root@bogon ~]# grep "keepcache" /etc/yum.conf【检查是否已修改】
+keepcache=1
+```
