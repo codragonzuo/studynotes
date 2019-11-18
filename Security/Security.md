@@ -14,3 +14,10 @@ https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_
 - 基于大数据技术的安管平台架构与设计
 
 https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9066431449170208023%22%7D&n_type=1&p_from=3
+
+
+
+
+IOPS和带宽对存储性能指标的影响
+
+https://blog.csdn.net/sch0120/article/details/73162656
