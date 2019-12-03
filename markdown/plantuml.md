@@ -46,3 +46,50 @@ digraph R {
   node1 -> node2 -> node3
 }
 ```
+
+
+
+
+```puml
+
+@startuml
+
+Person  <|-- Police : Generation(Extension, Inherence)
+IBrush  <|.. PenBrush : Realization(Extension, Interface)
+
+
+
+class Customer
+class Order
+Customer "1" <-- "n" Order  : Association (reference)
+Water  <..  Animal  : Dependency
+
+
+
+Human    *-- "2" Leg    : Composition（contain）
+Library  o-- "n" Book   : Aggregation(has)
+
+
+
+ClassA .. ClassB :link
+ClassC -- ClassD :link
+
+
+@enduml
+```
+
+
+```puml
+@startuml  mychart
+start
+:dosomtething;
+if (cond?) then (val1)
+    :dosomtething;
+else (val2)
+    :dosomtething;
+endif
+:画;
+:dosomtething;
+end
+@enduml
+```
