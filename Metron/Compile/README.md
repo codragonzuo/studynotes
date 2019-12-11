@@ -7,9 +7,11 @@ https://segmentfault.com/a/1190000015802337
 
 ldd chrome | grep not
 
-
+```shell
 [root@node1 lib]# ls *.jar | while read jarfile; do
 >     echo "$jarfile"
 >     jar -tf $jarfile | grep "HdfsWriter.class"
 > done
+```
 
+[root@node3 metron_0.7.1]# mvn clean install -DskipTests -X
