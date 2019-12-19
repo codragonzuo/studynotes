@@ -88,6 +88,9 @@ You have two options to rebalance a topology:
 
 $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 ```
+
+
+- 在一个supervisor节点上执行worker， worker里包含多个 spout task或者 bolt task。
 ![](StormCluster_04.png)
 
 
