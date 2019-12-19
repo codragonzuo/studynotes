@@ -69,6 +69,10 @@ Each worker node runs a daemon called the "Supervisor". The supervisor listens f
 
 ![](http://storm.apache.org/releases/1.1.2/images/storm-cluster.png)
 
+
+![](https://storm.apache.org/releases/1.2.3/images/example-of-a-running-topology.png)
+
+
 Storm cluster
 
 All coordination between Nimbus and the Supervisors is done through a Zookeeper cluster. Additionally, the Nimbus daemon and Supervisor daemons are fail-fast and stateless; all state is kept in Zookeeper or on local disk. This means you can kill -9 Nimbus or the Supervisors and they'll start back up like nothing happened. This design leads to Storm clusters being incredibly stable.
