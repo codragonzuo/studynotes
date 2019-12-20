@@ -9,3 +9,14 @@ https://blog.csdn.net/LemonGirls/article/details/79994056
 
 ![]（https://github.com/ommsolutions/kibana_ext_metrics_vis/blob/master/img/demo.gif）
 
+
+
+https://github.com/ommsolutions/kibana_ext_metrics_vis
+
+
+https://www.elastic.co/guide/en/kibana/current/plugin-development.html
+
+
+https://logz.io/blog/kibana-visualizations/
+
+
