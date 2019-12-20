@@ -45,4 +45,8 @@ tuple被复制到bolt的所有任务。这种类型需要谨慎使用。
 
 这是一个特别的分组类型。元组生产者决
 
+# Stream 流
 
+![](http://www.corejavaguru.com/assets/images/content/storm-stream-groupings.png)
+
+ 
