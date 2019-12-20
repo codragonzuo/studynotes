@@ -56,7 +56,9 @@ tuple被复制到bolt的所有任务。这种类型需要谨慎使用。
 
 ![](storm_stream.png)
 
+![](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.0/developing-storm-applications/how-to/images/SpoutsAndBolts.png)
 
 通过在topology中定义stream， 来连接spout和bolt。  
+
 
  
