@@ -52,8 +52,10 @@ tuple被复制到bolt的所有任务。这种类型需要谨慎使用。
  topology内部  spout和bolt直接使用OutCollector来发生线程间消息。
  
  OutCollector使用LMAX distributor 库来发送消息。
- 
+
+
 ![](storm_stream.png)
+
 
 通过在topology中定义stream， 来连接spout和bolt。  
 
