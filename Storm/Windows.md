@@ -89,4 +89,14 @@ eviction policy: when data points should  leave the windows, define window width
 
 trigger policy : when to trigger computation on current window
 
+## 
+
+Semantic	Type	Description	Storm	Flink
+Tumbling Windows	Window Assigners	"Predefined window size，A tuple belongs to only one window
+Defined by time or event count
+"	Implemented	Implemented
+Sliding Windows	Window Assigners	"Predefined window size,A tuple can belong to multiple windows (slides),Defined by time or event  count
+"	Implemented	Implemented
+Session Windows	Window Assigners	Predefined max. gap size,No fixed, start/end time	Not Implemented	Implemented
+Global Windows	Window Assigners	Key based,Requires trigger	Not Implemented	Implemented
 
