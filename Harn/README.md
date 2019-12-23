@@ -1,7 +1,7 @@
 
 # Fundamentals of YARN Architecture
 
-## order Job Tracker in Hadoop 1.0
+## Older Job Tracker in Hadoop 1.0
 In Hadoop version 1.0 which is also referred to as MRV1(MapReduce Version 1), MapReduce performed both processing and resource management functions. It consisted of a Job Tracker which was the single master. The Job Tracker allocated the resources, performed scheduling and monitored the processing jobs. It assigned map and reduce tasks on a number of subordinate processes called the Task Trackers. The Task Trackers periodically reported their progress to the Job Tracker.
 
 ![](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/06/MapReduce-Version-1.0-Hadoop-YARN-Edureka-1.png)
@@ -130,4 +130,6 @@ Refer to the given image and see the following steps involved in Application wor
 - Application Manager unregisters with Resource Manager
 
 ![](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/06/Application-Workflow-Hadoop-YARN-Edureka.png)
+
+![](https://d2h0cx97tjks2p.cloudfront.net/blogs/wp-content/uploads/sites/2/2016/06/Yarn-Framework.png)
 
