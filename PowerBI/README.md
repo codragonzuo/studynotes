@@ -13,3 +13,8 @@ Drive better business decisions across your organization with Microsoft Power BI
 https://blog.csdn.net/Luomingkui1109/article/details/92387474
 
 https://docs.microsoft.com/zh-cn/power-bi/desktop-quickstart-connect-to-data
+
+
+干货合辑 | 最全的PowerBI教程
+
+https://zhuanlan.zhihu.com/p/64999937
