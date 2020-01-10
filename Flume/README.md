@@ -48,3 +48,26 @@ Flume --文件通道(file channel)
 The channel is a passive store that keeps the event until it’s consumed by a Flume sink. The file channel is one example – it is backed by the local filesystem. The sink removes the event from the channel and puts it into an external repository like HDFS (via Flume HDFS sink) or forwards it to the Flume source of the next Flume agent (next hop) in the flow. The source and sink within the given agent run asynchronously with the events staged in the channel.
 
 
+
+
+
+# How to run Flume in HA 
+
+https://community.cloudera.com/t5/Support-Questions/How-to-run-Flume-in-HA/td-p/95446
+
+How to run Flume in HA ?
+  
+ orenault Guru
+Created ‎10-28-2015 04:58 PM
+Here is some of the key points to use Flume in "HA"
+
+1. Setup File Channels instead of Memory Channels (using a RAID array is very paranoid but possible) on any Flume agent in use
+
+2. Create a nanny process/script to watch for flume agent failures and restart immediately
+
+3. Put the Flume agent collector/aggregation/2nd tier behind a network load balancer and use a VIP. This also has the benefit for balancing load for high ingest
+
+4. Optionally have a sink that dumps to cycling files (separate from the drive the File Channel operates on) on the local drives in addition to a sink that forwards it on the next flume node or directly to HDFS. At least then you have the time it takes to fill a drive to correct any major issues and recover lost ingest streams.
+
+5. Use the built in JMX counters in Flume to setup alerts in your favorite Operations Center application
+
