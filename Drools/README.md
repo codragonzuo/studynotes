@@ -93,5 +93,25 @@ kieservices--kiecontainer--sessionname--kiesession
 
 
 
+## Understanding Complex Event Processing (CEP)
 
+https://mapr.com/blog/better-complex-event-processing-scale-using-microservices-based-streaming-architecture-part-1/
+
+CEP is about applying business rules to streaming event data. Event data is simply data with a timestamp field.
+
+- CEP Rule-engine vs. Hand Coding
+
+What are the parts of this type of project?
+
+Data ingest
+
+Defining rules on the data
+
+Executing the rules
+
+Taking action from rules when the conditions are met.
+
+
+ 
+ 
 
