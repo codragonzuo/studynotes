@@ -33,3 +33,36 @@ https://tech.meituan.com/2018/04/19/hb-rt-operation.html
 Java各种规则引擎
 
 https://www.jianshu.com/p/41ea7a43093c
+
+
+List of Rules Engines in Java
+
+https://www.baeldung.com/java-rule-engines
+
+
+# OPENL
+
+支持excel rule规则描述
+
+http://openl-tablets.org/
+
+
+
+# Spring Expression Language (SpEL)
+
+SpEL（Spring Expression Language），即Spring表达式语言，是比JSP的EL更强大的一种表达式语言。为什么要总结SpEL，因为它可以在运行时查询和操作数据，尤其是数组列表型数据，因此可以缩减代码量，优化代码结构。个人认为很有用。
+
+SpEL有三种用法，一种是在注解@Value中；一种是XML配置；最后一种是在代码块中使用Expression。
+
+https://www.jianshu.com/p/e0b50053b5d3
+
+
+Java代码审计之SpEL表达式注入
+
+https://www.freebuf.com/vuls/197008.html
+
+
+
+
+
+https://www.baeldung.com/java-rule-engines
