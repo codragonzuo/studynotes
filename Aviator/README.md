@@ -63,6 +63,7 @@ https://www.freebuf.com/vuls/197008.html
 
 
 
+https://github.com/oldratlee/java-modern-tech-practice/issues/11
 
 
 https://www.baeldung.com/java-rule-engines
