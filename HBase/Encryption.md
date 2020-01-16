@@ -10,3 +10,8 @@ Transparent Server Side Encryption
 
 https://archive.cloudera.com/cdh5/cdh/5/hbase-0.98.6-cdh5.2.3/book/hbase.encryption.server.html
 
+
+HBase配置AES加密
+
+
+
