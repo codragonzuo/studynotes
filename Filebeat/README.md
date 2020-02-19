@@ -40,3 +40,10 @@ https://segmentfault.com/a/1190000006124064
   
   
   
+  ## 负载均衡
+  
+  filebeat输出到 Redis, Logstash, and Elasticsearch 时，可以配置负载均衡。
+  
+  kafka自身有负载均衡的功能。
+  
+  
