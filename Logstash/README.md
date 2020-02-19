@@ -43,3 +43,14 @@
 
 ![](https://upload-images.jianshu.io/upload_images/4191539-18c2aaa729278327.png)
 
+
+## 性能优化
+说一说我的实际经验吧，自己搭了一套ELK收集公司某大型系统的日志。
+
+Filebeat节点大概有30个，logstash节点3个（8C16G），数据一天1TB左右。
+
+开始遇到的问题是logstash发送数据有延迟，通过调整线程数和batch size将logstash集群的吞吐量提升到5000e/s后始终突破不上去。于是加入了三台Kafka集群（均8C8G），每个Topic分3个分区，让三个logstash消费，现在可以达到10000e/s，基本满足需求就没有继续优化了。
+
+如果你未来有扩容或数据量增大的情况，建议加入消息队列做缓冲，而且以后方便管理，比如你要加Logstash节点，不需要每个filebeat做更改。
+
+感觉ELK还是很吃资源的，如果保证实时性的话。
