@@ -17,7 +17,7 @@ An Overview of the syslog Protocol
 
 Cisco 的syslog有什么不同？
 
-## UDP 524 port
+## UDP 514 port
 
 ![](https://stackify.com/wp-content/uploads/2017/06/flylib-syslog-screenshot-12386.jpg)
 
@@ -94,5 +94,12 @@ tail -n 10 /var/log/syslog
 
 ```
 
+## syslog详解及配置远程发送日志和远程日志分类
+
+https://www.cnblogs.com/haimeng/p/10823699.html
+
+![](https://img2018.cnblogs.com/blog/1225529/201905/1225529-20190507112121594-392854954.png)
+
+Syslog再UNIX系统中应用非常广泛，它是一种标准协议，负责记录系统事件的一个后台程序，记录内容包括核心、系统程序的运行情况及所发生的事件。Syslog协议使用UDP作为传输协议，通过514端口通信，Syslog使用syslogd后台进程，syslogd启动时读取配置文件/etc/syslog.conf，它将网络设备的日志发送到安装了syslog软件系统的日志服务器，Syslog日志服务器自动接收日志数据并写到指定的日志文件中。
 
 
