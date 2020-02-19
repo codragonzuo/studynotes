@@ -103,3 +103,45 @@ https://www.cnblogs.com/haimeng/p/10823699.html
 Syslog再UNIX系统中应用非常广泛，它是一种标准协议，负责记录系统事件的一个后台程序，记录内容包括核心、系统程序的运行情况及所发生的事件。Syslog协议使用UDP作为传输协议，通过514端口通信，Syslog使用syslogd后台进程，syslogd启动时读取配置文件/etc/syslog.conf，它将网络设备的日志发送到安装了syslog软件系统的日志服务器，Syslog日志服务器自动接收日志数据并写到指定的日志文件中。
 
 
+## Send Logs to multiple syslog servers
+
+https://unix.stackexchange.com/questions/244707/send-logs-to-multiple-syslog-servers
+
+As you have not specified, and also for the benefit of other readers, I will describe what to do using syslog-ng and rsyslog to have a server logging simultaneously to two remote syslog servers.
+
+If you have syslog-ng logging to a central syslog server, modify /etc/syslog-ng.conf
+
+As an example:
+```
+source s_src { unix-dgram("/dev/log"); internal();
+         file("/proc/kmsg" program_override("kernel"));
+};
+
+destination d_loghost {udp("10.10.1.1" port(514));};
+log { source(s_src); destination(d_loghost); };
+```
+To syslog to a 2nd destination, add:
+```
+destination d_loghost2 {udp("10.10.1.2" port(514));};
+log { source(s_src); destination(d_loghost2); };
+```
+If running rsyslog, then actually it is simpler.The configuration file is /etc/rsyslog.conf
+
+Where you find a destination:
+```
+*.* @10.10.1.1:514
+```
+you add a 2nd destination:
+```
+*.* @10.10.1.2:514
+```
+After changing the configuration, the syslog daemons in the client side need to be restart. Being it respectively,
+```
+sudo service syslog-ng restart
+```
+or
+```
+sudo service rsyslog restart
+```
+As the syslog daemon sends all messages to all destinations configured, unless you explicitly filter out services or log levels, you do not need to configure anything else [in the client side]. Both will receive exactly the same logs.
+
