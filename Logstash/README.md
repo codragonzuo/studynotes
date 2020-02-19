@@ -68,3 +68,15 @@ Filebeat节点大概有30个，logstash节点3个（8C16G），数据一天1TB�
 - 日志解析过滤，日志转换
 - 日志输出
 
+## Logstash管道pipeline特性
+
+插件式的pipeline架构---混合和编排不同的input、filter以及output构建pipeline。
+
+Logstash事件处理管道协调input、filter和output的执行。
+
+Logstash pipeline中的每个input阶段都在自己的线程中运行。input将事件写入内存（默认）或磁盘上的中央队列。每个pipeline的工作线程从这个队列中取出一批事件，通过配置的filter运行这批事件，然后通过output输出经过过滤、转换的事件。
+
+默认情况下，Logstash在pipeline的stage之间使用内存中的有界队列缓存事件。如果Logstash异常终止，存储在内存中的事件会丢失。为了防止数据丢失，可以配置将运行的事件持久化到磁盘。
+
+
+
