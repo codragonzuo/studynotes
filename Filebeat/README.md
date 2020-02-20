@@ -59,4 +59,27 @@ https://blog.csdn.net/goodlife111/article/details/101423624
 https://www.cnblogs.com/whych/p/9958188.html
 
 
+## 高可用logstash
+
+
+![](https://qbox.io/img/blog/logstash2_170804_143027.png)
+
+有两种方式， HaProxy和DNS两种方式进行 高可用 配置。
+
+
+## 解决单点故障 + 负载均衡 ---- Keepalive + Haproxy
+
+单点故障(单点故障是指一旦某一点出现故障就会导致整个系统架构的不可用).
+
+In the load balanced scenario we just saw, there is a single point of failure. The single point of failure is the load balancer itself. This can be solved by using something called keepalived.
+
+You can solve this problem by introducing another Haproxy server, which in total is two Haproxy servers with identical configuration. The idea is to have only one Haproxy act as the ACTIVE one and the other as standby. The standby will become ACTIVE if the other goes down.
+
+A single IP address keeps on floating between two Haproxy nodes. If the active one is not available, the standby will assign the ip address to itself, so that requests from client will automatically be routed to it.
+
+We basically need two Haproxy servers( with identical configuration - the configuration that we saw above) and both of them should have keepalived configured.
+
+LVS（Linux Virtual Server）即Linux虚拟服务器，是由章文嵩博士主导的开源负载均衡项目，目前LVS已经被集成到Linux内核模块中。该项目在Linux内核中实现了基于IP的数据请求负载均衡调度方案.
+
+
 
