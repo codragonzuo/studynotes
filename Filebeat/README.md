@@ -47,3 +47,16 @@ https://segmentfault.com/a/1190000006124064
   kafka自身有负载均衡的功能。
   
   
+
+
+## Ansible实例：filebeat配置管理
+
+https://blog.csdn.net/goodlife111/article/details/101423624
+
+
+## Filebeat配置详解
+
+https://www.cnblogs.com/whych/p/9958188.html
+
+
+
