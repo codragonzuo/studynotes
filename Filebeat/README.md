@@ -82,4 +82,29 @@ We basically need two Haproxy servers( with identical configuration - the config
 LVS（Linux Virtual Server）即Linux虚拟服务器，是由章文嵩博士主导的开源负载均衡项目，目前LVS已经被集成到Linux内核模块中。该项目在Linux内核中实现了基于IP的数据请求负载均衡调度方案.
 
 
+## 调优
+
+### filebeat内存泄漏问题分析及调优
+
+https://blog.csdn.net/u013613428/article/details/84557827
+
+- 监控文件数过多
+- 多行问题
+- 非常频繁的rotate日志
+
+### 通过pprof优化filebeat性能
+
+https://segmentfault.com/a/1190000021307490
+
+日志收集延迟的问题，最差的情况，延迟两天以上。严重影响了下游数据分析项目。
+
+之前我们在压测的时候，已经设置了output批量发送。再加上观察kafka集群的性能监控，基本上可以排查是下游集群的影响。
+
+由于大量的小日志，在写到kafka之前，都在大量的gzip压缩，造成了大量的CPU时间浪费在了GC上。？？？？？
+
+
+
+
+
+
 
