@@ -51,4 +51,71 @@ https://nxlog.co/documentation/nxlog-user-guide/im_kafka.html
 https://blog.csdn.net/c1052981766/article/details/79638364
 
 
+## windows event log
+
+win32 api
+
+https://docs.microsoft.com/en-us/windows/win32/eventlog/event-logging
+
+https://www.loggly.com/ultimate-guide/windows-logging-basics/
+
+### WEF
+
+SIEM中心日志节点WEF搭建说明
+
+https://www.freebuf.com/articles/es/197812.html
+
+Windows WEF 环境配置
+
+Windows Event Forwarding 在windows 2008时就已经启用，主要用于日志中心化收集和转储，好处很多。
+
+
+
+#### windows2012服务器配置为日志服务器
+
+https://social.technet.microsoft.com/Forums/sharepoint/zh-CN/cfc231e2-8ac7-4f8c-a788-e5edd65c2366/windows2012?forum=operationsmanagerzhchs
+
+日志收集的原理是各服务器的日志转发到某台集中控制的服务器。主要要考虑几个方面：
+
+1，网络方面：WEF (Windows Event Forwording) 使用 WinRM (Windows Remote Management) 来实现，需要开放5985 (HTTP)或者5986 (HTTPS)端口
+
+2，认证方面：如果收集服务器 (collector) 和产生日志的服务器在同一个域内，使用 Kerberos 认证，不需要额外的配置；如果收集服务器处于工作组或者其它不信任的域，则需要配置证书来实现认证
+
+3，权限方面：对于目标计算机，需要配置本地 Network Service 有读取 security 日志的权限 (可以通过组策略来完成)
+
+4，转发：通过配置组策略让目标服务器转发日志
+
+5，订阅：通过订阅来配置收集哪些日志
+
+详细的步骤，我们可以参考：
+
+Monitoring what matters – Windows Event Forwarding for everyone (even if you already have a SIEM.)
+
+https://blogs.technet.microsoft.com/jepayne/2015/11/23/monitoring-what-matters-windows-event-forwarding-for-everyone-even-if-you-already-have-a-siem/
+
+如果收集服务器是工作组计算机或者和目标计算机不在同一个信任域，可以参考：
+
+Windows Event Forwarding to a workgroup Collector Server
+
+https://blogs.technet.microsoft.com/thedutchguy/2017/01/24/windows-event-forwarding-to-a-workgroup-collector-server/
+
+
+
+https://docs.microsoft.com/en-us/windows/security/threat-protection/use-windows-event-forwarding-to-assist-in-intrusion-detection
+
+
+### Use Windows Event Forwarding to help with intrusion detection
+
+https://docs.microsoft.com/en-us/windows/security/threat-protection/use-windows-event-forwarding-to-assist-in-intrusion-detection
+
+### Windows Event Forwarding for Network Defense
+
+https://medium.com/palantir/windows-event-forwarding-for-network-defense-cb208d5ff86f
+
+### The Windows Event Forwarding Survival Guide
+
+https://hackernoon.com/the-windows-event-forwarding-survival-guide-2010db7a68c4
+
+
+
 
