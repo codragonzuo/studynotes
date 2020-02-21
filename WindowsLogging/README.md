@@ -137,3 +137,14 @@ Local users being created or deleted on member systems
 New Services being installed, particularly on Domain Controllers (as this is often an indicator of malware or lateral movement behavior.)
 
 https://blogs.technet.microsoft.com/jepayne/2015/11/23/monitoring-what-matters-windows-event-forwarding-for-everyone-even-if-you-already-have-a-siem/
+
+### Centralizing Windows Events with Event Forwarding v4.0
+
+
+
+https://www.beyondtrust.com/docs/archive/privilege-management/documents/defendpoint/enterprise-reporting/4-1-291-0/dp-er-event-centralization-4-0.pdf
+
+### Centralizing Windows Logs
+
+
+https://www.loggly.com/ultimate-guide/centralizing-windows-logs/
