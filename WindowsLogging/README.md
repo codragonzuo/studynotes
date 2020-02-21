@@ -117,5 +117,23 @@ https://medium.com/palantir/windows-event-forwarding-for-network-defense-cb208d5
 https://hackernoon.com/the-windows-event-forwarding-survival-guide-2010db7a68c4
 
 
+### Monitoring what matters – Windows Event Forwarding for everyone (even if you already have a SIEM.)
 
+WEF需要windows域相关的配置
 
+Setting WEF up is really easy too. Prerequisites are essentially a server and a GPO. To collect security events, we'll also need to grant the local Network Service principal rights to read that log. This is just the Network Service on the machine itself, so it's not a wide privilege throughout the domain. The WinRM service will also need to be started on all the clients in the domain - just started though, not configured. This is key, as just starting the WinRM service doesn't leave it in a listening state, versus a quick config of the service would make it listening.
+
+You absolutely could configure WEF to collect all the security logs in your domain - and maybe if you don't have any other centralized logging in your domain you should do this for forensic reasons - but the real value of WEF is targeted alerts, filtering out what really matters. This is also where WEF is a great compliment to a SIEM you already have in your environment - let the SIEM do the heavy lifting of collecting every single event and use WEF for targeted visibility, and use WEF to get important security events from workstations/member servers in your environment you may not have covered by the SIEM. The SIEM can then collect them from the WEF server, still providing you with the "single pane of glass" view.
+
+The five basic things I think everyone should start with for monitoring in their domain (if they aren't already) are :
+
+Security Event Logs being cleared
+High value groups like Domain Admins being Changed
+
+Local administrator groups being changed
+
+Local users being created or deleted on member systems
+
+New Services being installed, particularly on Domain Controllers (as this is often an indicator of malware or lateral movement behavior.)
+
+https://blogs.technet.microsoft.com/jepayne/2015/11/23/monitoring-what-matters-windows-event-forwarding-for-everyone-even-if-you-already-have-a-siem/
