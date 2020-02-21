@@ -107,4 +107,71 @@ filbeat虽然功能简单，但是代码结构非常易于进行定制开发
 https://www.jianshu.com/p/fe3ac68f4a7a
 
 
+## log4j输出日志到rsyslog日志服务器
+
+https://www.oschina.net/question/4873_14233
+
+1，开通rsyslog远程UDP访问
+
+sudo vi /etc/rsyslog.conf  
+
+ 
+
+将下面两段前面的#号去掉
+
+#$ModLoad imudp  
+
+#$UDPServerRun 514  
+
+ 
+
+2，建立存放log的文件地址
+
+sudo vi /etc/rsyslog.conf  
+
+ 
+
+加入以下两段
+
+local2.info       /var/log/login_info.log  
+
+local2.debug       /var/log/login_debug.log  
+
+ 
+
+3，开通防火墙 
+
+使用下面的命令将UDP端口514对外开放出来
+
+sudo ufw allow 514/udp  
+
+ 
+
+4，重启rsyslog
+
+sudo service rsyslog restart  
+
+ 
+
+5，log4j的配置参考
+
+log4j.rootLogger=debug, SYSLOG  
+
+log4j.appender.SYSLOG=org.apache.log4j.net.SyslogAppender  
+
+log4j.appender.SYSLOG.syslogHost=10.0.40.53  #日志服务器地址  
+
+log4j.appender.syslog.Threshold=DEBUG  
+
+log4j.appender.SYSLOG.layout=org.apache.log4j.PatternLayout  
+
+log4j.appender.SYSLOG.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n  
+
+log4j.appender.SYSLOG.Header=true  #打印日志信息时前面带上应用程序所在服务器的信息  
+
+log4j.appender.SYSLOG.Facility=local2  
+
+6，运行应用程序，可以在/var/log下看到不同级别的日志信息，如login_info.log和login_debug.log
+
+---
 
