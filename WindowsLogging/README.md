@@ -148,3 +148,25 @@ https://www.beyondtrust.com/docs/archive/privilege-management/documents/defendpo
 
 
 https://www.loggly.com/ultimate-guide/centralizing-windows-logs/
+
+
+## 使用PowerShell操作日志
+
+PowerShell – Everything you wanted to know about Event Logs and then some
+
+https://evotec.xyz/powershell-everything-you-wanted-to-know-about-event-logs/
+
+
+Microsoft offers multiple commands that allow Administrators to work with Event Logs. You can read, write and create event logs. 
+
+For this article, I'm going to focus only on reading part of it. For this article, I will focus on the two most important commands from my perspective. The two commands that are provided with the system are: Get-EventLog and Get-WinEvent. 
+
+Get-EventLog has been around for ages and is still available on modern systems. 
+
+Get-WinEvent is technically replacement of it. 
+
+While some people still use Get-EventLog it's slowly being phased out. It already is unable to report proper log sizes for event logs that are bigger than 4GB. You can read about this problem on my other blog post at Get-EventLog shows wrong maximum size of event logs. It can't work with most of the modern Event Logs created by applications either. 
+
+You should make an effort to learn using Get-WinEvent or as I will try to show you start using my version (wrapper) called Get-Events which is available after you install PSEventViewer module.
+
+
