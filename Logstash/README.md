@@ -79,4 +79,16 @@ Logstash pipeline中的每个input阶段都在自己的线程中运行。input�
 默认情况下，Logstash在pipeline的stage之间使用内存中的有界队列缓存事件。如果Logstash异常终止，存储在内存中的事件会丢失。为了防止数据丢失，可以配置将运行的事件持久化到磁盘。
 
 
+## 如何配置logstash集群
+
+推荐 logstash 消费 kafka 消息
+多个 logstash 订阅同一个主题，使用同一个 group 
+这样一条消息只可能被一个 logstash 节点消费
+当某一个节点挂了，并不影响其他节点对该 topic 消息的消费
+这样即可解决 logstash 单点问题
+
+
+如果是filebeat-logstash这种使用场景，filebeat里面配置多个logstash的IP即可
+
+logstash目前版本没有集群这一概念，flume有，可以在系统层面搞个软负载，keepalive haproxy。
 
