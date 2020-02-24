@@ -99,5 +99,60 @@ logstash目前版本没有集群这一概念，flume有，可以在系统层面�
 
 https://segmentfault.com/a/1190000006087978?utm_medium=referral&utm_source=tuicool
 
-
+| Plugin | Description | Github repository |
+| :- | :- | :- |
+|azure_event_hubs|Receives events from Azure Event Hubs|azure_event_hubs|
+|beats|Receives events from the Elastic Beats framework|logstash-input-beats|
+|cloudwatch|Pulls events from the Amazon Web Services CloudWatch API|logstash-input-cloudwatch|
+|couchdb_changes|Streams events from CouchDB’s _changes URI|logstash-input-couchdb_changes|
+|dead_letter_queue|read events from Logstash’s dead letter queue|logstash-input-dead_letter_queue|
+|elasticsearch|Reads query results from an Elasticsearch cluster|logstash-input-elasticsearch|
+|exec|Captures the output of a shell command as an event|logstash-input-exec|
+|file|Streams events from files|logstash-input-file|
+|ganglia|Reads Ganglia packets over UDP|logstash-input-ganglia|
+|gelf|Reads GELF-format messages from Graylog2 as events|logstash-input-gelf|
+|generator|Generates random log events for test purposes|logstash-input-generator|
+|github|Reads events from a GitHub webhook|logstash-input-github|
+|google_cloud_storage|Extract events from files in a Google Cloud Storage bucket|logstash-input-google_cloud_storage|
+|google_pubsub|Consume events from a Google Cloud PubSub service|logstash-input-google_pubsub|
+|graphite|Reads metrics from the graphite tool|logstash-input-graphite|
+|heartbeat|Generates heartbeat events for testing|logstash-input-heartbeat|
+|http|Receives events over HTTP or HTTPS|logstash-input-http|
+|http_poller|Decodes the output of an HTTP API into events|logstash-input-http_poller|
+|imap|Reads mail from an IMAP server|logstash-input-imap|
+|irc|Reads events from an IRC server|logstash-input-irc|
+|java_generator|Generates synthetic log events|core plugin|
+|java_stdin|Reads events from standard input|core plugin|
+|jdbc|Creates events from JDBC data|logstash-input-jdbc|
+|jms|Reads events from a Jms Broker|logstash-input-jms|
+|jmx|Retrieves metrics from remote Java applications over JMX|logstash-input-jmx|
+|kafka|Reads events from a Kafka topic|logstash-input-kafka|
+|kinesis|Receives events through an AWS Kinesis stream|logstash-input-kinesis|
+|log4j|Reads events over a TCP socket from a Log4j SocketAppender object|logstash-input-log4j|
+|lumberjack|Receives events using the Lumberjack protocl|logstash-input-lumberjack|
+|meetup|Captures the output of command line tools as an event|logstash-input-meetup|
+|pipe|Streams events from a long-running command pipe|logstash-input-pipe|
+|puppet_facter|Receives facts from a Puppet server|logstash-input-puppet_facter|
+|rabbitmq|Pulls events from a RabbitMQ exchange|logstash-input-rabbitmq|
+|redis|Reads events from a Redis instance|logstash-input-redis|
+|relp|Receives RELP events over a TCP socket|logstash-input-relp|
+|rss|Captures the output of command line tools as an event|logstash-input-rss|
+|s3|Streams events from files in a S3 bucket|logstash-input-s3|
+|s3_sns_sqs|Reads logs from AWS S3 buckets using sqs|logstash-input-s3_sns-sqs|
+|salesforce|Creates events based on a Salesforce SOQL query|logstash-input-salesforce|
+|snmp|Polls network devices using Simple Network Management Protocol (SNMP)|logstash-input-snmp|
+|snmptrap|Creates events based on SNMP trap messages|logstash-input-snmptrap|
+|sqlite|Creates events based on rows in an SQLite database|logstash-input-sqlite|
+|sqs|Pulls events from an Amazon Web Services Simple Queue Service queue|logstash-input-sqs|
+|stdin|Reads events from standard input|logstash-input-stdin|
+|stomp|Creates events received with the STOMP protocol|logstash-input-stomp|
+|syslog|Reads syslog messages as events|logstash-input-syslog|
+|tcp|Reads events from a TCP socket|logstash-input-tcp|
+|twitter|Reads events from the Twitter Streaming API|logstash-input-twitter|
+|udp|Reads events over UDP|logstash-input-udp|
+|unix|Reads events over a UNIX socket|logstash-input-unix|
+|varnishlog|Reads from the varnish cache shared memory log|logstash-input-varnishlog|
+|websocket|Reads events from a websocket|logstash-input-websocket|
+|wmi|Creates events based on the results of a WMI query|logstash-input-wmi|
+|xmpp|Receives events over the XMPP/Jabber protocol|logstash-input-xmpp|
 
