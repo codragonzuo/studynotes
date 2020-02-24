@@ -103,8 +103,26 @@ https://segmentfault.com/a/1190000021307490
 由于大量的小日志，在写到kafka之前，都在大量的gzip压缩，造成了大量的CPU时间浪费在了GC上。？？？？？
 
 
+## beats
+
+beats是一组轻量级采集程序的统称，这些采集程序包括并不限于：
+
+- filebeat: 进行文件和目录采集，主要用于收集日志数据。
+- metricbeat: 进行指标采集，指标可以是系统的，也可以是众多中间件产品的，主要用于监控系统和软件的性能。
+- packetbeat: 通过网络抓包、协议分析，对一些请求响应式的系统通信进行监控和数据收集，可以收集到很多常规方式无法收集到的信息。
+- Winlogbeat: 专门针对windows的event log进行的数据采集。
+- Heartbeat: 系统间连通性检测，比如icmp, tcp, http等系统的连通性监控。
+
+![](https://img-blog.csdnimg.cn/2019021310341265.png)
+
+## Filebeat
+Filebeat 是 Elastic Stack 的一部分，因此能够与 Logstash、Elasticsearch 和 Kibana 无缝协作。无论您要使用 Logstash 转换或充实日志和文件，还是在 Elasticsearch 中随意处理一些数据分析，亦或在 Kibana 中构建和分享仪表板，Filebeat 都能轻松地将您的数据发送至最关键的地方。
+
+![](https://img-blog.csdnimg.cn/20190213103441971.png)
 
 
 
+## filebeat 源码分析
 
+https://segmentfault.com/a/1190000006124064
 
