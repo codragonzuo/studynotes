@@ -176,3 +176,9 @@ https://github.com/xme/powershell_scripts
 
 https://blog.rootshell.be/2015/08/24/sending-windows-event-logs-to-logstash/
 
+
+
+## Logstash Window Event Log 範例說明
+
+https://medium.com/elkplus/logstash-window-event-log-d28af77bcb06
+
