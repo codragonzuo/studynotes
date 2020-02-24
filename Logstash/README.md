@@ -145,6 +145,10 @@ logstash目前版本没有集群这一概念，flume有，可以在系统层面�
 
 https://segmentfault.com/a/1190000006087978?utm_medium=referral&utm_source=tuicool
 
+## input plugin
+
+https://www.elastic.co/guide/en/logstash/current/input-plugins.html
+
 | Plugin | Description | Github repository |
 | :- | :- | :- |
 |azure_event_hubs|Receives events from Azure Event Hubs|azure_event_hubs|
@@ -202,3 +206,64 @@ https://segmentfault.com/a/1190000006087978?utm_medium=referral&utm_source=tuico
 |wmi|Creates events based on the results of a WMI query|logstash-input-wmi|
 |xmpp|Receives events over the XMPP/Jabber protocol|logstash-input-xmpp|
 
+
+## output plugin
+https://www.elastic.co/guide/en/logstash/current/output-plugins.html
+
+| Plugin | Description | Github repository |
+| :- | :- | :- |
+|boundary|Sends annotations to Boundary based on Logstash events|logstash-output-boundary|
+|circonus|Sends annotations to Circonus based on Logstash events|logstash-output-circonus|
+|cloudwatch|Aggregates and sends metric data to AWS CloudWatch|logstash-output-cloudwatch|
+|csv|Writes events to disk in a delimited format|logstash-output-csv|
+|datadog|Sends events to DataDogHQ based on Logstash events|logstash-output-datadog|
+|datadog_metrics|Sends metrics to DataDogHQ based on Logstash events|logstash-output-datadog_metrics|
+|elastic_app_search|Sends events to the Elastic App Search solution|logstash-output-elastic_app_search|
+|elasticsearch|Stores logs in Elasticsearch|logstash-output-elasticsearch|
+|email|Sends email to a specified address when output is received|logstash-output-email|
+|exec|Runs a command for a matching event|logstash-output-exec|
+|file|Writes events to files on disk|logstash-output-file|
+|ganglia|Writes metrics to Ganglia’s gmond|logstash-output-ganglia|
+|gelf|Generates GELF formatted output for Graylog2|logstash-output-gelf|
+|google_bigquery|Writes events to Google BigQuery|logstash-output-google_bigquery|
+|google_cloud_storage|Uploads log events to Google Cloud Storage|logstash-output-google_cloud_storage|
+|google_pubsub|Uploads log events to Google Cloud Pubsub|logstash-output-google_pubsub|
+|graphite|Writes metrics to Graphite|logstash-output-graphite|
+|graphtastic|Sends metric data on Windows|logstash-output-graphtastic|
+|http|Sends events to a generic HTTP or HTTPS endpoint|logstash-output-http|
+|influxdb|Writes metrics to InfluxDB|logstash-output-influxdb|
+|irc|Writes events to IRC|logstash-output-irc|
+|java_sink|Discards any events received|core plugin|
+|java_stdout|Prints events to the STDOUT of the shell|core plugin|
+|juggernaut|Pushes messages to the Juggernaut websockets server|logstash-output-juggernaut|
+|kafka|Writes events to a Kafka topic|logstash-output-kafka|
+|librato|Sends metrics, annotations, and alerts to Librato based on Logstash events|logstash-output-librato|
+|loggly|Ships logs to Loggly|logstash-output-loggly|
+|lumberjack|Sends events using the lumberjack protocol|logstash-output-lumberjack|
+|metriccatcher|Writes metrics to MetricCatcher|logstash-output-metriccatcher|
+|mongodb|Writes events to MongoDB|logstash-output-mongodb|
+|nagios|Sends passive check results to Nagios|logstash-output-nagios|
+|nagios_nsca|Sends passive check results to Nagios using the NSCA protocol|logstash-output-nagios_nsca|
+|opentsdb|Writes metrics to OpenTSDB|logstash-output-opentsdb|
+|pagerduty|Sends notifications based on preconfigured services and escalation policies|logstash-output-pagerduty|
+|pipe|Pipes events to another program’s standard input|logstash-output-pipe|
+|rabbitmq|Pushes events to a RabbitMQ exchange|logstash-output-rabbitmq|
+|redis|Sends events to a Redis queue using the RPUSH command|logstash-output-redis|
+|redmine|Creates tickets using the Redmine API|logstash-output-redmine|
+|riak|Writes events to the Riak distributed key/value store|logstash-output-riak|
+|riemann|Sends metrics to Riemann|logstash-output-riemann|
+|s3|Sends Logstash events to the Amazon Simple Storage Service|logstash-output-s3|
+|sns|Sends events to Amazon’s Simple Notification Service|logstash-output-sns|
+|solr_http|Stores and indexes logs in Solr|logstash-output-solr_http|
+|sqs|Pushes events to an Amazon Web Services Simple Queue Service queue|logstash-output-sqs|
+|statsd|Sends metrics using the statsd network daemon|logstash-output-statsd|
+|stdout|Prints events to the standard output|logstash-output-stdout|
+|stomp|Writes events using the STOMP protocol|logstash-output-stomp|
+|syslog|Sends events to a syslog server|logstash-output-syslog|
+|tcp|Writes events over a TCP socket|logstash-output-tcp|
+|timber|Sends events to the Timber.io logging service|logstash-output-timber|
+|udp|Sends events over UDP|logstash-output-udp|
+|webhdfs|Sends Logstash events to HDFS using the webhdfs REST API|logstash-output-webhdfs|
+|websocket|Publishes messages to a websocket|logstash-output-websocket|
+|xmpp|Posts events over XMPP|logstash-output-xmpp|
+|zabbix|Sends events to a Zabbix server|logstash-output-zabbix|
