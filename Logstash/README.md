@@ -92,3 +92,12 @@ Logstash pipeline中的每个input阶段都在自己的线程中运行。input�
 
 logstash目前版本没有集群这一概念，flume有，可以在系统层面搞个软负载，keepalive haproxy。
 
+
+## logstash的lumberjack协议解析
+
+是一种TCP协议。
+
+https://segmentfault.com/a/1190000006087978?utm_medium=referral&utm_source=tuicool
+
+
+
