@@ -5,6 +5,34 @@
 
 ![](https://upload-images.jianshu.io/upload_images/4191539-842d031314a66ccc.png)
 
+```
+input {
+  file {
+    path => "/tmp/access_log"
+    start_position => "beginning"
+  }
+}
+
+filter {
+  if [path] =~ "access" {
+    mutate { replace => { "type" => "apache_access" } }
+    grok {
+      match => { "message" => "%{COMBINEDAPACHELOG}" }
+    }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+  }
+  stdout { codec => rubydebug }
+}
+```
+
 ![](https://upload-images.jianshu.io/upload_images/4191539-b2a602870837aea6.png)
 
 ```
