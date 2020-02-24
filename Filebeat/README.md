@@ -126,3 +126,12 @@ Filebeat 是 Elastic Stack 的一部分，因此能够与 Logstash、Elasticsear
 
 https://segmentfault.com/a/1190000006124064
 
+## Viewing monitoring data in Kibanaedit
+
+https://www.elastic.co/guide/en/kibana/7.6/monitoring-data.html
+
+https://www.elastic.co/guide/en/elasticsearch/reference/7.6/how-monitoring-works.html
+
+https://www.elastic.co/guide/en/beats/filebeat/7.6/monitoring-metricbeat-collection.html
+
+
