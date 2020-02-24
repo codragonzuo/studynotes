@@ -267,3 +267,51 @@ https://www.elastic.co/guide/en/logstash/current/output-plugins.html
 |websocket|Publishes messages to a websocket|logstash-output-websocket|
 |xmpp|Posts events over XMPP|logstash-output-xmpp|
 |zabbix|Sends events to a Zabbix server|logstash-output-zabbix|
+
+
+
+## ELK Stack插件——eventlog插件管理Windows日志教程
+
+http://www.linuxe.cn/post-365.html
+
+--------------------部署Logstash-------------------- 
+
+1、要使用Logstash监控Windows日志需要用到一个eventlog插件，所以我们在Windows服务器上部署了Logstash并保证标准输入输出是正常后，就要安装该插件，首先查看下Logstash是否正常运行
+
+```
+logstash -e 'input { stdin { } } output { stdout {} }'
+```
+
+2、eventlog插件的安装方法★★★★★
+
+```
+logstash-plugin.bat install logstash-input-eventlog
+```
+
+
+3、然后给Logstash生成一个配置文件，大致如下：
+
+
+```
+input {
+  eventlog {
+    type  => 'WinEventLog'
+    logfile => ["Application", "System", "Security"]
+  }
+}
+
+output{
+    elasticsearch{
+        hosts=> ["10.254.15.69:9200"]
+        index => "winevent-%{+YYYY.MM.dd}"
+    }
+}
+```
+
+4、后台运行Logstash
+
+```
+logstash-5.3.0\bin\logstash.bat -f C:\logstash-5.3.0\logstash.conf
+```
+
+
