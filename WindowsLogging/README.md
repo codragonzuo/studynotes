@@ -170,3 +170,9 @@ While some people still use Get-EventLog it's slowly being phased out. It alread
 You should make an effort to learn using Get-WinEvent or as I will try to show you start using my version (wrapper) called Get-Events which is available after you install PSEventViewer module.
 
 
+## Sending Windows Event Logs to Logstash using powershell
+
+https://github.com/xme/powershell_scripts
+
+https://blog.rootshell.be/2015/08/24/sending-windows-event-logs-to-logstash/
+
