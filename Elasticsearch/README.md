@@ -35,5 +35,9 @@ Dot Expander Processor
 ![](https://www.elastic.co/guide/en/elasticsearch/reference/current/images/ingest/enrich/enrich-process.svg)
 
 
+https://hacpai.com/article/1512990272091
+
+
+
 
 
