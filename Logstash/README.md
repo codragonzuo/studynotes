@@ -7,6 +7,24 @@
 
 ![](https://upload-images.jianshu.io/upload_images/4191539-b2a602870837aea6.png)
 
+```
+input { stdin { } }
+
+filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+}
+
+output {
+  elasticsearch { hosts => ["localhost:9200"] }
+  stdout { codec => rubydebug }
+}
+```
+
 ![](https://upload-images.jianshu.io/upload_images/4191539-bfb9ba42e71690dd.png)
 
 ![](https://upload-images.jianshu.io/upload_images/4191539-d6acea1657d59510.png)
