@@ -182,3 +182,33 @@ https://blog.rootshell.be/2015/08/24/sending-windows-event-logs-to-logstash/
 
 https://medium.com/elkplus/logstash-window-event-log-d28af77bcb06
 
+
+## Query and Manage Event Logs with the Windows Events Command Line Utility
+
+The general syntax for Wevtutil.exe is as follows:
+
+wevtutil command [argument [argument] ...] [/option:value [/option:value] ...]
+
+Here command can be any of the following:
+```shell
+al (archive-log) Archives an exported log.
+cl (clear-log) Clears a log.
+el (enum-logs) Lists log names.
+ep (enum-publishers) Lists event publishers.
+epl (export-log) Exports a log.
+gl (get-log) Gets log configuration information.
+gli (get-log-info) Gets log status information.
+gp (get-publisher) Gets publisher configuration information.
+im (install-manifest) Installs event publishers and logs from manifest.
+qe (query-events) Queries events from a log or log file.
+sl (set-log) Modifies configuration of a log.
+um (uninstall-manifest) Uninstalls event publishers and logs from manifest.
+```
+Common options are as follows:
+```shell
+/r:value (remote) If specified, runs the command on a remote computer named value. Note that im (install-manifest) and um (uninstall-manifest) do not support remote operation.
+/u:value (username) Specifies a different user to log on to remote computer. Here value is a user name in the form domain\user or user. This option is only applicable when option /r (remote) is specified.
+/p:value (password) Specifies a password for the specified user. If not specified or value is "*", the user will be prompted to enter a password. This option is only applicable when /u (username) option is specified.
+/a:value (authentication) Specifies an authentication type for connecting to a remote computer. Value can be Default, Negotiate, Kerberos, or NTLM. The default is Negotiate.
+/uni:value (unicode) Displays output in Unicode. Value can be true or false (if true, output is in Unicode).
+```
