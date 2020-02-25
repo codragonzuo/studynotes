@@ -417,3 +417,8 @@ pipelineEventsACK在worker中将事件取出,调用acker.go:(*eventACKer).ackEve
 
 从整体看，filebeat的代码没有包含复杂的算法逻辑或底层实现，但其整体代码结构还是比较清晰的，即使对于不需要参考filebeat特性实现去开发自定义beats的读者来说，仍属于值得一读的源码。
 
+---
+## filebeat 源码分析
+
+https://segmentfault.com/a/1190000006124064
+
