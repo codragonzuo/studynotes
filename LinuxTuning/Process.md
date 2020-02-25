@@ -97,3 +97,52 @@ int execvp(const char *file, char *const argv[]);
 int execve(const char *path, char *const argv[], char *const envp[]);
 ```
 
+https://www.cnblogs.com/sparkdev/p/8214455.html
+
+exec 族函数的特征：调用 exec 族函数会把新的程序装载到当前进程中。在调用过 exec 族函数后，进程中执行的代码就与之前完全不同了，所以 exec 函数调用之后的代码是不会被执行的。
+
+## 在子进程中执行任务
+
+下面让我们通过 vfork 和 execve 函数实现在子进程中执行 ls 命令：
+
+```
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+int main(void)
+{
+    pid_t pid;
+    if((pid=vfork()) < 0)
+    {
+        printf("vfork error!\n");
+        exit(1);
+    }
+    else if(pid==0)
+    {
+        printf("Child process PID: %d.\n", getpid());
+        char *argv[ ]={"ls", "-al", "/home", NULL};  
+        char *envp[ ]={"PATH=/bin", NULL};
+        if(execve("/bin/ls", argv, envp) < 0)
+        {
+            printf("subprocess error");
+            exit(1);
+        }
+        // 子进程要么从 ls 命令中退出，要么从上面的 exit(1) 语句退出
+        // 所以代码的执行路径永远也走不到这里，下面的 printf 语句不会被执行
+        printf("You should never see this message.");
+    }
+    else
+    {
+        printf("Parent process PID: %d.\n", getpid());
+        sleep(1);
+    }
+    return 0;
+}
+```
+把上面的代码保存到文件 subprocessdemo.c 文件中，并执行下面的命令编译：
+
+$ gcc subprocessdemo.c -o subprocessdemo
+然后运行编译出来的 subprocessdemo程序：
+
+$ ./subprocessdemo
