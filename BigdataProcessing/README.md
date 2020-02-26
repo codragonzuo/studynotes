@@ -130,3 +130,39 @@ Pregel，Giraph，Trinity，PowerGraph，GraphX等
 内存计算
 
 Dremel，Hana，Spark等
+
+
+
+## 流式计算的三种框架：Storm、Spark和Flink
+
+https://my.oschina.net/u/4004373/blog/3109561
+
+我们知道，大数据的计算模式主要分为批量计算(batch computing)、流式计算(stream computing)、交互计算(interactive computing)、图计算(graph computing)等。其中，流式计算和批量计算是两种主要的大数据计算模式，分别适用于不同的大数据应用场景。
+
+目前主流的流式计算框架有Storm、Spark Streaming、Flink三种，其基本原理如下：
+
+Apache Storm
+在Storm中，需要先设计一个实时计算结构，我们称之为拓扑（topology）。之后，这个拓扑结构会被提交给集群，其中主节点（master node）负责给工作节点（worker node）分配代码，工作节点负责执行代码。在一个拓扑结构中，包含spout和bolt两种角色。数据在spouts之间传递，这些spouts将数据流以tuple元组的形式发送；而bolt则负责转换数据流。在这里插入图片描述
+
+Apache Spark
+Spark Streaming，即核心Spark API的扩展，不像Storm那样一次处理一个数据流。相反，它在处理数据流之前，会按照时间间隔对数据流进行分段切分。Spark针对连续数据流的抽象，我们称为DStream（Discretized Stream）。 DStream是小批处理的RDD（弹性分布式数据集）， RDD则是分布式数据集，可以通过任意函数和滑动数据窗口（窗口计算）进行转换，实现并行操作。 在这里插入图片描述
+
+Apache Flink
+针对流数据+批数据的计算框架。把批数据看作流数据的一种特例，延迟性较低(毫秒级)，且能够保证消息传输不丢失不重复。 在这里插入图片描述
+
+Flink创造性地统一了流处理和批处理，作为流处理看待时输入数据流是无界的，而批处理被作为一种特殊的流处理，只是它的输入数据流被定义为有界的。Flink程序由Stream和Transformation这两个基本构建块组成，其中Stream是一个中间结果数据，而Transformation是一个操作，它对一个或多个输入Stream进行计算处理，输出一个或多个结果Stream。
+
+这三种计算框架的对比如下：
+
+在这里插入图片描述
+
+参考文章：
+
+Streaming Big Data: Storm, Spark and Samza
+
+![](https://img-blog.csdnimg.cn/20190910192426945.png)
+
+![](https://img-blog.csdnimg.cn/20190910192740234.png)
+
+![](https://img-blog.csdnimg.cn/20190910192754513.jpg)
+
