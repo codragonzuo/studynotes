@@ -124,3 +124,11 @@ A topology runs forever, or until you kill it. Storm will automatically reassign
 
 ● Direct Grouping：直接分组，这是一种比较特别的分组方法，用这种分组意味着消息的发送者指定由消息接收者的哪个Task 处理这个消息。只有被声明为Direct Stream 的消息流可以声明这种分组方法。而且这种消息tuple 必须使用emitDirect 方法来发送。消息处理者可以通过TopologyContext 来获取处理它的消息的taskid（OutputCollector.emit 方法也会返回taskid）。
 
+## Understanding the Parallelism of a Storm Topology
+
+https://www.michael-noll.com/blog/2012/10/16/understanding-the-parallelism-of-a-storm-topology/
+
+## Implementing Real-Time Trending Topics with a Distributed Rolling Count Algorithm in Storm
+
+https://www.michael-noll.com/blog/2013/01/18/implementing-real-time-trending-topics-in-storm/
+
