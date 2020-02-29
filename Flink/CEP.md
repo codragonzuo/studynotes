@@ -503,3 +503,25 @@ public class WeatherDataComplexEventProcessingExample {
 }
 ```
 
+## Flink example
+
+https://github.com/zylklab/flink_cep_examples
+
+https://github.com/ravthiru/flink-cep-examples
+
+## A FlinkCEP Use Case
+
+https://www.ververica.com/blog/complex-event-processing-flink-cep-update
+
+To explore the potential of FlinkCEP, imagine you are an online retailer and want to trace all shipments that start at one location (A), end at another (B), have at least 5 stops along the way, and are completed within 24 hours. I'll walk through this use case in detail below with a simplified code example (you can find the full code here).
+
+![](https://www.ververica.com/hs-fs/hubfs/Imported_Blog_Media/flink-cep-post-image2-1.png?width=1280&height=720&name=flink-cep-post-image2-1.png)
+
+![](https://www.ververica.com/hs-fs/hubfs/Imported_Blog_Media/flink-cep-post-image5-1.png?width=1280&height=720&name=flink-cep-post-image5-1.png)
+
+![](https://www.ververica.com/hs-fs/hubfs/Imported_Blog_Media/flink-cep-post-image4-1.png?width=1280&height=720&name=flink-cep-post-image4-1.png)
+
+![](https://www.ververica.com/hs-fs/hubfs/Imported_Blog_Media/flink-cep-post-image6-1.png?width=1280&height=720&name=flink-cep-post-image6-1.png)
+
+
+
