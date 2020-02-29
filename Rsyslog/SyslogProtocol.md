@@ -56,3 +56,49 @@ RFC 5424 规定消息最大长度为2048个字节，如果收到Syslog报文，�
 2003-08-24T05:14:15.000000003-07:00#非法，小数点后超过6位
 
 ```
+
+
+## Rsyslog
+
+Rsyslog is an open-source software utility used on UNIX and Unix-like computer systems for forwarding log messages in an IP network. 
+
+It implements the basic syslog protocol, extends it with content-based filtering, rich filtering capabilities, 
+queued operations to handle offline outputs[2], support for different module outputs [3], flexible configuration 
+options and adds features such as using TCP for transport.
+
+The official RSYSLOG website defines the utility as "the rocket-fast system for log processing".[4]
+
+
+Contents
+
+1	Protocol
+2	History
+3	Distributions
+4	Related RFCs and working groups
+5	See also
+6	References
+7	External links
+
+-  Protocol
+
+Rsyslog uses the standard BSD syslog protocol, specified in RFC 3164. As the text of RFC 3164 is an informational description and not a standard, various incompatible extensions of it emerged. Rsyslog supports many of these extensions. The format of relayed messages can be customized.
+
+The most important extensions of the original protocol supported by rsyslog are:
+
+```
+ISO 8601 timestamp with millisecond granularity and timezone information
+the addition of the name of relays in the host fields to make it possible to track the path a given message has traversed
+reliable transport using TCP
+support GSS-API and TLS
+logging directly into various database engines.
+support for RFC 5424, RFC 5425, RFC 5426
+support for RELP
+support for buffered operation modes where messages are buffered locally if the receiver is not ready
+complete input/output support for systemd journal
+```
+
+RFC 5425     Transport Layer Security (TLS) Transport Mapping for Syslog
+
+RFC 5426     Transmission of Syslog Messages over UDP
+
+
