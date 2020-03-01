@@ -134,4 +134,24 @@ https://www.elastic.co/guide/en/elasticsearch/reference/7.6/how-monitoring-works
 
 https://www.elastic.co/guide/en/beats/filebeat/7.6/monitoring-metricbeat-collection.html
 
+## Filebeat output数目
+
+https://www.elastic.co/guide/en/beats/filebeat/current/configuring-output.html
+
+
+Configure the output
+
+    You configure Filebeat to write to a specific output by setting options in the Outputs section of the filebeat.yml config file. 
+
+    Only a single output may be defined.
+
+    The following topics describe how to configure each supported output. If you’ve secured the Elastic Stack, also read Securing Filebeat for more about security-related configuration options.
+
+    Elasticsearch
+    Logstash
+    Kafka
+    Redis
+    File
+    Console
+    Elastic Cloud
 
