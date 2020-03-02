@@ -524,4 +524,67 @@ To explore the potential of FlinkCEP, imagine you are an online retailer and wan
 ![](https://www.ververica.com/hs-fs/hubfs/Imported_Blog_Media/flink-cep-post-image6-1.png?width=1280&height=720&name=flink-cep-post-image6-1.png)
 
 
+## Processing multiple patterns in Flink CEP in Parallel
 
+https://stackoverflow.com/questions/45971334/processing-multiple-patterns-in-flink-cep-in-parallel?rq=1
+
+ 
+![picture](https://i.stack.imgur.com/PYbQ7.png)
+
+I want to use different conditions for both Streams. For example, I would like to raise alarm if
+
+        For patient A : if heart rate > 65 and Respiration Rate > 68
+        For patient B : if heart rate > 75 and Respiration Rate > 78
+
+For your requirements, you can create 2 different patterns to have clear separation if you want.
+
+If you want to perform this with the same pattern then it would be possible as well. To do this, read all your kafka topics in one kafka source:
+```
+    FlinkKafkaConsumer010<JoinEvent> kafkaSource = new FlinkKafkaConsumer010<>(
+        Arrays.asList("topic1", "topic2"),
+        new StringSerializerToEvent(),
+        props);
+```
+Here I am assuming that the structure of your event from both the topics are the same and you have the patient name as well as part of the event which is trasnmitted.
+
+Once you did that, it becomes easy as you just need to create a pattern with "Or", something like the following:
+```
+    Pattern.<JoinEvent>begin("first")
+        .where(new SimpleCondition<JoinEvent>() {
+
+          @Override
+          public boolean filter(JoinEvent event) throws Exception {
+            return event.getPatientName().equals("A") && event.getHeartRate() > 65 && joinEvent.getRespirationRate() > 68;
+          }
+        })
+        .or(new SimpleCondition<JoinEvent>() {
+
+          @Override
+          public boolean filter(JoinEvent event) throws Exception {
+            return event.getPatientName().equals("B") && event.getHeartRate() > 75 && joinEvent.getRespirationRate() > 78;
+          }
+        });
+```
+This would produce a match whenever your condition matches. Although, I am not really sure what ".within(Time.milliseconds(100))" is achieving in your example.
+
+
+### CEP: more than event patterns
+
+https://www.tibco.com/blog/2009/12/18/cep-more-than-event-patterns/
+
+One of the interesting aspects of “complex event processing” is that “processing” typically encompasses MORE than just event pattern detection (in many use cases). For example:
+
+in algorithmic trading, you can detect a trade opportunity, but must decide whether to act on it immediately or refer to some risk management rules or process
+
+in airline operations, you can detect a solution to some passenger delay events, but you must decide whether to simply notify the gate manager or initiate some solution process
+
+in customer management / CRM, you can detect a customer “change in state” event pattern, but must decide whether to respond with an appropriate offer or simply update the customer record
+
+in smart grid systems, on detecting a potential transformer outage indicator event pattern, you must decide whether and how to reduce load on the system versus prioritising the maintenance team
+etc etc.
+
+Of course, the process of detecting patterns, making decisions, and instigating appropriate reactions is rarely expressible in a simple orchestration or sequence diagram – event processing is continuous and decisions can simply affect the types of patterns we are looking for. This is why CEP tools often use declarative constructs for defining pattern and decision knowledge, and multiple paradigms / event processing element types or languages for event detection and event-based decisions.
+
+![](https://www.tibco.com/blog/wp-content/uploads/2009/12/cep-pattern-decision-reaction.png)
+
+!
