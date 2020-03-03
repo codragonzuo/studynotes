@@ -1,6 +1,8 @@
 
 ## Flink在k8s上的部署和使用教程
 
+
+
 https://blog.csdn.net/luanpeng825485697/article/details/88032938
 
 http://shzhangji.com/blog/2019/08/24/deploy-flink-job-cluster-on-kubernetes/
@@ -25,3 +27,4 @@ https://medium.com/@Alibaba_Cloud/deploy-apache-flink-natively-on-yarn-or-kubern
 
 ![](https://miro.medium.com/max/1281/0*-o8A5q2Khrc6uvPL.png)
 
+![](https://miro.medium.com/max/1183/0*i0uWzwR5LFIuBquO.png)
