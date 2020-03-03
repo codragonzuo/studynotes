@@ -79,3 +79,5 @@ Kubernetes 加 Docker，我们可以比较好的解决部分问题。有一些�
 
 
 
+# Kubinception: using Kubernetes to run Kubernetes
+https://www.codemotion.com/magazine/dev-hub/backend-dev/kubinception-using-kubernetes-to-run-kubernetes/
