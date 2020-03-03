@@ -103,3 +103,15 @@ Flink复杂事件处理
 
 事件预测：该种情况知道事件初始状态，以及将要做的动作，预测未发生的结果状态。例如气象局根据气象相关的数据预测未来的天气情况等。
 
+
+## What is Apache Flink? — Architecture
+
+https://flink.apache.org/flink-architecture.html
+
+![](https://flink.apache.org/img/bounded-unbounded.png)
+
+- Leverage In-Memory Performance
+Stateful Flink applications are optimized for local state access. Task state is always maintained in memory or, if the state size exceeds the available memory, in access-efficient on-disk data structures. Hence, tasks perform all computations by accessing local, often in-memory, state yielding very low processing latencies. Flink guarantees exactly-once state consistency in case of failures by periodically and asynchronously checkpointing the local state to durable storage
+
+
+![](https://flink.apache.org/img/local-state.png)
