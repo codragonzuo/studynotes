@@ -23,3 +23,6 @@ Parquet、Avro、ORC格式
 行式存储or列式存储：Parquet和ORC都以列的形式存储数据，而Avro以基于行的格式存储数据。 就其本质而言，面向列的数据存储针对读取繁重的分析工作负载进行了优化，而基于行的数据库最适合于大量写入的事务性工作负载。  
 压缩率：基于列的存储区Parquet和ORC提供的压缩率高于基于行的Avro格式。   
 可兼容的平台：ORC常用于Hive、Presto；Parquet常用于Impala、Drill、Spark、Arrow；Avro常用于Kafka、Druid。  
+
+![](https://img-blog.csdnimg.cn/20181217203504521.png)
+
