@@ -37,3 +37,8 @@ Some of the data pipeline applications are as follows –
 Continuous ETL operations in e-commerce  
 Real-time search index building in e-commerce  
 
+
+
+# Use Cases
+
+https://flink.apache.org/usecases.html
