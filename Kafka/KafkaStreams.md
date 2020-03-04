@@ -9,3 +9,6 @@ Kafka Streams只是一个java库，但是它可以解决如下类似问题：
 分布式处理，有容错机制，可以快速容错；
 有重新处理数据的能力；
 ```
+
+
+http://kafka.apache.org/documentation/streams/
