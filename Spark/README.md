@@ -1,6 +1,11 @@
 
 # Spark 
 
+
+
+## Spark – Spark application runs on YARN cluster as a different application while the executors run in the YARN container. The execution of different topologies is not possible in the same JVM, so YARN provides JVM level isolation. YARN also supports the organization of container level resource constraints, and thus provides resource level isolation.
+
+
 1. 当调用一个collect动作时， 图会被提交到一个有向无环图DAG调度程序。  
 2. DAG调度程序将运算图划分为一些阶段stage。 一个阶段由基于输入数据分区的任务组成。 DAG调度进行运算图优化。  
 3. 一个阶段由基于输入数据分区的任务组成。  
