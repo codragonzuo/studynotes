@@ -120,57 +120,30 @@ Spark在接收到实时输入数据流后，将数据划分成批次（divides t
 Transformation Operation
 1. 常用Transformation
    - map(func)
-
 Return a new DStream by passing each element of the source DStream through a function func.
-
-
    - flatMap(func)
-
 Similar to map, but each input item can be mapped to 0 or more output items.
-
-
    - filter(func)
-
 Return a new DStream by selecting only the records of the source DStream on which func returns true.
-
    - repartition(numPartitions)
-
 Changes the level of parallelism in this DStream by creating more or fewer partitions.
-
    - union(otherStream)
-
 Return a new DStream that contains the union of the elements in the source DStream and otherDStream.
-
    - count()
-
 Return a new DStream of single-element RDDs by counting the number of elements in each RDD of the source DStream.
-
    - reduce(func)
-
 Return a new DStream of single-element RDDs by aggregating the elements in each RDD of the source DStream using a function func (which takes two arguments and returns one). The function should be associative so that it can be computed in parallel.
-
    - countByValue()
-
 When called on a DStream of elements of type K, return a new DStream of (K, Long) pairs where the value of each key is its frequency in each RDD of the source DStream.
-
    - reduceByKey(func, [numTasks])
-
 When called on a DStream of (K, V) pairs, return a new DStream of (K, V) pairs where the values for each key are aggregated using the given reduce function. Note: By default, this uses Spark's default number of parallel tasks (2 for local mode, and in cluster mode the number is determined by the config property spark.default.parallelism) to do the grouping. You can pass an optional numTasks argument to set a different number of tasks.
-
    - join(otherStream, [numTasks])
-
 When called on two DStreams of (K, V) and (K, W) pairs, return a new DStream of (K, (V, W)) pairs with all pairs of elements for each key.
-
    - cogroup(otherStream, [numTasks])
-
 When called on a DStream of (K, V) and (K, W) pairs, return a new DStream of (K, Seq[V], Seq[W]) tuples.
-
    - transform(func)
-
 Return a new DStream by applying a RDD-to-RDD function to every RDD of the source DStream. This can be used to do arbitrary RDD operations on the DStream.
-
    - updateStateByKey(func)
-
 Return a new "state" DStream where the state for each key is updated by applying the given function on the previous state of the key and the new values for the key. This can be used to maintain arbitrary state data for each key.
 
 2. updateStateByKey(func)  
@@ -179,37 +152,78 @@ Return a new "state" DStream where the state for each key is updated by applying
 
 4. Window operations
 
-    a) 窗口操作：基于window对数据transformation（个人认为与Storm的tick相似，但功能更强大）。
-
-    b) 参数：窗口长度（window length）和滑动时间间隔（slide interval）必须是源DStream批次间隔的倍数。
-
-    c) 举例说明：窗口长度为3，滑动时间间隔为2；上一行是原始DStream，下一行是窗口化的DStream。
-
-
-
-    d) 常见window operation
-
+    a) 窗口操作：基于window对数据transformation（个人认为与Storm的tick相似，但功能更强大）。  
+    b) 参数：窗口长度（window length）和滑动时间间隔（slide interval）必须是源DStream批次间隔的倍数。  
+    c) 举例说明：窗口长度为3，滑动时间间隔为2；上一行是原始DStream，下一行是窗口化的DStream。  
+    d) 常见window operation  
    - window(windowLength, slideInterval)
-
 Return a new DStream which is computed based on windowed batches of the source DStream.
-
    - countByWindow(windowLength, slideInterval)
-
 Return a sliding window count of elements in the stream.
-
    - reduceByWindow(func, windowLength, slideInterval)
-
 Return a new single-element stream, created by aggregating elements in the stream over a sliding interval using func. The function should be associative so that it can be computed correctly in parallel.
-
    - reduceByKeyAndWindow(func, windowLength, slideInterval, [numTasks])
-
 When called on a DStream of (K, V) pairs, returns a new DStream of (K, V) pairs where the values for each key are aggregated using the given reduce function func over batches in a sliding window. Note: By default, this uses Spark's default number of parallel tasks (2 for local mode, and in cluster mode the number is determined by the config property spark.default.parallelism) to do the grouping. You can pass an optional numTasks argument to set a different number of tasks.
-
    - reduceByKeyAndWindow(func, invFunc, windowLength, slideInterval, [numTasks])
-
 A more efficient version of the above reduceByKeyAndWindow() where the reduce value of each window is calculated incrementally using the reduce values of the previous window. This is done by reducing the new data that enters the sliding window, and “inverse reducing” the old data that leaves the window. An example would be that of “adding” and “subtracting” counts of keys as the window slides. However, it is applicable only to “invertible reduce functions”, that is, those reduce functions which have a corresponding “inverse reduce” function (taken as parameter invFunc). Like in reduceByKeyAndWindow, the number of reduce tasks is configurable through an optional argument. Note that checkpointing must be enabled for using this operation.
-
    - countByValueAndWindow(windowLength, slideInterval, [numTasks])
-
 When called on a DStream of (K, V) pairs, returns a new DStream of (K, Long) pairs where the value of each key is its frequency within a sliding window. Like in reduceByKeyAndWindow, the number of reduce tasks is configurable through an optional argument
 
+- 缓存与持久化
+1. 通过persist()将DStream中每个RDD存储在内存。
+2. Window operations会自动持久化在内存，无需显示调用persist()。
+3. 通过网络接收的数据流（如Kafka、Flume、Socket、ZeroMQ、RocketMQ等）执行persist()时，默认在两个节点上持久化序列化后的数据，实现容错。
+
+- Checkpoint
+1. 用途：Spark基于容错存储系统（如HDFS、S3）进行故障恢复。
+2. 分类
+    a) 元数据检查点：保存流式计算信息用于Driver运行节点的故障恢复，包括创建应用程序的配置、应用程序定义的DStream operations、已入队但未完成的批次。  
+    b) 数据检查点：保存生成的RDD。由于stateful transformation需要合并多个批次的数据，即生成的RDD依赖于前几个批次RDD的数据（dependency chain），为缩短dependency chain从而减少故障恢复时间，需将中间RDD定期保存至可靠存储（如HDFS）。  
+3. 使用时机：
+    a) Stateful transformation：updateStateByKey()以及window operations。  
+    b) 需要Driver故障恢复的应用程序。  
+4. 使用方法
+    a) Stateful transformation
+    b) 需要Driver故障恢复的应用程序（以WordCount举例）：如果checkpoint目录存在，则根据checkpoint数据创建新StreamingContext；否则（如首次运行）新建StreamingContext。   
+5. checkpoint时间间隔
+    a) 方法
+dstream.checkpoint(checkpointInterval)
+    b) 原则：一般设置为滑动时间间隔的5-10倍。
+    c) 分析：checkpoint会增加存储开销、增加批次处理时间。当批次间隔较小（如1秒）时，checkpoint可能会减小operation吞吐量；反之，checkpoint时间间隔较大会导致lineage和task数量增长。
+
+### 性能调优
+
+- 降低批次处理时间
+1. 数据接收并行度
+
+    a) 增加DStream：接收网络数据（如Kafka、Flume、Socket等）时会对数据反序列化再存储在Spark，由于一个DStream只有Receiver对象，如果成为瓶颈可考虑增加DStream。
+```
+1 val numStreams = 5
+2 val kafkaStreams = (1 to numStreams).map { i => KafkaUtils.createStream(...) }
+3 val unifiedStream = streamingContext.union(kafkaStreams)
+4 unifiedStream.print()
+```
+
+b) 设置“spark.streaming.blockInterval”参数：接收的数据被存储在Spark内存前，会被合并成block，而block数量决定了Task数量；举例，当批次时间间隔为2秒且block时间间隔为200毫秒时，Task数量约为10；如果Task数量过低，则浪费了CPU资源；推荐的最小block时间间隔为50毫秒。  
+c) 显式对Input DStream重新分区：在进行更深层次处理前，先对输入数据重新分区。  
+
+inputStream.repartition(<number of partitions>)
+        
+2. 数据处理并行度：reduceByKey、reduceByKeyAndWindow等operation可通过设置“spark.default.parallelism”参数或显式设置并行度方法参数控制。
+
+3. 数据序列化：可配置更高效的Kryo序列化。
+
+
+- 设置合理批次时间间隔
+1. 原则：处理数据的速度应大于或等于数据输入的速度，即批次处理时间大于或等于批次时间间隔。
+2. 方法：
+
+    a) 先设置批次时间间隔为5-10秒以降低数据输入速度；
+    b) 再通过查看log4j日志中的“Total delay”，逐步调整批次时间间隔，保证“Total delay”小于批次时间间隔。
+
+
+- 内存调优
+
+1. 持久化级别：开启压缩，设置参数“spark.rdd.compress”。
+
+2. GC策略：在Driver和Executor上开启CMS。
