@@ -99,3 +99,82 @@ https://techmagie.wordpress.com/tag/spark/
 Kafka Stream background  
 http://www.programmersought.com/article/1096146270/  
 
+
+- 原理
+Spark在接收到实时输入数据流后，将数据划分成批次（divides the data into batches），然后转给Spark Engine处理，按批次生成最后的结果流（generate the final stream of results in batches）。 --
+![](https://images2017.cnblogs.com/blog/1200732/201707/1200732-20170730101224037-2014398421.png）
+- DStream
+1. DStream（Discretized Stream，离散流）是Spark Stream提供的高级抽象连续数据流。  
+2. 组成：一个DStream可看作一个RDDs序列。  
+3. 核心思想：将计算作为一系列较小时间间隔的、状态无关的、确定批次的任务，每个时间间隔内接收的输入数据被可靠存储在集群中，作为一个输入数据集。  
+4. 特性：一个高层次的函数式编程API、强一致性以及高校的故障恢复。  
+![](https://images2017.cnblogs.com/blog/1200732/201707/1200732-20170730101329443-777865177.png)
+
+- Input DStream
+1. Input DStream是一种从流式数据源获取原始数据流的DStream，分为基本输入源（文件系统、Socket、Akka Actor、自定义数据源）和高级输入源（Kafka、Flume等）。  
+2. Receiver  
+    a) 每个Input DStream（文件流除外）都会对应一个单一的Receiver对象，负责从数据源接收数据并存入Spark内存进行处理。应用程序中可创建多个Input DStream并行接收多个数据流。  
+    b) 每个Receiver是一个长期运行在Worker或者Executor上的Task，所以会占用该应用程序的一个核（core）。如果分配给Spark Streaming应用程序的核数小于或等于Input DStream个数（即Receiver个数），则只能接收数据，却没有能力全部处理（文件流除外，因为无需Receiver）。  
+3. Spark Streaming已封装各种数据源，需要时参考官方文档。  
+
+Transformation Operation
+1. 常用Transformation
+
+
+
+    - map(func)
+
+Return a new DStream by passing each element of the source DStream through a function func.
+
+    - flatMap(func)
+
+Similar to map, but each input item can be mapped to 0 or more output items.
+
+    - filter(func)
+
+Return a new DStream by selecting only the records of the source DStream on which func returns true.
+
+    - repartition(numPartitions)
+
+Changes the level of parallelism in this DStream by creating more or fewer partitions.
+
+    - union(otherStream)
+
+Return a new DStream that contains the union of the elements in the source DStream and otherDStream.
+
+    - count()
+
+Return a new DStream of single-element RDDs by counting the number of elements in each RDD of the source DStream.
+
+    - reduce(func)
+
+Return a new DStream of single-element RDDs by aggregating the elements in each RDD of the source DStream using a function func (which takes two arguments and returns one). The function should be associative so that it can be computed in parallel.
+
+    - countByValue()
+
+When called on a DStream of elements of type K, return a new DStream of (K, Long) pairs where the value of each key is its frequency in each RDD of the source DStream.
+
+    - reduceByKey(func, [numTasks])
+
+When called on a DStream of (K, V) pairs, return a new DStream of (K, V) pairs where the values for each key are aggregated using the given reduce function. Note: By default, this uses Spark's default number of parallel tasks (2 for local mode, and in cluster mode the number is determined by the config property spark.default.parallelism) to do the grouping. You can pass an optional numTasks argument to set a different number of tasks.
+
+    - join(otherStream, [numTasks])
+
+When called on two DStreams of (K, V) and (K, W) pairs, return a new DStream of (K, (V, W)) pairs with all pairs of elements for each key.
+
+    - cogroup(otherStream, [numTasks])
+
+When called on a DStream of (K, V) and (K, W) pairs, return a new DStream of (K, Seq[V], Seq[W]) tuples.
+
+    - transform(func)
+
+Return a new DStream by applying a RDD-to-RDD function to every RDD of the source DStream. This can be used to do arbitrary RDD operations on the DStream.
+
+    - updateStateByKey(func)
+
+Return a new "state" DStream where the state for each key is updated by applying the given function on the previous state of the key and the new values for the key. This can be used to maintain arbitrary state data for each key.
+
+2. updateStateByKey(func)  
+    a) updateStateByKey可对DStream中的数据按key做reduce，然后对各批次数据累加。    
+    b) WordCount的updateStateByKey版本    
+
