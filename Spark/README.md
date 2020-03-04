@@ -175,6 +175,9 @@ A more efficient version of the above reduceByKeyAndWindow() where the reduce va
 When called on a DStream of (K, V) pairs, returns a new DStream of (K, Long) pairs where the value of each key is its frequency within a sliding window. Like in reduceByKeyAndWindow, the number of reduce tasks is configurable through an optional argument
 
 - 缓存与持久化
+
+如果需要对同一个DStream多次应用多个动作，就需要这样做。
+
 1. 通过persist()将DStream中每个RDD存储在内存。
 2. Window operations会自动持久化在内存，无需显示调用persist()。
 3. 通过网络接收的数据流（如Kafka、Flume、Socket、ZeroMQ、RocketMQ等）执行persist()时，默认在两个节点上持久化序列化后的数据，实现容错。
