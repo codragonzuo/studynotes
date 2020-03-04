@@ -12,3 +12,10 @@ Kafka Streams只是一个java库，但是它可以解决如下类似问题：
 
 
 http://kafka.apache.org/documentation/streams/
+
+
+
+
+https://medium.com/@andy.bryant/kafka-streams-work-allocation-4f31c24753cc
+
+![](https://miro.medium.com/max/794/1*ldI6YPKtQOjW4HpWqfltog.png)
