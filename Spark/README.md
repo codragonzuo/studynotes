@@ -92,3 +92,10 @@ For instance,  reduceByKey  in Listing  4-1  shrinks the number of data records 
 four partitions for a handful of data records is a waste. Therefore, you explicitly pass a value of 1 to the  
  sortByKey  transform.     
 
+Spark Streaming and Flink who are the favorite of data developers  
+http://www.programmersought.com/article/8475147017/  
+Spark Streaming – under the hood  
+https://techmagie.wordpress.com/tag/spark/  
+Kafka Stream background  
+http://www.programmersought.com/article/1096146270/  
+
