@@ -222,7 +222,6 @@ Figure 3-6 depicts how the pipeline is executed with task chaining. The function
 
 
 ## State Management
-
 ![](StateManagement01.png)
 
 - Operator State
@@ -243,4 +242,16 @@ Map state
 ![](StateManagement05.png)
 ![](StateManagement06.png)
 ![](StateManagement07.png)
+
+## Checkpoints, Savepoints, and State Recovery
+
+- Consistent Checkpoints
+
+![](Checkpoint01.png)
+
+- Recovery from a Consistent Checkpoint
+
+![](Checkpoint02.png)
+
+
 
