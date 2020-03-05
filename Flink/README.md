@@ -115,3 +115,17 @@ Stateful Flink applications are optimized for local state access. Task state is 
 
 
 ![](https://flink.apache.org/img/local-state.png)
+
+
+
+## Components 
+
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/processes.svg)
+
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.0/fig/process_model.svg)
+
+ **JobManager ResourceManager TaskManager Dispatcher**
+ 
+ 
+ 
+ 
