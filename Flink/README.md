@@ -138,6 +138,18 @@ Stateful Flink applications are optimized for local state access. Task state is 
 
 
 ![](HaFlinkSetup.png)
+
+Flink依靠外部的容器编排组件 或者 资源调度组件 来进行进程级别的 高可用恢复。
+
+When running an application as a library deployment in a container environment, such as Kubernetes, failed JobManager or TaskManagercontainers are usually automatically restarted by the container orchestration
+service. 
+
+When running on YARN or on Mesos, Flink’s remaining processes trigger the restart of JobManager or TaskManager processes. Flink does not
+provide tooling to restart failed processes when running in a standalone cluster.   
+Hence, it can be useful to run standby JobManagers andTaskManagers that can take over the work of failed processes.   
+
+
+
 ## Yarn 
 
 ![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/FlinkOnYarn.svg)
