@@ -253,5 +253,13 @@ Map state
 
 ![](Checkpoint02.png)
 
+## Queryable State
+
+https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/state/queryable_state.html
+
+![](QueryableState01.png)
+
+
+
 
 
