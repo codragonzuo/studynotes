@@ -214,4 +214,8 @@ from https://flink.apache.org/2019/06/05/flink-network-stack.html
 
 ![](ApplicationSumit.png)
 
-## 
+## Task Chaining
+Flink features an optimization technique called task chaining that reduces the overhead of local communication under certain conditions. In order to satisfy the requirements for task chaining, two or more operators must be configured with the same parallelism and connected by local forward channels. The operator pipeline shown in Figure 3-5 fulfills theserequirements. It consists of three operators that are all configured for a task parallelism of two and connected with local forward connections.
+![](TaskChaining01.png)
+Figure 3-6 depicts how the pipeline is executed with task chaining. The functions of the operators are fused into a single task that is executed by a single thread. Records that are produced by a function are separately handed over to the next function with a simple method call. Hence, there are basically no serialization and communication costs for passing records between functions.
+![](TaskChaining02.png)
