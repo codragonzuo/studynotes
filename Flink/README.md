@@ -219,3 +219,28 @@ Flink features an optimization technique called task chaining that reduces the o
 ![](TaskChaining01.png)
 Figure 3-6 depicts how the pipeline is executed with task chaining. The functions of the operators are fused into a single task that is executed by a single thread. Records that are produced by a function are separately handed over to the next function with a simple method call. Hence, there are basically no serialization and communication costs for passing records between functions.
 ![](TaskChaining02.png)
+
+
+## State Management
+
+![](StateManagement01.png)
+
+- Operator State
+![](StateManagement02.png)
+
+List state  
+Union list state  
+Broadcast list state      
+
+- Keyed State
+![](StateManagement03.png)
+Value state  
+List state  
+Map state  
+
+- Scaling Stateful Operators
+![](StateManagement04.png)
+![](StateManagement05.png)
+![](StateManagement06.png)
+![](StateManagement07.png)
+
