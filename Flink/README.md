@@ -160,9 +160,54 @@ Hence, it can be useful to run standby JobManagers andTaskManagers that can take
 
 image for ***Stream Processing with Apache Flink Fundamentals, Implementation, and Operation of Streaming Applications
 
-不同的TaskManager进程采用网络通信。
+不同的TaskManager进程的task直接采用网络通信。
+
+同一个TaskManager进程内的task采用 序列化的数据缓存队列 进行通信。
 
 采用技术提高通信效率。
+
+## A Deep-Dive into Flink's Network Stack
+
+Logical View  
+Physical Transport  
+  Inflicting Backpressure (1)  
+Credit-based Flow Control  
+  Inflicting Backpressure (2)  
+  What do we Gain? Where is the Catch?  
+Writing Records into Network Buffers and Reading them again  
+  Flushing Buffers to Netty  
+  Buffer Builder & Buffer Consumer  
+Latency vs. Throughput  
+Conclusion  
+
+
+It abstracts over the different settings of the following three concepts:
+
+- Subtask output type (ResultPartitionType):
+  - pipelined (bounded or unbounded): Sending data downstream as soon as it is produced, potentially one-by-one, either as a bounded or unbounded stream of records.
+  - blocking: Sending data downstream only when the full result was produced.
+- Scheduling type:
+  - all at once (eager): Deploy all subtasks of the job at the same time (for streaming applications).
+  - next stage on first output (lazy): Deploy downstream tasks as soon as any of their producers generated output.
+  - next stage on complete output: Deploy downstream tasks when any or all of their producers have generated their full output set.
+- Transport:
+  - high throughput: Instead of sending each record one-by-one, Flink buffers a bunch of records into its network buffers and sends them altogether. This reduces the costs per record and leads to higher throughput.
+  - low latency via buffer timeout: By reducing the timeout of sending an incompletely filled buffer, you may sacrifice throughput for latency.
+
+![](https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack1.png)
+
+
+![])(https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack3.png)
+
+![](https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack4.png)
+
+![](https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack6.png)
+
+![](https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack7.png)
+
+![](https://flink.apache.org/img/blog/2019-06-05-network-stack/flink-network-stack8.png)
+
+from https://flink.apache.org/2019/06/05/flink-network-stack.html
 
 
 ## Application Sumit
