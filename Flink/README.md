@@ -136,6 +136,8 @@ Stateful Flink applications are optimized for local state access. Task state is 
 
 ![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/jobmanager_ha_overview.png)
 
+
+![](HaFlinkSetup.png)
 ## Yarn 
 
 ![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/FlinkOnYarn.svg)
@@ -147,3 +149,8 @@ Stateful Flink applications are optimized for local state access. Task state is 
 image for ***Stream Processing with Apache Flink Fundamentals, Implementation, and Operation of Streaming Applications
 
 
+## Application Sumit
+
+![](ApplicationSumit.png)
+
+## 
