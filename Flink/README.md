@@ -122,10 +122,28 @@ Stateful Flink applications are optimized for local state access. Task state is 
 
 ![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/processes.svg)
 
-![](https://ci.apache.org/projects/flink/flink-docs-release-1.0/fig/process_model.svg)
+
 
  **JobManager ResourceManager TaskManager Dispatcher**
  
  
  
- 
+# High Availability (HA)
+
+## JobManager High Availability (HA)
+
+- Standalone Cluster High Availability
+
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/jobmanager_ha_overview.png)
+
+## Yarn 
+
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.10/fig/FlinkOnYarn.svg)
+
+## JobGraph
+
+![](JobGraph.png)
+
+image for ***Stream Processing with Apache Flink Fundamentals, Implementation, and Operation of Streaming Applications
+
+
