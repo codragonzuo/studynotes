@@ -160,6 +160,10 @@ Hence, it can be useful to run standby JobManagers andTaskManagers that can take
 
 image for ***Stream Processing with Apache Flink Fundamentals, Implementation, and Operation of Streaming Applications
 
+不同的TaskManager进程采用网络通信。
+
+采用技术提高通信效率。
+
 
 ## Application Sumit
 
