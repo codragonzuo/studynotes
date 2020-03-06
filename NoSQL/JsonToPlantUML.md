@@ -9,3 +9,10 @@ https://www.npmjs.com/package/json-to-plantuml
 $ echo '{"foo": "bar"}' | json-to-plantuml | java -jar plantuml.jar -pipe > foobar.png
 $ json-to-plantuml -f .\data\albumdata.json | java -jar plantuml.jar -pipe > albumdata.png
 ```
+
+
+## 把UML图转换成JSON Schema.
+
+https://www.npmjs.com/package/esf-puml
+
+PlantUML (subset) parser and generator of JSON Schema.
