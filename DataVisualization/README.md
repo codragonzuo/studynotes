@@ -57,3 +57,11 @@ A force-directed graph layout toolbox focused on real-world large-scale graphs
 - Randomly
 This is what happens if node positions is set up randomly
 ![](https://www.data-to-viz.com/graph/network_files/figure-html/unnamed-chunk-8-1.png)
+
+
+## 30个值得推荐的数据可视化工具（2019年更新）
+
+https://zhuanlan.zhihu.com/p/51695598
+
+
+
