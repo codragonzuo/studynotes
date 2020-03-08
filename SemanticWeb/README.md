@@ -44,3 +44,7 @@ OWL Full (包含 OWL DL)
 OWL 使用 XML 编写  
 通过使用 XML，OWL 信息可在使用不同类型的操作系统和应用语言的不同类型的计算机之间进行交换。  
 
+
+## 本体语义WEB
+
+https://www.obitko.com/tutorials/ontologies-semantic-web/common-logic.html
