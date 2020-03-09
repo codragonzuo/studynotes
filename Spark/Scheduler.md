@@ -128,6 +128,30 @@ Spark 将任务以 shuffle 依赖(宽依赖)为边界打散，划分多个 Stage
 而宽依赖则需要考虑恢复所有父RDD的丢失分区，并且同一RDD下的其他分区数据也重新计算了一次。
 
 
+## shuffle原理和调优
+http://sharkdtu.com/posts/spark-shuffle.html
+
+与MapReduce计算框架一样，Spark的Shuffle实现大致如下图所示，在DAG阶段以shuffle为界，划分stage，上游stage做map task，每个map task将计算结果数据分成多份，每一份对应到下游stage的每个partition中，并将其临时写到磁盘，该过程叫做shuffle write；下游stage做reduce task，每个reduce task通过网络拉取上游stage中所有map task的指定分区结果数据，该过程叫做shuffle read，最后完成reduce的业务逻辑。举个栗子，假如上游stage有100个map task，下游stage有1000个reduce task，那么这100个map task中每个map task都会得到1000份数据，而1000个reduce task中的每个reduce task都会拉取上游100个map task对应的那份数据，即第一个reduce task会拉取所有map task结果数据的第一份，以此类推。
+
+![](http://sharkdtu.com/images/spark-shuffle-overview.png)
+
+在map阶段，除了map的业务逻辑外，还有shuffle write的过程，这个过程涉及到序列化、磁盘IO等耗时操作；在reduce阶段，除了reduce的业务逻辑外，还有前面shuffle read过程，这个过程涉及到网络IO、反序列化等耗时操作。所以整个shuffle过程是极其昂贵的，spark在shuffle的实现上也做了很多优化改进，随着版本的迭代发布，spark shuffle的实现也逐步得到改进。
+
+- 序列号
+- 磁盘IO
+- 网络IO
+- 反序列化
+
+
+### Spark Architecture: Shuffle
+
+![](https://i2.wp.com/0x0fff.com/wp-content/uploads/2015/08/spark_tungsten_sort_shuffle.png)
+
+https://0x0fff.com/spark-architecture-shuffle/
+
+
+
+
 ## Spark Scheduler模块详解-DAGScheduler实现
 
 https://www.jianshu.com/p/ad9610bcb4d0
