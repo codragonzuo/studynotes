@@ -29,3 +29,7 @@ Multitenancy in Cloud Application Services (Software as a Service) Applications
 • Not allow a “noisy neighbor” tenant to affect the performance of other tenants, or increase their costs  
 • Be accessible from various locations, devices and software architectures to meet potentially global demand  
 • Offer tenant-aware self-service  
+
+
+![](https://blog.fleeto.us/post/an-overview-of-sandboxed-container/images/image1.png)
+
