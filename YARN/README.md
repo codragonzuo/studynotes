@@ -159,4 +159,9 @@ Class-Based Weighted Fair Queuing, or CBWFQ
 
 picture from  2017-Cloud Computing Theory and Practice
 
+![]()
+
+9.5 STABILITY OF A TWO-LEVEL RESOURCE ALLOCATION ARCHITECTURE
+
+![](CloudResourceAllocArchitecture.png)
 
