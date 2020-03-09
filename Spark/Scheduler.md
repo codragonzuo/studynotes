@@ -55,11 +55,77 @@ TaskScheduler：DAGScheduler将划分完成的Task提交到TaskScheduler，TaskS
 
 join操作即可能是宽依赖也可能是窄依赖，当要对RDD进行join操作时，如果RDD进行过重分区则为窄依赖，否则为宽依赖。
 
-**Stage的划分 
+
+为什么Spark将依赖分为窄依赖和宽依赖
+
+- 窄依赖(narrow dependency)
+可以支持在同一个集群Executor上，以pipeline管道形式顺序执行多条命令，例如在执行了map后，紧接着执行filter。分区内的计算收敛，不需要依赖所有分区的数据，可以并行地在不同节点进行计算。所以它的失败回复也更有效，因为它只需要重新计算丢失的parent partition即可
+
+- 宽依赖(shuffle dependency)
+则需要所有的父分区都是可用的，必须等RDD的parent partition数据全部ready之后才能开始计算，可能还需要调用类似MapReduce之类的操作进行跨节点传递。从失败恢复的角度看，shuffle dependency牵涉RDD各级的多个parent partition。
+
+RDD之间的依赖关系就形成了DAG（有向无环图）
+
+在Spark作业调度系统中，调度的前提是判断多个作业任务的依赖关系，这些作业任务之间可能存在因果的依赖关系，也就是说有些任务必须先获得执行，然后相关的依赖人物才能执行，但是任务之间显然不应出现任何直接或间接的循环依赖关系，所以本质上这种关系适合用DAG表示
+
+## Stage的划分
+
 宽依赖：需要Shuffle，Spark根据宽依赖将Job划分不同的Stage
+
 窄依赖：RDD的每个Partition依赖固定数量的parent RDD的Partition，可以通过一个Task并行处理这些相互独立的Partition
 
 注意：宽依赖支持两种Shuffle Manager， HashShuffleManager（基于Hash的Shuffle机制）和SortShuffleManager（基于排序的Shuffle机制）
+
+
+shuffle依赖就必须分为两个阶段(stage)去做：
+
+（1）第1个阶段(stage)需要把结果shuffle到本地，例如reduceByKey，首先要聚合某个key的所有记录，才能进行下一步的reduce计算，这个汇聚的过程就是shuffle。
+
+(2) 第二个阶段(stage)则读入数据进行处理。
+
+为什么要写在本地？
+
+后面的RDD多个分区都要去读这个信息，如果放到内存，假如出现数据丢失，后面所有的步骤全部不能进行，违背了之前所说的需要父RDD分区数据全部ready的原则。
+
+同一个stage里面的task是可以并发执行的，下一个stage要等前一个stage ready(和map reduce的reduce需要等map过程ready一脉相承)。
+
+Spark 将任务以 shuffle 依赖(宽依赖)为边界打散，划分多个 Stage. 最后的结果阶段叫做 ResultStage, 其它阶段叫 ShuffleMapStage, 从后往前推导，依将计算。
+
+
+![](https://upload-images.jianshu.io/upload_images/1900685-e784179c0fd1f80c.png)
+
+1.从后往前推理，遇到宽依赖就断开，遇到窄依赖就把当前RDD加入到该Stage
+
+2.每个Stage里面Task的数量是由该Stage中最后一个RDD的Partition的数量所决定的。
+
+3.最后一个Stage里面的任务类型是ResultTask，前面其他所有的Stage的任务类型是ShuffleMapTask。
+
+4.代表当前Stage的算子一定是该Stage的最后一个计算步骤
+
+表面上看是数据在流动，实质上是算子在流动。
+
+（1）数据不动代码动
+
+
+（2）在一个Stage内部算子为何会流动（Pipeline）？首先是算子合并，也就是所谓的函数式编程的执行的时候最终进行函数的展开从而把一个Stage内部的多个算子合并成为一个大算子（其内部包含了当前Stage中所有算子对数据的计算逻辑）；其次，是由于Transformation操作的Lazy特性！在具体算子交给集群的Executor计算之前首先会通过Spark Framework(DAGScheduler)进行算子的优化（基于数据本地性的Pipeline）。
+
+
+
+
+## 容灾
+
+![](https://upload-images.jianshu.io/upload_images/1935267-b4ee77195a62d50d.jpg)
+
+如上图所示：A,B,C,D,E,F,G代表RDD
+
+当执行算子有shffle操作的时候，就划分一个Stage。（即宽依赖来划分Stage）
+
+窄依赖会被划分到同一个Stage中，这样它们就能以管道的方式迭代执行。
+
+宽依赖由于依赖的上游RDD不止一个，所以往往需要跨节点传输数据。
+
+从容灾角度讲，它们恢复计算结果的方式不同。窄依赖只需要重新执行父RDD的丢失分区的计算即可恢复。
+而宽依赖则需要考虑恢复所有父RDD的丢失分区，并且同一RDD下的其他分区数据也重新计算了一次。
 
 
 ## Spark Scheduler模块详解-DAGScheduler实现
