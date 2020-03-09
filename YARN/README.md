@@ -165,3 +165,7 @@ picture from  2017-Cloud Computing Theory and Practice
 
 ![](CloudResourceAllocArchitecture.png)
 
+## Yarn资源请求处理和资源分配原理解析
+
+https://blog.csdn.net/zhanyuanlin/article/details/78799131
+
