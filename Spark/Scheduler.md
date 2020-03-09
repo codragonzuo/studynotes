@@ -143,11 +143,80 @@ http://sharkdtu.com/posts/spark-shuffle.html
 - 反序列化
 
 
+
 ### Spark Architecture: Shuffle
 
 ![](https://i2.wp.com/0x0fff.com/wp-content/uploads/2015/08/spark_tungsten_sort_shuffle.png)
 
 https://0x0fff.com/spark-architecture-shuffle/
+
+
+## 分区
+
+Spark RDD 是一种分布式的数据集，由于数据量很大，因此要它被切分并存储在各个结点的分区当中。从而当我们对RDD进行操作时，实际上是对每个分区中的数据并行操作。
+
+![](https://img-blog.csdn.net/20180706010015323)
+
+![](https://img-blog.csdn.net/20180706005211170)
+
+![](https://img-blog.csdn.net/20180706005229905)
+
+分区的3种方式
+
+1、HashPartitioner
+
+HashPartitioner确定分区的方式：partition = key.hashCode () % numPartitions
+
+
+
+2、RangePartitioner
+
+RangePartitioner会对key值进行排序，然后将key值被划分成3份key值集合。
+
+
+3、CustomPartitioner
+
+CustomPartitioner可以根据自己具体的应用需求，自定义分区。
+
+如何设置合理的分区数
+
+1、分区数越多越好吗？
+
+不是的，分区数太多意味着任务数太多，每次调度任务也是很耗时的，所以分区数太多会导致总体耗时增多。
+
+2、分区数太少会有什么影响？
+
+分区数太少的话，会导致一些结点没有分配到任务；另一方面，分区数少则每个分区要处理的数据量就会增大，从而对每个结点的内存要求就会提高；还有分区数不合理，会导致数据倾斜问题。
+
+3、合理的分区数是多少？如何设置？
+
+总核数=executor-cores * num-executor 
+
+一般合理的分区数设置为总核数的2~3倍
+
+
+## Spark on YARN
+
+
+### 1. YARN通用流程
+YARN架构里的角色：RM、NM、AM、Container。
+
+![](https://img-blog.csdnimg.cn/20190609233225778.png)
+
+1.client（比如spark）提交一个作业到RM上；
+2.RM会找一个NM，并在上面启动一个Container；
+3.在Container里面跑AM(作业的主程序)；
+4.一个作业如果要跑的话要申请资源的，所以AM要到RM上面去申请资源。假如说现在拿到了资源：可以在三个NM上面分别启动Container。
+5.拿到了资源列表后，去三个NM上面启动分别启动Container来运行task。
+
+这里task就是Spark的的Application Master主程序（main函数驱动程序）。
+
+![](https://img-blog.csdnimg.cn/20190610003606586.png)
+
+### Spark on Yarn
+
+https://spark.apache.org/docs/latest/running-on-yarn.html
+
 
 
 
