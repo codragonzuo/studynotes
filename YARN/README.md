@@ -137,3 +137,26 @@ Step 1) Client ask ResourceManager to run an ApplicationMaster
 Once computing and return result to client.  
 (Step 3) Or request more containers from ResourceManager.  
 (Step 4a and 4b) From (Step 3) run a distributed computation, MapReduce  
+
+
+## 多租户
+
+CapacityScheduler是一个可插装的调度器，它的用途就是对多用户实现共享大集群并对每个用户资源占用做控制。
+
+对于很豪的公司来说，每个用户(团队)自己有一个hadoop集群，这样可以提高自身的稳定性和资源供应，但是确降低了资源利用率，因为很多集群大多数时间都是空闲的。CapacityScheduler能实现这样的功能：每个组固定享有集群里的一部分资源，保证低保，同时如果这个固定的资源空闲，那么可以提供给其他组来抢占，但是一旦这些资源的固定使用者要用，那么立即释放给它使用。这种机制在实现上是通过queue（队列）来实现的。当然CapacityScheduler还支持子队列（sub-queue），
+
+
+## 调度算法
+![](https://ars.els-cdn.com/content/image/3-s2.0-B9780123744616000021-gr24.jpg)
+• Class 1, with guaranteed latency and delivery  
+• Class 2, with guaranteed delivery  
+• Class 3, a best-effort service  
+
+Weighted fair queuing (WFQ)  
+Class-Based Weighted Fair Queuing, or CBWFQ
+
+![](SFQ-Tree.png)
+
+picture from  2017-Cloud Computing Theory and Practice
+
+
