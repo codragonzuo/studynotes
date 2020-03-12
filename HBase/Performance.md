@@ -27,3 +27,10 @@ HBase不是一个关系型数据库，它需要不同的方法定义你的数据
 
 ![](https://pic1.zhimg.com/50/2ea41713e45f5df8ff3a8241fdaaa715_hd.jpg)
 
+
+## 深入探讨hbase读性能优化探讨（20190308）
+
+https://blog.51cto.com/12445535/2360206?source=dra
+
+## Hbase 批量写入 put 和 批量读取 batch
+
