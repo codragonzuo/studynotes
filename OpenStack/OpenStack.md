@@ -57,3 +57,6 @@ FlatDHCP： 与Flat（扁平）管理模式类似，这种网络所有实例桥
 
 VLAN： 为每个项目提供受保护的网段（虚拟LAN）。
 
+## openstack学习-网络管理
+
+https://blog.51cto.com/11555417/2438097
