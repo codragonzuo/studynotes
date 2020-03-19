@@ -306,3 +306,16 @@ public class JSRTest extends TestCase {
 规则定义语言之间的变换
 
 因为JSR 94规范并没有强制统一规则定义的语法，因此，当需要将应用移植到其他的Java规则引擎实现时，可能需要变换规则定义，如将Drools私有的DRL规则语言转换成标准的ruleML，Jess规则语言转换成ruleML等。这个工作一般由XSLT转换器来完成。
+
+
+
+
+## PachinkOO: Object Oriented RETE for Educational Purposes
+
+https://salaboy.com/2011/06/07/pachinkoo-object-oriented-rete-for-educational-purposes/
+
+https://github.com/Salaboy/pachinkOO
+
+## Production Matching for Large Learning Systems
+
+http://reports-archive.adm.cs.cmu.edu/anon/1995/CMU-CS-95-113.pdf
