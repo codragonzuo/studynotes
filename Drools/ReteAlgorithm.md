@@ -314,3 +314,9 @@ KIE团队改良了原生的Rete算法：ReteOO ...
 ## Production Matching for Large Learning Systems
 
 http://reports-archive.adm.cs.cmu.edu/anon/1995/CMU-CS-95-113.pdf
+
+
+
+## RETE算法翻译
+
+https://github.com/yikebocai/rete/blob/master/2-the-basic-rete-algorithm.md
