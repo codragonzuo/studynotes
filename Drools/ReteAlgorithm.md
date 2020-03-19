@@ -309,3 +309,8 @@ RETE算法使用了存储区存储已计算的中间结果，以空间换取时�
 
 KIE团队改良了原生的Rete算法：ReteOO ...
 
+
+
+## Production Matching for Large Learning Systems
+
+http://reports-archive.adm.cs.cmu.edu/anon/1995/CMU-CS-95-113.pdf
