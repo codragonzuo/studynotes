@@ -17,3 +17,8 @@ https://docs.jboss.org/drools/release/7.28.0.Final/drools-docs/html_single/index
 
 21.20. New and Noteworthy in Drools 7.7  
 21.20.1. Executable rule models
+
+## The Drools Executable Model is alive
+Blog: Drools & jBPM Blog
+
+https://www.businessprocessincubator.com/content/the-drools-executable-model-is-alive/
