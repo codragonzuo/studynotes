@@ -48,6 +48,7 @@ b3 -> end;
 start [shape=Mdiamond];
 end [shape=Msquare];
 }
+```
 
 
 ```dot
@@ -177,6 +178,6 @@ digraph R{
       lm_startf;
       lx_startf ->lm_startf->TakeSemoph->ReaData; 
     }
-
+}
 ```
 
