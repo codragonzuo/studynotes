@@ -22,3 +22,12 @@ https://docs.jboss.org/drools/release/7.28.0.Final/drools-docs/html_single/index
 Blog: Drools & jBPM Blog
 
 https://www.businessprocessincubator.com/content/the-drools-executable-model-is-alive/
+
+
+## Drools Tutorial - Getting started with the Drools Engine
+
+http://www.mastertheboss.com/jboss-jbpm/drools/jboss-drools-tutorial
+
+http://www.mastertheboss.com/jboss-jbpm/drools
+
+
