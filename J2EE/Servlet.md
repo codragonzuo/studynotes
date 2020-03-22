@@ -101,3 +101,95 @@ There are many advantages of Servlet over CGI. The web container creates threads
 - Robust: JVM manages Servlets, so we don't need to worry about the memory leak, garbage collection, etc.
 - Secure: because it uses java language.
 
+
+## Servlet Architecture: Basics of Servlets
+
+https://beginnersbook.com/2013/05/servlet-architecture/
+
+BY CHAITANYA SINGH | FILED UNDER: JAVA SERVLET TUTORIAL
+
+A Servlet is a class, which implements the javax.servlet.Servlet interface. However instead of directly implementing the javax.servlet.Servlet interface we extend a class that has implemented the interface like javax.servlet.GenericServlet or javax.servlet.http.HttpServlet.
+
+
+![](https://beginnersbook.com/wp-content/uploads/2013/05/servlet-architecture.png)
+
+servlet-architecture
+
+![](https://beginnersbook.com/wp-content/uploads/2013/05/servlet-architecture-diagram2.png)
+
+Servlet Exceution
+
+This is how a servlet execution takes place when client (browser) makes a request to the webserver.
+
+servlet architecture diagram2
+
+
+Servlet architecture includes:
+
+a) Servlet Interface
+
+To write a servlet we need to implement Servlet interface. Servlet interface can be implemented directly or indirectly by extending GenericServlet or HttpServlet class.
+
+b) Request handling methods
+
+There are 3 methods defined in Servlet interface: init(), service() and destroy().
+
+The first time a servlet is invoked, the init method is called. It is called only once during the lifetime of a servlet. So, we can put all your initialization code here.
+
+The Service method is used for handling the client request. As the client request reaches to the container it creates a thread of the servlet object, and request and response object are also created. These request and response object are then passed as parameter to the service method, which then process the client request. The service method in turn calls the doGet or doPost methods (if the user has extended the class from HttpServlet ).
+
+c) Number of instances
+
+Basic Structure of a Servlet
+```JAVA
+public class firstServlet extends HttpServlet {
+   public void init() {
+      /* Put your initialization code in this method, 
+       * as this method is called only once */
+   }
+   public void service() {
+      // Service request for Servlet
+   }
+   public void destroy() {
+      // For taking the servlet out of service, this method is called only once
+   }
+}
+```
+
+#### How servlet works?
+
+![](https://beginnersbook.com/wp-content/uploads/2013/05/How_Servlet_Works.jpg)
+
+Generic Servlet
+
+As I mentioned above, if you are creating a Generic Servlet then you must extend javax.servlet.GenericServlet class. GenericServlet class has an abstract service() method. Which means the subclass of GenericServlet should always override the service() method.
+
+Signature of service() method:
+```
+public abstract void service(ServletRequest request, ServletResponse response)
+         throws ServletException, java.io.IOException
+```
+The service() method accepts two arguments ServletRequest object and ServletResponse object. The request object tells the servlet about the request made by client while the response object is used to return a response back to the client.
+
+![](https://beginnersbook.com/wp-content/uploads/2013/05/Generic_Servlet.jpg)
+
+###  HTTP Servlet
+
+If you creating Http Servlet you must extend javax.servlet.http.HttpServlet class, which is an abstract class. Unlike Generic Servlet, the HTTP Servlet doesn’t override the service() method. Instead it overrides one or more of the following methods. It must override at least one method from the list below:
+
+doGet() – This method is called by servlet service method to handle the HTTP GET request from client. The Get method is used for getting information from the server
+
+doPost() – Used for posting information to the Server
+
+doPut() – This method is similar to doPost method but unlike doPost method where we send information to the server, this method sends file to the server, this is similar to the FTP operation from client to server
+
+doDelete() – allows a client to delete a document, webpage or information from the server
+
+init() and destroy() – Used for managing resources that are held for the life of the servlet
+
+getServletInfo() – Returns information about the servlet, such as author, version, and copyright.
+
+In Http Servlet there is no need to override the service() method as this method dispatches the Http Requests to the correct method handler, for example if it receives HTTP GET Request it dispatches the request to the doGet() method.
+
+![](https://beginnersbook.com/wp-content/uploads/2013/05/Http_Servlet.jpg)
+
