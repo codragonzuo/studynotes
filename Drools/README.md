@@ -1,7 +1,57 @@
 
 # Drools
 
-Drools规则引擎技术指南
+## KIE 生态
+https://www.jianshu.com/p/dfc777d14ec2
+
+https://blog.csdn.net/qq_36187285/article/details/94140943
+
+![](https://upload-images.jianshu.io/upload_images/9796384-1b1310c3a419e166.png)
+
+
+Drools是一个业务规则管理系统，具有前向链接和后向链接推理的规则引擎，允许快速可靠地评估业务规则和复杂的事件处理。规则引擎也是创建专家系统的基本构建块，在人工智能中，该专家系统是模拟人类专家的决策能力的计算机系统。
+
+jBPM是一个灵活的业务流程管理套件，允许您通过描述为实现这些目标而需要执行的步骤来建模您的业务目标。
+
+OptaPlanner是一种约束求解器，可优化员工排班，车辆路径，任务分配和云优化等用例。OptaPlanner 是一个本地搜索和优化的工具，独立于Drools Planner。
+
+Business Central是一个功能齐全的Web应用程序，用于自定义业务规则和流程的可视化组合。
+
+UberFire是一个基于Web的工作台框架，受Eclipse富客户端平台的启发.UberFire 是新的workbench工程，提供类似Eclipse工作台功能。
+
+
+KIE-WB 是整合了Guvnor 、drools、jbpm的uber工作台。jbpm-wb是虚的。
+
+
+生命周期
+- Author 创作
+- 使用DRL、BPMN2、决策表、类进行知识创作
+- 构建
+- 将创作的知识构建为可部署的单元， JAR。
+- 测试
+- 部署
+- 使用 、管理
+
+1. KieServices`是可以访问所有Kie构建和运行时设施的接口
+2. KieBase是所有应用程序知识定义的存储库。它包含rules, processes, functions和type models。KieBase本身不包含数据; 相反，KieBase可以插入数据以及可以确定从哪个流程实例开始创建session。KieBase的创建相对重量级，而会话的创建就显得非常轻量级，因此建议KieBase尽可能缓存重复创建的session。最终用户通常不用担心，因为KieContainer已经自动提供了相关的缓存机制。
+3. KieContainer: 将所有的java 、kie资源都编译部署到KieContainer中，在运行时使用。
+4. KieSession存储和执行运行时数据。如果已经在kmodule.xml文件中定义，KieBase则可以直接创建KieSession。KieSession 存储和执行运行时数据。 它从KieBase创建或者当在kmodule.xml中定义时可以直接从KieContainer中创建。
+
+
+以编程方式定义KieModule
+
+也可以通过编程方式定义属于KieModule 的KieBases和KieSessions，而不是kmodule.xml文件中的声明性定义。相同的编程API还允许显式添加包含Kie工件的文件，而不是从项目的resources文件夹中自动读取它们。为此，有必要创建一种KieFileSystem虚拟文件系统，并将项目中包含的所有资源添加到其中。
+
+从KieServices可以得到的一个实例KieFileSystem。必须把kmodule.xml配置文件添加到文件系统中。
+
+Kie还提供KieModuleModel的API接口以编程方式创建kmodule.xml文件。从KieServices创建一个KieModuleModel，对使用所需的KieBases和KieSessions 进行配置，将其转换为XML并将XML添加到KieFileSystem。
+
+使用KieFileSystem将需要的其他资源增加到文件系统中。
+
+KieFileSystem成功构建资源内容后，会将KieModule会自动添加到KieRepository。这KieRepository是一个单例，充当所有可用KieModules 的存储库。
+
+
+
 
 ## Drools高级用法
 
