@@ -51,6 +51,9 @@ Kie还提供KieModuleModel的API接口以编程方式创建kmodule.xml文件。�
 KieFileSystem成功构建资源内容后，会将KieModule会自动添加到KieRepository。这KieRepository是一个单例，充当所有可用KieModules 的存储库。
 
 
+## Drools 文档
+
+https://docs.drools.org/latest/drools-docs/html_single/
 
 
 ## Drools高级用法
