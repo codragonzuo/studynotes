@@ -42,6 +42,6 @@ Type 2 hypervisors, called “hosted,” run as a software layer on an operating
 - Red Hat Enterprise Virtulization
 - Huawei FusionSphere
 - 开源的KVM
-- 开源Xen
+- 开源Xen  /zεn/
 - 开源VirtualBSD
 
