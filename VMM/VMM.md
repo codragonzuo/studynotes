@@ -4,6 +4,12 @@ Hypervisor——一种运行在基础物理服务器和操作系统之间的中�
 
 Hypervisors是一种在虚拟环境中的“元”操作系统。他们可以访问服务器上包括磁盘和内存在内的所有物理设备。Hypervisors不但协调着这些硬件资源的访问，也同时在各个虚拟机之间施加防护。当服务器启动并执行Hypervisor时，它会加载所有虚拟机客户端的操作系统同时会分配给每一台虚拟机适量的内存，CPU，网络和磁盘。
 
+
+虚拟机是一个真实存在的计算机系统的硬软件副本，其中部分虚拟处理器指令子集以本地(native)方式执行在宿主(host)处理机上，其他部分指令以仿真方式执行。
+
+- native 本地
+- host 宿主机
+
 In computing, a hypervisor, also called virtual machine monitor (VMM), is a piece of software/hardware platform-virtualization software that allows multiple operating systems to run on a host computer concurrently.
 
 A hypervisor, also known as a virtual machine monitor, is a process that creates and runs virtual machines (VMs). A hypervisor allows one host computer to support multiple guest VMs by virtually sharing its resources, like memory and processing. 
@@ -25,3 +31,17 @@ Type 2 hypervisors, called “hosted,” run as a software layer on an operating
 ![](https://bkimg.cdn.bcebos.com/pic/c9fcc3cec3fdfc03751f33ced43f8794a4c22665)
 
 图 1 三种主要的虚拟化架构类型
+
+
+厂商
+市场主要厂商及产品：
+- VMware vSphere、
+- 微软Hyper-V、
+- 美国思杰公司Citrix的 XenServer 、
+- IBM PowerVM
+- Red Hat Enterprise Virtulization
+- Huawei FusionSphere
+- 开源的KVM
+- 开源Xen
+- 开源VirtualBSD
+
