@@ -39,3 +39,36 @@ KVM仅仅是Linux内核的一个模块，管理和创建完整的KYM虚拟机，
 QEMU-KVM：QEMU是一个强大的虚拟化软件，它可以虚拟不同的CPU构架，比如说在X86的CPU上虚拟一个Power的CPU，并利用它编译出可运行在Power上的程序；KYM使用了QEMU的基于X86的部分，并稍加改造，形成可控制KVM内核模块的用户空间工具QEMU-KVM，所以Linux发行版中分为kernel部分的KVM内核模块和QEMU-KVM工具；这就是KYM和QEMU的关系
 
 libvirt、virsh、virt-manager：尽管QEMU-KVM工具可以创建和管理KVM虚拟机，但Red Hat依然为KVM开发了更多的辅助工具，比如libvirt、libguestfs等，原因是QEMU工具效率不高，不易于使用；libvirt是一套提供了多种语言接口的API，为各种虚拟化工具提供一套方便、可靠的编程接口，不仅支持KVM，而且支持Xen等其他虚拟机；使用libvirt, 需要通过libvirt提供的函数连接到KVM或Xen宿主机，便可以用同样的命令控制不同的虚拟机；当然libvirt不仅提供了API，还自带一套基于文本的管理虚拟机的命令virsh，可以通过使用virsh命令来使用libvirt的全部功能；但最终用户更渴望的是图形用户界面，这就是virt-manager，他是一套用python编写的虚拟机管理图形界面，用户可以通过它直观地操作不同的虚拟机，virt-manager就是利用Iibvirt的API实现的
+
+
+##KVM实战：原理、进阶与性能调优》一2.5　与QEMU/KVM结合的组件
+ 
+2.5　与QEMU/KVM结合的组件
+
+在KVM虚拟化的软件栈中，毋庸置疑的是KVM内核模块与QEMU用户态程序是处于最核心的位置，有了它们就可通过qemu命令行操作实现完整的虚拟机功能，本书中多数的实践范例正是通过qemu命令行来演示的。然而，在实际的云计算的虚拟化场景中，为了更高的性能或者管理的方便性，还有很多的软件可以作为KVM虚拟化实施中的组件，这里简单介绍其中的几个。
+
+1. vhost-net
+
+vhost-net是Linux内核中的一个模块，它用于替代QEMU中的virtio-net用户态的virtio网络的后端实现。使用vhost-net时，还支持网卡的多队列，整体来说会让网络性能得到较大提高。在6.1.6节中对vhost-net有更多的介绍。
+
+2. Open vSwitch
+
+Open vSwitch是一个高质量的、多层虚拟交换机，使用开源Apache2.0许可协议，主要用可移植性强的C语言编写的。它的目的是让大规模网络自动化可以通过编程扩展，同时仍然支持标准的管理接口和协议（例如NetFlow、sFlow、SPAN、RSPAN、CLI、LACP、802.1ag）。同时也提供了对 OpenFlow 协议的支持，用户可以使用任何支持 OpenFlow 协议的控制器对 OVS 进行远程管理控制。Open vSwitch被设计为支持跨越多个物理服务器的分布式环境，类似于VMware的vNetwork分布式vswitch或Cisco Nexus 1000 V。Open vSwitch支持多种虚拟化技术，包括Xen/XenServer、KVM和VirtualBox。在KVM虚拟化中，要实现软件定义网络（SDN），那么Open vSwitch是一个非常好的开源选择。
+
+3. DPDK
+
+DPDK全称是Data Plane Development Kit，最初是由Intel公司维护的数据平面开发工具集，为Intel x86处理器架构下用户空间高效的数据包处理提供库函数和驱动的支持，现在也是一个完全独立的开源项目，它还支持POWER和ARM处理器架构。不同于Linux系统以通用性设计为目的，它专注于网络应用中数据包的高性能处理。具体体现在DPDK应用程序是运行在用户空间上，利用自身提供的数据平面库来收发数据包，绕过了Linux内核协议栈对数据包处理过程。其优点是：性能高、用户态开发、出故障后易恢复。在KVM架构中，为了达到非常高的网络处理能力（特别是小包处理能力），可以选择DPDK与QEMU中的vhost-user结合起来使用。
+
+4. SPDK
+
+SPDK全称是Storage Performance Development Kit，它可为编写高性能、可扩展的、用户模式的存储程序提供一系列工具及开发库。它与DPDK非常类似，其主要特点是：将驱动放到用户态从而实现零拷贝、用轮询模式替代传统的中断模式、在所有的I/O链路上实现无锁设计，这些设计会使其性能比较高。在KVM中需要非常高的存储I/O性能时，可以将QEMU与SPDK结合使用。
+
+5. Ceph
+
+Ceph是Linux上一个著名的分布式存储系统，能够在维护 POSIX 兼容性的同时加入复制和容错功能。Ceph由储存管理器（Object storage cluster对象存储集群，即OSD守护进程）、集群监视器（Ceph Monitor）和元数据服务器（Metadata server cluster，MDS）构成。其中，元数据服务器MDS仅仅在客户端通过文件系统方式使用Ceph时才需要。当客户端通过块设备或对象存储使用Ceph时，可以没有MDS。Ceph支持3种调用接口：对象存储，块存储，文件系统挂载。在libvirt和QEMU中都有Ceph的接口，所以Ceph与KVM虚拟化集成是非常容易的。在OpenStack的云平台解决方案中，Ceph是一个非常常用的存储后端。
+
+6. libguestfs
+
+libguestfs是用于访问和修改虚拟机的磁盘镜像的一组工具集合。libguestfs提供了访问和编辑客户机中的文件、脚本化修改客户机中的信息、监控磁盘使用和空闲的统计信息、P2V、V2V、创建客户机、克隆客户机、备份磁盘内容、格式化磁盘、调整磁盘大小等非常丰富的功能。libguestfs还提供了共享库，可以在C/C++、Python等编程语言中对其进行调用。libguestfs不需要启动KVM客户机就可以对磁盘镜像进行管理，功能强大且非常灵活，是管理KVM磁盘镜像的首选工具。
+
+
