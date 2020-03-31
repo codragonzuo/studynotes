@@ -17,3 +17,14 @@ CentOS 7环境 LVM逻辑卷创建与管理
 
 https://www.linuxidc.com/Linux/2018-08/153689.htm
 
+
+## 逻辑卷管理LVM
+
+![](https://images2015.cnblogs.com/blog/765829/201511/765829-20151129191104547-1706757886.jpg)
+
+![](https://images2015.cnblogs.com/blog/765829/201511/765829-20151129191442907-856677584.jpg)
+
+![](https://images2015.cnblogs.com/blog/765829/201511/765829-20151129191831313-1870519264.jpg)
+
+
+https://www.cnblogs.com/zxqstrong/p/5005220.html
