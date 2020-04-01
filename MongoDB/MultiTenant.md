@@ -68,5 +68,6 @@ https://www.slideshare.net/mongodb/securing-mongodb-to-serve-an-awsbased-multite
 
 但是在前端，每个租户 通过认证获取令牌，取访问获取线程池， 线程里却要使用不同的密码去访问数据库。
 
+## Guide to multi-tenancy with Spring Boot and MongoDB
 
-
+https://medium.com/@alexantaniuk/guide-to-multi-tenancy-with-spring-boot-and-mongodb-78ea5ef89466
