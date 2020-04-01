@@ -8,6 +8,8 @@ https://www.npmjs.com/package/json-to-plantuml
 ```shell
 $ echo '{"foo": "bar"}' | json-to-plantuml | java -jar plantuml.jar -pipe > foobar.png
 $ json-to-plantuml -f .\data\albumdata.json | java -jar plantuml.jar -pipe > albumdata.png
+
+C:\myproject>json-to-plantuml -f .\agentdata.json | java -jar plantuml.jar -pipe > agentdata.png
 ```
 
 
