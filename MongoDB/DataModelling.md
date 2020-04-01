@@ -40,3 +40,6 @@ This section will present you with patterns that illustrate when to embed or whe
 •  Whether write is the priority 写优先  
 •  What update queries we will make 更改优先  
 •  Document growth  文档增长  
+
+
+https://www.freecodecamp.org/news/nosql-databases-5f6639ed9574/
