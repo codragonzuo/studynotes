@@ -1,3 +1,33 @@
+## Tune for search speed搜索速度调优
+
+https://www.elastic.co/guide/en/elasticsearch/reference/master/tune-for-search-speed.html
+
+- Give memory to the filesystem cache
+- Use faster hardware
+- Document modeling
+- Search as few fields as possible
+- Pre-index data
+- Consider mapping identifiers as keyword
+- Avoid scripts
+- Search rounded dates
+- Force-merge read-only indices
+- Warm up global ordinals
+- Warm up the filesystem cache
+- Use index sorting to speed up conjunctions
+- Use preference to optimize cache utilization
+- Replicas might help with throughput, but not always
+
+How To  
+General recommendations  
+Recipes  
+Tune for indexing speed  
+Tune for search speed  
+Tune your queries with the Profile API  
+Faster phrase queries with index_phrases  
+Faster prefix queries with index_prefixes  
+Tune for disk usage  
+Testing  
+
 
 ## ES 在数据量很大的情况下如何提高查询效率
 转载hellozhxy 最后发布于2019-06-05 20:43:06 阅读数 4077  收藏
