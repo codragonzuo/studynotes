@@ -207,3 +207,6 @@ Ext.define('shyl.view.esreport.ux.EsUrlCompiler', {
 
 原文链接：https://blog.csdn.net/zwgdft/article/details/86416668
 
+
+
+![](https://www.siscale.com/wp-content/uploads/2019/08/ES_shards.png)
