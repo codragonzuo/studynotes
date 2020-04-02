@@ -198,3 +198,12 @@ Ext.define('shyl.view.esreport.ux.EsUrlCompiler', {
 ```
 
 原文链接：https://blog.csdn.net/wxf19851985/article/details/84654000
+
+
+## Elasticsearch最佳实践之Index与Shard设计
+
+
+**聊一个特殊的例子。曾经遇到过一个Index，里面存放的是关键事件的日志信息，数据量不大（400MB左右），所以只分配了2个Primary Shard。但是因为“最近的事件”是用户非常关注的，所以这个Index承载了整个集群50%以上的查询请求，为了提高查询性能，将请求分散到不同机器上，最后还是将Primary Shard设置为数据节点的个数。**
+
+原文链接：https://blog.csdn.net/zwgdft/article/details/86416668
+
