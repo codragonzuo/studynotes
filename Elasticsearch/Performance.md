@@ -29,6 +29,28 @@ Tune for disk usage
 Testing  
 
 
+## Elasticsearch The	Definitive 	Guide
+Elasticsearch: 权威指南
+
+中文文档
+
+https://www.elastic.co/guide/cn/elasticsearch/guide/current/foreword_id.html
+
+
+- 多字段搜索
+多字符串查询  
+单字符串查询  
+最佳字段  
+最佳字段查询调优  
+multi_match 查询  
+多数字段  
+跨字段实体搜索  
+字段中心式查询  
+自定义 _all 字段  
+cross-fields 跨字段查询  
+Exact-Value 精确值字段  
+
+
 ## ES 在数据量很大的情况下如何提高查询效率
 转载hellozhxy 最后发布于2019-06-05 20:43:06 阅读数 4077  收藏
 
