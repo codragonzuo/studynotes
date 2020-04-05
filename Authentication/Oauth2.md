@@ -1,4 +1,26 @@
+## OAuth 2.0 的四种方式
 
+OAuth 2.0 规定了四种获得令牌的流程。你可以选择最适合自己的那一种，向第三方应用颁发令牌。下面就是这四种授权方式。  
+  - 授权码（authorization-code）
+  - 隐藏式（implicit）
+  - 密码式（password）：
+  - 客户端凭证（client credentials）
+
+http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html
+
+1. 授权码（authorization-code）
+
+![](https://www.wangbase.com/blogimg/asset/201904/bg2019040905.jpg)
+
+2. 隐藏式（implicit）
+
+![](https://www.wangbase.com/blogimg/asset/201904/bg2019040906.jpg)
+
+3. 密码式（password）
+
+使用用户名和密码来获取令牌。
+
+4. 客户端凭证（client credentials）
 
 ## BearerToken之JWT的介绍
 
