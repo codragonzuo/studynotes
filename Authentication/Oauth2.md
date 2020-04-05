@@ -122,6 +122,8 @@ JWT的工作过程
 
 此后，客户端将在与服务器交互中都会带JWT。如果将它存储在Cookie中，就可以自动发送，但是不会跨域，因此一般是将它放入HTTP请求的Header Authorization字段中。
 
+<font color="#FF0000">放在Cookie里面自动发送，但是这样不能跨域，所以更好的做法是放在HTTP请求的头信息Authorization字段里面。</font>
+
 Authorization: Bearer JWT_TOKEN
 
 当跨域时，也可以将JWT被放置于POST请求的数据主体中。
