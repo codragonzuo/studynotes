@@ -205,3 +205,25 @@ Authorization: Bearer JWT_TOKEN
 紧凑：JWT的构成非常简单，字节占用很小，可以通过 GET、POST 等放在 HTTP 的 header 中，非常便于传输。  
 扩展：JWT是自我包涵的，包含了必要的所有信息，不需要在服务端保存会话信息, 非常易于应用的扩展。  
 
+## WEB HOOK 令牌方式
+
+
+
+https://www.cnblogs.com/yadongliang/p/8609922.html
+
+
+请求认证
+基于Token的认证机制会在每一次请求中都带上完成签名的Token信息，这个Token信息可能在COOKIE
+中，也可能在HTTP的Authorization头中；
+
+
+
+客户端（APP客户端或浏览器）通过GET或POST请求访问资源（页面或调用API）；
+1. 认证服务作为一个Middleware HOOK 对请求进行拦截，首先在cookie中查找Token信息，如果没有找到，则在HTTP Authorization Head中查找；
+2. 如果找到Token信息，则根据配置文件中的签名加密秘钥，调用JWT Lib对Token信息进行解密和解码；
+3. 完成解码并验证签名通过后，对Token中的exp、nbf、aud等信息进行验证；
+4. 全部通过后，根据获取的用户的角色权限信息，进行对请求的资源的权限逻辑判断；
+5. 如果权限逻辑判断通过则通过Response对象返回；否则则返回HTTP 401；
+
+![](https://images2015.cnblogs.com/blog/34831/201606/34831-20160622152344250-1238130627.jpg)
+
