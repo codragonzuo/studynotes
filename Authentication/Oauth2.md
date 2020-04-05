@@ -1,3 +1,24 @@
+## HTTP认证方式
+Basic　authentication  
+Digest　authentication  
+WSSE(WS-Security) HTTP authentication  
+token　Authentication  
+OAuth1.0 Authentication  
+OAuth2.0 Authentication  
+Kerberos  
+NTLM  
+Hawk Authentication  
+AWS Signature  
+https  
+
+链接：https://www.jianshu.com/p/18fb07f2f65e
+
+HTTP认证模式：Basic and Digest Access Authentication
+
+https://www.cnblogs.com/XiongMaoMengNan/p/6671206.html
+
+
+
 ## OAuth 2.0 的四种方式
 
 OAuth 2.0 规定了四种获得令牌的流程。你可以选择最适合自己的那一种，向第三方应用颁发令牌。下面就是这四种授权方式。  
@@ -25,6 +46,8 @@ http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html
 ## BearerToken之JWT的介绍
 
 Bearer认证
+
+Bearer Token (RFC 6750) 用于OAuth 2.0授权访问资源，任何Bearer持有者都可以无差别地用它来访问相关的资源，而无需证明持有加密key。一个Bearer代表授权范围、有效期，以及其他授权事项；一个Bearer在存储和传输过程中应当防止泄露，需实现Transport Layer Security (TLS)；一个Bearer有效期不能过长，过期后可用Refresh Token申请更新。
 
 HTTP提供了一套标准的身份验证框架：服务器可以用来针对客户端的请求发送质询(challenge)，客户端根据质询提供身份验证凭证。质询与应答的工作流程如下：服务器端向客户端返回401（Unauthorized，未授权）状态码，并在WWW-Authenticate头中添加如何进行验证的信息，其中至少包含有一种质询方式。然后客户端可以在请求中添加Authorization头进行验证，其Value为身份验证的凭证信息。
 
