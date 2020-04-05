@@ -43,6 +43,33 @@ http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html
 
 4. 客户端凭证（client credentials）
 
+
+## OAuth 2.0：Bearer Token、MAC Token区别
+
+https://blog.csdn.net/weixin_39973810/article/details/84673548
+
+两种类型的Access Token：Bearer类型和MAC类型
+
+Bearer 介绍
+优点：
+　　调用简单，不需要对请求进行签名。
+缺点：
+　　请求API需要使用https协议保证信息传输安全。
+　　Access Token有效期一个月，过期后需要使用Refresh Token进行刷新。
+
+MAC 介绍
+优点：
+　　不依赖https协议，无协议加密带来的性能开销。
+　　Access Token长期有效，无需使用Refresh Token刷新。
+缺点：
+　　需要进行MAC计算。
+
+
+Bearer类型token定义了三种token传递策略，客户端在传递token时必须使用其中的一种，且最多一种。
+放在Authorization请求首部
+放在请求实体中
+放在URI请求参数中
+
 ## BearerToken之JWT的介绍
 
 Bearer认证
