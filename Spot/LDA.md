@@ -71,3 +71,9 @@ class FlowSuspiciousConnectsModel(topicCount: Int,
                                                                   srcTopicMix: Seq[precisionUtility.TargetType],
                                                                   dstTopicMix: Seq[precisionUtility.TargetType])
 ```                                                                  
+
+
+## 分析结果输出
+
+在ml_ops.sh中定义HDFS_SCORED_CONNECTS=${HPATH}/scores 为score输出目录。
+
