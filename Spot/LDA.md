@@ -40,3 +40,34 @@ class FlowSuspiciousConnectsModel(topicCount: Int,
                                   ipToTopicMix: DataFrame,
                                   wordToPerTopicProb: Map[String, Array[Double]]) 
 ```                                  
+
+
+估计某个netflow连接符合 某个源IP 或者 某个目的IP 的分布的概率值，并取这两个概率值的最小值。
+
+```
+  /**
+    * Estimate the probability of a netflow connection as distributed from the source IP and from the destination IP
+    * and assign it the least of these two values.
+    *
+    * @param hour Hour of flow record.
+    * @param srcIP Source IP of flow record.
+    * @param dstIP Destination IP of flow record.
+    * @param srcPort Source port of flow record.
+    * @param dstPort Destination port of flow record.
+    * @param ipkt ipkt entry of flow record
+    * @param ibyt ibyt entry of flow record
+    * @param srcTopicMix topic mix assigned of source IP
+    * @param dstTopicMix topic mix assigned of destination IP
+    * @return Minium of probability of this word from the source IP and probability of this word from the dest IP.
+    */
+  def score[P <: FloatPointPrecisionUtility](precisionUtility: P)(hour: Int,
+                                                                  srcIP: String,
+                                                                  dstIP: String,
+                                                                  srcPort: Int,
+                                                                  dstPort: Int,
+                                                                  protocol: String,
+                                                                  ibyt: Long,
+                                                                  ipkt: Long,
+                                                                  srcTopicMix: Seq[precisionUtility.TargetType],
+                                                                  dstTopicMix: Seq[precisionUtility.TargetType])
+```                                                                  
