@@ -77,3 +77,8 @@ class FlowSuspiciousConnectsModel(topicCount: Int,
 
 在ml_ops.sh中定义HDFS_SCORED_CONNECTS=${HPATH}/scores 为score输出目录。
 
+Spot-ml模块输出文件  
+$HPATH/flow/scored_results/YYYYMMDD/scores/flow_results.csv
+
+用户评分干涉文件
+/user/<user_name>/<data source>/scored_results/<date>/feedback/ml_feedback.csv
