@@ -18,6 +18,7 @@ pe': 'any', 'of': [{'type': 'str'}, {'type': 'arr', '
 'of': [{'type': 'str'}, {'type': 'arr', 'contents': '
 ]}}]}}}
 
+```
 >>> data['required']['title']
 {'type': 'str', 'length': {'min': 1, 'max': 256}}
 >>> data['required']['title']['type']
@@ -29,3 +30,23 @@ pe': 'any', 'of': [{'type': 'str'}, {'type': 'arr', '
 import json
 jsontext=json.dumps(data, indent=4)
 print(jsontext)
+```
+
+```python
+>>> import yaml
+>>> import os
+>>> file = open('filebeat.yml', 'r', encoding="utf-8")
+>>> file_data = file.read()
+>>> file.close()
+>>> data=yaml.load(file_data)
+>>> data['filebeat.config.inputs']
+{'enabled': True, 'path': 'myconfig.yml', 'reload.enabled': True, 'reload.period
+': '10s'}
+>>> data['filebeat.config.inputs']
+{'enabled': True, 'path': 'myconfig.yml', 'reload.enabled': True, 'reload.period
+': '10s'}
+>>> data['filebeat.config.inputs']['path']
+'myconfig.yml'
+>>> data['filebeat.config.inputs'].pop('path')
+'myconfig.yml'
+```
