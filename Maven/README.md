@@ -4,6 +4,11 @@ mvn archetype:generate     -DgroupId=com.mycom.helloworld     -DartifactId=hello
 ```
 
 
+
+```
+mvn archetype:generate     -DgroupId=com.mycom -DarchetypeGroupId=org.apache.flink  -DartifactId=helloworld     -DarchetypeArtifactId=flink-quickstart-java  -DinteractiveMode=false -Dversion=1.0 -DarchetypeCatalog=local -DarchetypeVersion=1.11.2
+```
+
 ### 配置maven 的阿里云远程仓库
 
 maven阿里云中央仓库的两种方式    
