@@ -1,4 +1,7 @@
 
+https://renenyffenegger.ch/notes/tools/Graphviz/examples/index
+
+
 ```puml
 digraph R {
   rankdir=LR
@@ -116,7 +119,36 @@ digraph st{
 }
 ```
 
+```dot
+digraph H {
 
+  aHtmlTable [
+   shape=plaintext
+   color=black1       // The color of the border of the table
+   label=<
+
+     <table border='0' cellborder='1' cellspacing='0'>
+       <tr><td>col 1</td><td>foo</td></tr>
+       <tr><td>COL 2</td><td>bar</td></tr>
+     </table>
+
+  >];
+
+}
+```
+
+```dot
+digraph D {
+
+    node [fontname="Arial"];
+
+    node_A [shape=record    label="shape=record|{above|middle|below}|right"];
+    node_C [shape=record    label="{record|{middle|fdefa}|right}"];
+    node_B [shape=plaintext label="shape=plaintext|{curly|braces and|bars without}|effect"];
+
+
+}
+```
 
 
 ```dot
