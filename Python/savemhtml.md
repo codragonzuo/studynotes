@@ -1,6 +1,6 @@
 # Save web html to mhtml file
 
-'''python
+```python
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -26,6 +26,6 @@ time.sleep(1)
 if FILE_NAME != '':
     pyautogui.typewrite(FILE_NAME)
 pyautogui.hotkey('enter')
-'''
+```
 
 
